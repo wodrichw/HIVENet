@@ -1,0 +1,37 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=.75in,footskip=0.25in]{geometry}
+\title{Neural Entanglement Project Description}
+\author{Alex Garcia, CS 461 Fall 2018}
+
+\begin{document}
+\maketitle
+    \begin{abstract}
+    Artificial neural networks present a new opportunity for inference engines to process and synthesize information. The target of this project is to research and develop the technology for teaching inference engines through artificial neural networking, as well as the manipulation of neural network coefficients in order to modify inference engine behaviours.
+    
+    Rather than hard-coding a knowledge base into the inference engine, the machine can be taught through the use of an artificial neural network and develop facts to work from autonomously. The learning model can be modified by manipulating the weights of the neural network, allowing the developer to alter the behaviour of the inference engine being taught. Multiple networks could also be linked, allowing the system to process a data set from multiple perspectives, synthesizing more information and generating a richer understanding of the data.
+    \end{abstract}
+    
+    \section{Project Definition}
+    Traditional inference engines can only work from a knowledge base of facts provided by the developer, restricting the utility of the architecture and creating an overhead cost. Knowledge bases must be comprehensive and complete in order to be useful, requiring precision and energy in providing the necessary data for the engine to work from. Errors in the data or small sets of data reduce the effectiveness of the machine.
+    
+    Because knowledge bases are static, once an inference engine operates on the data set, further information cannot be synthesized until the engine or data set are modified. Because these modifications have to be performed manually, continual use of an engine can generate numerous overhead costs. This also means that inference engines have limited use outside of a research environment because the input must be entered by the developer.
+    
+    Each iteration of an inference engine has to be created by a developer manually, and the behaviour of each engine is static. While mutations of the original architecture can reuse many assets from the initial engine, each change is performed by a developer at a basic level. Producing multiple engines can be resource intensive.
+    
+    \section{Solution}
+    The teaching process can be made more efficient by generating knowledge bases dynamically through the use of an artificial neural network. After providing a properly labeled problem set the neural network can generate facts about the data. Once the neural network has been taught it can pass on these generated facts to an inference engine, allowing it to synthesize new facts working from the knowledge base of the neural network.
+    
+    In tandem these two pieces of architecture allow for a machine to learn from a data set and then make conjectures about the data without traditional oversight costs from a developer. Proper control of the learning process is maintained through training of the neural network. Additionally, manipulating the inference engine no longer needs to be a manual process, as the behaviours can be modified by adjusting the coefficients of the neural network. This allows a large data set to be useful for several calculations as the data is scrutinized from multiple perspectives as the nature of the neural network is modified and re-taught.
+    
+    Artificial neural network-inference engine systems could be scaled to handle new problems that were previously unfeasible or synthesize data in new ways. Several sub-networks with different behaviours could analyze a single set of data and perceive their own unique patterns. These synthesized patterns could then be entangled with a larger global network in order to generate a multifaceted understanding of the data set without developing multiple inference engines and data sets to arrive at the same result.
+    \section{Metrics of Success}
+    The success of the project can be measured through the increased efficacy or efficiency of inference engines. These gains can be measured through some of the following metrics:
+    
+    There is a measurable reduction in the man-hour cost of training or retraining an inference engine through the use of a neural network rather than coding a knowledge base by hand.
+    
+    There is a measurable gain in efficacy of inference engines through artificial neural network training. This could increase the developer's ability to modify the inference engine by manipulating the behaviour of the neural network rather than needing to modify the engine by hand.
+    
+    There are new applications for inference engines discovered through training via neural networks rather than human developers. Examples include elevating an expert system to a level of capability that it can receive dynamic input without filtration by a developer (computer vision, audio analysis, speech recognition etc). This could also manifest by allowing multiple networks/engines to work off one another, potentially synthesizing more useful information through the multifaceted approach of the various entangled networks.
+    
+\end{document}
