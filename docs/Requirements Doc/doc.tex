@@ -196,15 +196,16 @@ This section includes the requirements that specify the fundamental actions of t
 		\item core device must have the most up-to-date inference engine
 	\end{itemize}
 
-	\subsection{Performance Requirements}
+	\subsubsection{Performance Requirements}
 	\begin{itemize}
 		\item core process can identify eye color with 60\% success rate -goal 80%
 		\item core process can identify shape color with 60\% success rate -goal 80%
 		\item core process can identify eyebrow color with 60\% success rate -goal 80%
 		\item User can authenticate in under 30 seconds, goal 15 seconds
-		\item 
-
-		
+		\item User system can register a user in under a minute goal 15 seconds
+		\item Neural networks should be able to train in under 24 training hours, goal 8 hours
+		\item Integration of features from the localized processes into the core NN should improve the accuracy of the core NN 80\% of the time, goal 95\% of the time
+		\item The size of the feature update package sent from a localized process to the core NN should be 20\% of the data required to achieve that feature
 	\end{itemize}
 \textbf{ID: FR1} \\
 	TITLE: \\
