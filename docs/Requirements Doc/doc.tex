@@ -159,7 +159,7 @@ Our facial recognition software will initially distinguish three facial features
 This section includes the requirements that specify the fundamental actions of the software system, and the necessary outcomes that are expected by the client.
 
 
-\section{Requirements Overview: (NOT IN COMPLETED DRAFT)}
+\section{Requirements Overview Notes: (NOT IN COMPLETED DRAFT)}
 \subsection{Ben Had}
 \begin{itemize}
 		\item functional requirements
@@ -180,13 +180,32 @@ This section includes the requirements that specify the fundamental actions of t
 		\item Edge device needs hold an interface which allows for core device to evaluated it's fitness (interface will expose values of certain features)
 		\item A process on the core device needs to have a method which determines when each edge device will be evaluated
 		\item Core device needs a way to package updated neural net and send package to edge devices
-		\item Edge devices need to be able to incorporate new package from core device into neural net process.
-		
-		
+		\item Edge devices need to be able to incorporate new package from core device into neural net process.		
+		\item Edge devices need to be uniquely identafiable
+		\item A meathod to associate image attributes with each image needs to be in place
+		\begin{itemize}
+			\item these would be like eye color, eye shape etc
+			\item could have user accounts
+			\begin{itemize}
+				\item storing user account info (login name, and account details)
+				\item login screen
+				\item form for entering user info (eye color, eyebrow color, eye shape)
+			\end{itemize}
+		\end{itemize}
+		\item Once the inference engine has guessed eye color, eye shape, and eyebrow color, program can return a filtered list of all users that have that eye color, eye shape, and eyebrow color
+		\item core device must have the most up-to-date inference engine
 	\end{itemize}
 
-
 	\subsection{Performance Requirements}
+	\begin{itemize}
+		\item core process can identify eye color with 60\% success rate -goal 80%
+		\item core process can identify shape color with 60\% success rate -goal 80%
+		\item core process can identify eyebrow color with 60\% success rate -goal 80%
+		\item User can authenticate in under 30 seconds, goal 15 seconds
+		\item 
+
+		
+	\end{itemize}
 \textbf{ID: FR1} \\
 	TITLE: \\
 	DESC: \\
