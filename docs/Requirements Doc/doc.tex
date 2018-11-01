@@ -1,5 +1,4 @@
 \documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
-
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
@@ -158,6 +157,34 @@ Our facial recognition software will initially distinguish three facial features
 		\subsubsection{Software Interfaces}
 	\subsection{Functional Requirements}
 This section includes the requirements that specify the fundamental actions of the software system, and the necessary outcomes that are expected by the client.
+
+
+\section{Requirements Overview: (NOT IN COMPLETED DRAFT)}
+\subsection{Ben Had}
+\begin{itemize}
+		\item functional requirements
+		\item performance requirements
+	
+\end{itemize}
+\subsection {HIVENet cares about both of these:}
+	\subsubsection{functional requirements}
+	\begin{itemize}
+		\item all edge devices need to have two way communication with core device
+		\item All edge devices need to be able to train neural networks
+		begin\begin{itemize}
+			\item Image processing
+			\item Data filtering and prepping (multiple manipulated images from one image)
+		\end{itemize}
+		\item Core device needs to be able to evaluate which features on each edge device would advantage all other devices if merged into the core neural net
+		\item Core device needs a method of merging a feature of a edge process into the core process
+		\item Edge device needs hold an interface which allows for core device to evaluated it's fitness (interface will expose values of certain features)
+		\item A process on the core device needs to have a method which determines when each edge device will be evaluated
+		\item Core device needs a way to package updated neural net and send package to edge devices
+		\item Edge devices need to be able to incorporate new package from core device into neural net process.
+		
+		
+	\end{itemize}
+
 
 	\subsection{Performance Requirements}
 \textbf{ID: FR1} \\
