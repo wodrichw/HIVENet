@@ -4,6 +4,7 @@ docs/*/*.fls
 docs/*/*.log
 docs/*/*.synctex.gz
 docs/*/*.toc
+docs/Requirements\ Doc/*.pdf
 
 
 docs/*.aux
