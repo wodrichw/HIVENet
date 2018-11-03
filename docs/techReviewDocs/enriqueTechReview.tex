@@ -1,0 +1,62 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=.75in,footskip=0.25in]{geometry}
+\title{Technical review}
+\author{Enrique Fernandez, CS 461 Fall 2018, Software Developer}
+
+\begin{document}
+\maketitle
+    \begin{abstract}
+    Artificial neural networks present a new opportunity for inference engines to process and synthesize information. The target of this project is to research and develop the technology for teaching inference engines through artificial neural networking, as well as the manipulation of neural network coefficients in order to modify inference engine behaviours.
+    
+    Rather than hard-coding a knowledge base into the inference engine, the machine can be taught through the use of an artificial neural network and develop facts to work from autonomously. The learning model can be modified by manipulating the weights of the neural network, allowing the developer to alter the behaviour of the inference engine being taught. Multiple networks could also be linked, allowing the system to process a data set from multiple perspectives, synthesizing more information and generating a richer understanding of the data.
+    \end{abstract}
+    
+    \section{Introduction}
+    Our project aims to demonstrate optimal neural network training through facial recognition applications. Our project will deliver facial identification and facial authentication across multiple systems, Even though the user identified has not visited or interacted with any other end system.
+
+    Several methods are being presented to our client to efficiently train artificial neural networks on multiple localized devices. Our team is both a research and deliverable project that aims to find alternative methods to train neural networks on localized devices. This paper gives a technical review of two subcategories of our overall project. This technical review gives acceptance criteria that must be met in order for the software to be considered for use. The first part of this document will give an overview on data set generation and possible methods of implementation. The latter half of this technical review will cover Facial recognition API packages and software that will be used on our project.
+
+    \section{Data set Generation}
+    Part of building an inference engine involves a large amount of data so the neural network can be properly trained. For example, according to MIT’s Open Source Deep Learning Book, if a person wants to build a neural network, let’s say a Convolution Neural Network, we would need around 5000 data points for each characteristic we are trying to identify. For this reason, we need to find a fast, efficient, and cheap method to gather around 5000 data points for our Neural network to be properly trained. 
+    
+    Google offers a custom search API that allows just that. Using the Google API, we can custom search specific facial features that we then will use use to train the neural network located on the end-Devices of our system. Our searches will involve searching for the three facial features our software will support: nose searches, eye shape searches, and lip shape searches. Since the Google API uses RESTful API calls, the Postman software application will be used to more effectively and accurately generate the REST API calls. Once the REST calls to the google API have been done, we will get back image search results in a JSON format to then have our Edge-Devices use and learn from. Using the Google API is not free. This resource will cost a tremendous amount to our project. Well known websites gazette.com uses this google API and spend roughly $5000 a year to use the google API service. 
+    
+    Alternatively, our team can create a web crawler using various software applications like python, and XPath notation to grab webpage contents and generate the data set from those webpages. Using this method involves a considerable amount of error handling and parsing through custom and non-templated webpages. Also, not all webpage developers properly classify HTML objects; making the built-in web crawler harder to develop. Although the latter idea is an option; this is not preferred since our research does not focus on generating a dataset, but to come up with ideas to be able to quickly, and accurately train Edge-System Inference Engines.
+
+    \section{Facial Recognition API applications}
+    Facial recognition APIs provided by cloud providers, such as Google, AWS, and Azure, can be used as our facial recognition software. Using the facial recognition API will allow us to increase the band with to research more methods to more efficiently train inference engine that are located on the Edge-Devices, which is ultimately the goal of our project. In order to use facial recognition APIs certain criteria’s must be met. The API in use should allow our software application to gather necessary information that correlates with the neural network being trained in our system. Components such as node coefficients and the Inference engines must be able to be accessed by our system, downloaded from the API in use, and then reconfigured to be used by other Edge-devices on our system. In addition, the API in use should allow for multiple end systems to be connected to the same Inference engine that managed by the API. Third, The facial recognition API should allow for custom facial recognition characteristic implementations; for example, Our project will require to identify a minimum of noses, lips, and mouths on each face. Finally, The API and use must allow for custom datasets to be used as input for the neural network. The following sections cover several API packages and API request calls using a web protocol. 
+
+    Kairos Is an easy to use API package that allows for rapid facial recognition. It has many functionalities such as Gender identification, eight identification, facial recognition in both video and audio. Kairos also allows for categorization of users via galleries. This is useful for account information and data storage. Kairos Does not allow for neural network coefficient extraction or inference engine copies. Kairos Also does not allow for a custom data set either. Because of The selection criteria, Kairos cannot be used on this project.
+
+    Amazon Rekognition is a facial recognition API that is compatible on the AWS ecosystem. Using this API, integrating these software applications into our project can be easily done using Amazon Web services. Amazon Rekognition Not only offers facial detection, but gender identification, object identification, Activity identification, detection of inappropriate content, and much more. AWS does allow you to use the API on multiple and devices and allow you to look at results of each detection. Amazon Rekognition Does not allow for neural network coefficient extraction or inference engine coffee. Because of the selection criteria Amazon Rekognition Cannot be used in this project.
+
+    Lambda Labs API is a very inexpensive facial recognition API package which can be easily implemented into our project. It offers facial recognition, facial identification, and can use facial categorizations through galleries. This API however it’s specifically used for Google’s Eye-glass. Because of the selection criteria, Lambda Labs cannot be used on this project.
+
+    Microsoft office their own face recognition API package that is also easily implemented on any project. Microsoft face API offers facial recognition, fascial detection, categorization of faces through a list, searchable person list, and custom data set for neural network use of a specific person. This API does not allow for neural network coefficient extraction, inference engine copies. Because of the selection criteria Microsoft facial detection cannot be used for this project
+
+    \section{Conclusion}
+    This technical review exposes possible solutions for generating data sets in a efficient, but costly manner. Alternatively, our project can encapsulate building an in-house web crawler that will be very time consuming to implement but will also be a very cheap solution in terms of cost. Through this technical review and research presented on this document, facial recognition API’s provided by any cloud provider or APA packages is not suitable for our project. Although API’s provide more functionality than what we need, we are not allowed to extract the inference engines, neural network coefficients, and in some situations; looking at results.  This further implies that our project will tackle an in-house facial recognition application that will satisfy our selection criteria described in the facial recognition API section of this document. 
+
+    \section{references}
+    Belyeu, Rajnesah. "Kairos: Serving Businesses With Face Recognition". Kairos, 2018, https://www.kairos.com/. Accessed 3 Nov 2018. \\
+    [2] "Amazon Rekognition – Video And Image - AWS". Amazon Web Services, Inc., 2018, https://aws.amazon.com/rekognition/. Accessed 3 Nov 2018.\\
+    [3] "Deep Learning Workstations, Servers, Laptops | Lambda Labs". Lambdalabs.Com, 2018, https://lambdalabs.com/. Accessed 3 Nov 2018.\\
+    [4] "Face API - Facial Recognition Software | Microsoft Azure". Azure.Microsoft.Com, 2018, https://azure.microsoft.com/en-us/services/cognitive-services/face/. Accessed 3 Nov 2018.\\
+    [5] Goodfellow, Ian et al. "Deep Learning". Deeplearningbook.Org, 2016, http://www.deeplearningbook.org/. Accessed 3 Nov 2018.
+
+
+\end{document}
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
