@@ -28,6 +28,7 @@ sudo apt update
 #
 #Make sure you are about to install from the Docker repo instead of the default Ubuntu repo:
 #
+sudo apt -y install docker-ce
 apt-cache policy docker-ce
 
 #
