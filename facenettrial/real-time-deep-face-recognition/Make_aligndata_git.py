@@ -16,7 +16,7 @@ from time import sleep
 #
 #TODO: turn into relative directory
 #
-output_dir_path = '/home/enrique/facenettrial/real-time-deep-face-recognition/output_dir'
+output_dir_path = './output_dir'
 output_dir = os.path.expanduser(output_dir_path)
 if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -33,7 +33,7 @@ if not os.path.exists(output_dir):
 #       -person2's_name/ img2.jpg
 #
 #############################
-datadir = '/home/enrique/datasets/data'
+datadir = '../datasets/data'
 dataset = facenet.get_dataset(datadir)
 
 print('Creating networks and loading parameters')
@@ -44,7 +44,7 @@ with tf.Graph().as_default():
         #
         #TODO: turn to relative directory paths
         #
-        pnet, rnet, onet = detect_face.create_mtcnn(sess, '/home/enrique/facenettrial/facenet/src/align')
+        pnet, rnet, onet = detect_face.create_mtcnn(sess, '../facenet/src/align')
 
 minsize = 20  # minimum size of face
 threshold = [0.6, 0.7, 0.7]  # three steps's threshold
