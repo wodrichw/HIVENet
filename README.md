@@ -1,6 +1,6 @@
 # HIVENet
 
-HIVENet is a research project that tackles Neural Network optomization. This prokect uses facial recognition software on a end-node that then informs a centralized node of its findings to be then shared across all other nodes. 
+HIVENets is a research project that tackles Neural Network optomization. This prokect uses facial recognition software on a end-node that then informs a centralized node of its findings to be then shared across all other nodes. 
 
 ## Getting Started
 
