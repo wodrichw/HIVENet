@@ -1,0 +1,53 @@
+Thurs,1/17:
+William:
+	yesterday: N/A
+	today:Meet with enrique to setup communication between laptops.
+	Attempt to install facenet on Rock64. 
+Andrew: 
+	yesterday: Reading up on facenet documentation
+	today: Continuing to read on facenet documentation
+Enrique: 
+	yesterday: N/A 
+	today: meet with William to look into communication channel. 
+Fri,1/18:
+	no-standup 
+
+mon 1/21:
+William: Worked on pitch/poster
+Andrew: Worked on pitch/poster
+Enrique: Worked on pitch/poster
+
+
+tue 1/22:
+William: No-stand-up  
+Andrew:  No-stand-up 
+Enrique: No-Stand-up 
+
+wed 1/23:
+William: 
+	yesterday: found a way for 2 computers to comunicate with net-cat.
+	Enrique And I found how to easily send files with sftp. 
+	today: i will look in setting up http server as an alternative to 
+	yesterday's work
+Andrew: No-stand-up
+Enrique: 
+	yesterday: partial set-up communication channels. 
+	today: Will continue to look into other options of transferring network
+	data.
+
+Thurs 1/24:
+William: Revised design document and requirements Document.  
+Andrew:	revised design document and requirements Document. 
+Enrique: revised design document and requirements document. 
+
+fri 1/25:
+William:
+	yesterday: revised documents: 
+	today: looked futher into netcat. 
+Andrew:  
+	yesterday: revised documents. 
+	today: Im gonna finish up the revisions for the requirements 
+	doc and try to get facenet working on my computer. 
+Enrique: 
+	yesterday: Revised Design document and requirements document. 
+	today: will setup netcat for communication between 2 computers. 
