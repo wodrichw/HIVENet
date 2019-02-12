@@ -10,9 +10,12 @@ classifier = classifierF.read()
 r = requests.post(url = URL + "/classifier", data = json.dumps(classifier))
 
 
-newNamesF = open('./newNames.txt', 'r')
-newNames = newNamesF.read()
-r = requests.post(url = URL + "/names", data = json.dumps(newNames))
+namesF = open('./newNames.txt', 'r')
+namesRaw = namesF.read()
+names = namesF.readlines()
+
+names = [n.strip() for n in names]
+r = requests.post(url = URL + "/names", data = json.dumps(namesRaw))
 
   
   
