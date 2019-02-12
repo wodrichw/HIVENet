@@ -14,3 +14,6 @@ docs/*.log
 docs/*.synctex.gz
 docs/*.toc
 facenet
+
+facenettrial/datasets
+facenettrial/classifier.pkl
