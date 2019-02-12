@@ -13,26 +13,11 @@ import detect_face
 import random
 from time import sleep
 
-#
-#TODO: turn into relative directory
-#
 output_dir_path = './output_dir'
 output_dir = os.path.expanduser(output_dir_path)
 if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-
-#############################
-# 
-# TODO: turn static directory to relative directory.
-# data sets are stored in this structure: 
-# data/
-#       -person1's_name/ img1.jpg
-#       -person1's_name/ img2.jpg
-#       -person2's_name/ img1.jpg
-#       -person2's_name/ img2.jpg
-#
-#############################
 datadir = '../datasets/data'
 dataset = facenet.get_dataset(datadir)
 
