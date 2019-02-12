@@ -21,7 +21,7 @@ with tf.Graph().as_default():
         #
         #TODO:Turn to relative Directory Paths 
         #
-        datadir = '/home/enrique/facenettrial/real-time-deep-face-recognition/output_dir'
+        datadir = '../real-time-deep-face-recognition/output_dir'
         dataset = facenet.get_dataset(datadir)
         paths, labels = facenet.get_image_paths_and_labels(dataset)
         print('Number of classes: %d' % len(dataset))
@@ -32,7 +32,7 @@ with tf.Graph().as_default():
         #
         #turn to relative directory path 
         #
-        modeldir = '/home/enrique/facenettrial/models/20170511-185253/20170511-185253.pb'
+        modeldir = '../models/20170511-185253/20170511-185253.pb'
         facenet.load_model(modeldir)
 
         images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
@@ -43,7 +43,7 @@ with tf.Graph().as_default():
         # Run forward pass to calculate embeddings
         print('Calculating features for images')
         batch_size = 1000
-        image_size = 160
+        image_size = 160 
         nrof_images = len(paths)
         nrof_batches_per_epoch = int(math.ceil(1.0 * nrof_images / batch_size))
         emb_array = np.zeros((nrof_images, embedding_size))
@@ -55,10 +55,7 @@ with tf.Graph().as_default():
             feed_dict = {images_placeholder: images, phase_train_placeholder: False}
             emb_array[start_index:end_index, :] = sess.run(embeddings, feed_dict=feed_dict)
 
-        #
-        #TODO: turn into relative directory path
-        #
-        classifier_filename = '/home/enrique/facenettrial/classifier.pkl'
+        classifier_filename = '../classifier.pkl'
         classifier_filename_exp = os.path.expanduser(classifier_filename)
 
         # Train classifier

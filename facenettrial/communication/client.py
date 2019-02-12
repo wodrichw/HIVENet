@@ -1,13 +1,18 @@
 import requests 
 import json
 
+
 # api-endpoint 
 URL = "http://127.0.0.1"
   
-r = requests.post(url = URL, data = json.dumps({"name": "HIVENet"})) 
+classifierF =  open('../classifier.pkl', 'r')
+classifier = classifierF.read()
+r = requests.post(url = URL + "/classifier", data = json.dumps(classifier))
+
+
+newNamesF = open('./newNames.txt', 'r')
+newNames = newNamesF.read()
+r = requests.post(url = URL + "/names", data = json.dumps(newNames))
+
   
-# extracting data in json format 
-# data = r.json() 
-  
-print r
   

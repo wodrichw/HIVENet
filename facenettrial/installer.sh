@@ -6,6 +6,7 @@ cd facenet
 for line in $(cat requirements.txt)
 do
 	pip install $line
+	pip3 install $line
 done
 
 

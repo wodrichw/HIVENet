@@ -41,9 +41,6 @@ with tf.Graph().as_default():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
     with sess.as_default():
-        #
-        #TODO: turn to relative directory paths
-        #
         pnet, rnet, onet = detect_face.create_mtcnn(sess, '../facenet/src/align')
 
 minsize = 20  # minimum size of face
@@ -57,9 +54,11 @@ random_key = np.random.randint(0, high=99999)
 bounding_boxes_filename = os.path.join(output_dir, 'bounding_boxes_%05d.txt' % random_key)
 print('Goodluck')
 
+nrof_successfully_aligned = 0
+
 with open(bounding_boxes_filename, "w") as text_file:
     nrof_images_total = 0
-    nrof_successfully_aligned = 0
+    nrof_successfully_aigned = 0
     for cls in dataset:
         output_class_dir = os.path.join(output_dir, cls.name)
         if not os.path.exists(output_class_dir):

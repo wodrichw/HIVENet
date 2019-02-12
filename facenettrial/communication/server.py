@@ -19,16 +19,34 @@ class S(BaseHTTPRequestHandler):
         self._set_headers()
 
     def do_POST(self):
+        if self.path  == '/classifier':
+            self.do_classifier()
+        elif self.path == '/names':
+            self.do_names()
+    
+    def do_classifier(self):
         self._set_headers()
-        print "in post method"
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
-        print self.data_string
+        print(self.data_string)
 
         self.send_response(200)
         self.end_headers()
 
         data = simplejson.loads(self.data_string)
-        with open("test123456.json", "w") as outfile:
+        with open("../classifier.pkl", "w") as outfile:
+            simplejson.dump(data, outfile)
+        return
+
+    def do_names(self):
+        self._set_headers()
+        self.data_string = self.rfile.read(int(self.headers['Content-Length']))
+        print(self.data_string)
+
+        self.send_response(200)
+        self.end_headers()
+
+        data = simplejson.loads(self.data_string)
+        with open("../real-time-deep-face-recognition/names.txt", "a") as outfile:
             simplejson.dump(data, outfile)
         return
 
@@ -36,7 +54,7 @@ class S(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ("127.0.0.1", port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting httpd...'
+    print('Starting httpd...')
     httpd.serve_forever()
 
 if len(argv) == 2:
