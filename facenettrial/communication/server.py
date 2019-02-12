@@ -52,10 +52,6 @@ class S(BaseHTTPRequestHandler):
         with open(archiveName, 'w') as outfile:
             simplejson.dump(archive, outfile)
         tarfile.TarFile.extractall(archiveName)
-        
-        
-
-        
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ("127.0.0.1", port)
