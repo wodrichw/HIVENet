@@ -74,8 +74,6 @@ class S(BaseHTTPRequestHandler):
         #     self.rfile.read(int(self.headers['Content-Length']))
         # # tarfile.TarFile.extractall(archiveName)
 
-        
-
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ("127.0.0.1", port)
     httpd = server_class(server_address, handler_class)
