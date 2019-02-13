@@ -1,88 +1,41 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+# http://flask.pocoo.org/docs/patterns/fileuploads/
 import os
-from sys import argv
-import SocketServer
-import simplejson
-import random
-from StringIO import StringIO
-import tarfile
-import shutil
-import re
+from flask import Flask, request, redirect, url_for, send_from_directory
 
-class S(BaseHTTPRequestHandler):
-    def _set_headers(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-    def do_GET(self):
-        self._set_headers()
-        f = open("index.html", "r")
-        self.wfile.write(f.read())
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'dev/'
 
-    def do_HEAD(self):
-        self._set_headers()
+def allowed_file(filename):
+  # this has changed from the original example because the original did not work for me
+    return filename[-3:].lower() in ALLOWED_EXTENSIONS
 
-    def do_POST(self):
-        self._set_headers()
-        data_string = self.rfile.read(int(self.headers['Content-Length']))
-        # p = re.compile("name:\"(.*)\"")
-        # name = p.search(data_string).group(1)
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            print '**found file', file.filename
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+            # for browser, add 'redirect' function on top of 'url_for'
+            return url_for('uploaded_file',
+                                    filename=file.filename)
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
 
-        # fin = StringIO()
-        # fin.seek(0)
-        # fout = open(name + '.tar.gz', 'w')
-        # if fin:
-        #     shutil.copyfileobj(fin, fout)
-        #     fin.close()
-        #     fout.close()
-    #     self.send_response(200)
-    #     self.end_headers()
-    #     data = simplejson.loads(self.data_string)
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
-    #     if self.path  == '/classifier':
-    #         self.do_classifier(data)
-    #     elif self.path == '/names':
-    #         self.do_names(data)
-    #     elif self.path == '/training-data':
-    #         self.do_trainingData(data)
-            
-    
-    # def do_classifier(self, data):
-    #     with open("../classifier.pkl", "w") as outfile:
-    #         simplejson.dump(data, outfile)
-    #     return
-
-    # def do_names(self, data):
-    #     with open("../real-time-deep-face-recognition/names.txt", "a") as outfile:
-    #         simplejson.dump(data, outfile)
-    #     return
-
-    # def do_trainingData(self, data):
-    #     name = data['name']
-    #     archive = data['file']
-    #     print(name)
-        # nameDir = "../datasets/data/" + name + "/"
-        # try:
-        #     shutil.rmtree(nameDir)
-        # except OSError:
-        #     pass
-        # nameDir = "../datasets/data/" + name + "/"
-        # os.mkdir(nameDir)
-        # archiveName = nameDir + ".tar.gz"
-        # with open(archiveName, 'w') as outfile:
-        #     self.rfile.read(int(self.headers['Content-Length']))
-        # # tarfile.TarFile.extractall(archiveName)
-
-        
-
-def run(server_class=HTTPServer, handler_class=S, port=80):
-    server_address = ("127.0.0.1", port)
-    httpd = server_class(server_address, handler_class)
-    print('Starting httpd...')
-    httpd.serve_forever()
-
-if len(argv) == 2:
-    run(port=int(argv[1]))
-else:
-    run()
+if __name__ == '__main__':
+	app.run(debug=True)
