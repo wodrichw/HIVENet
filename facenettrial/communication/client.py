@@ -1,5 +1,6 @@
 import requests 
 import tarfile
+import subprocess
 import json
 from os import listdir
 
@@ -21,11 +22,12 @@ with open('./newNames.txt', 'r') as nf:
     names = [n.strip() for n in names]
   
 for name in names:
-    tar = tarfile.open(name + ".tar.gz", 'w:gz')
-    nDir = "../datasets/data/" + name + '/'
-    for pic in listdir(nDir):
-        tar.add(nDir + pic)
-    tar.close()
+    # tar = tarfile.open(name + ".tar.gz", 'w:gz')
+    # nDir = "../datasets/data/" + name + '/'
+    # for pic in listdir(nDir):
+    #     tar.add(nDir + pic)
+    # tar.close()
     with open(name + ".tar.gz", "rb") as f:
         data = f.read()
-        r = requests.post(url = URL + '/training-data', files = {name: f})
+        r = requests.post(url = URL + '/training-data', data = {'name': name, 'file': data})
+    
