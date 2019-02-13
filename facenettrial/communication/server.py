@@ -26,11 +26,8 @@ class S(BaseHTTPRequestHandler):
     def do_POST(self):
         self._set_headers()
         data_string = self.rfile.read(int(self.headers['Content-Length']))
-        data = simplejson.loads(data_string)
-        print(data['name'])
-        # print(data_string)
-        # p = re.compile("name=\"(.*)\";")
-        # name = p.search(data_string).group(1)
+        p = re.compile("name:\"(.*)\"")
+        name = p.search(data_string).group(1)
 
         # fin = StringIO()
         # fin.seek(0)
