@@ -18,10 +18,7 @@ with tf.Graph().as_default():
 
     with tf.Session() as sess:
 
-        #
-        #TODO:Turn to relative Directory Paths 
-        #
-        datadir = '../real-time-deep-face-recognition/output_dir'
+        datadir = './output_dir'
         dataset = facenet.get_dataset(datadir)
         paths, labels = facenet.get_image_paths_and_labels(dataset)
         print('Number of classes: %d' % len(dataset))
@@ -29,9 +26,6 @@ with tf.Graph().as_default():
 
         print('Loading feature extraction model')
         
-        #
-        #turn to relative directory path 
-        #
         modeldir = '../models/20170511-185253/20170511-185253.pb'
         facenet.load_model(modeldir)
 
