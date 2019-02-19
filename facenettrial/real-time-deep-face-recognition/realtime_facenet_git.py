@@ -20,11 +20,15 @@ import pickle
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
-print('Creating networks and loading parameters') 
+print('Creating networks and loading parameters')
 with tf.Graph().as_default():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.6)
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
     with sess.as_default():
+
+        nodenum=os.environ['NODENUM']
+        nodedir = '../classifiers/node' + nodenum
+
         pnet, rnet, onet = detect_face.create_mtcnn(sess, '../facenet/src/align')
 
         minsize = 20  # minimum size of face
@@ -37,9 +41,10 @@ with tf.Graph().as_default():
         input_image_size = 160
 
         # Get all human names from names.txt
-        with open('./names.txt') as namesF:
-            HumanNames = namesF.readlines()
-        HumanNames = [h.strip for h in HumanNames]
+        cfile = open(nodedir+'/names.txt','r')
+        HumanNames = cfile.readline()
+        HumanNames = HumanNames.split(',')
+        cfile.close()
 
         print('Loading feature extraction model')
         modeldir = '../models/20170511-185253/20170511-185253.pb'
@@ -50,7 +55,7 @@ with tf.Graph().as_default():
         phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
         embedding_size = embeddings.get_shape()[1]
 
-        classifier_filename = '../classifier.pkl'
+        classifier_filename = nodedir + '/classifier.pkl'
         classifier_filename_exp = os.path.expanduser(classifier_filename)
         with open(classifier_filename_exp, 'rb') as infile:
             (model, class_names) = pickle.load(infile)
@@ -126,6 +131,7 @@ with tf.Graph().as_default():
                         for H_i in HumanNames:
                             if HumanNames[best_class_indices[0]] == H_i:
                                 result_names = HumanNames[best_class_indices[0]]
+                                print(result_names)
                                 cv2.putText(frame, result_names, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                             1, (0, 0, 255), thickness=1, lineType=2)
                 else:
@@ -138,7 +144,7 @@ with tf.Graph().as_default():
             text_fps_x = len(frame[0]) - 150
             text_fps_y = 20
             cv2.putText(frame, str, (text_fps_x, text_fps_y),
-                        cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 0), thickness=1, lineType=2)
+                        cv2.FONT_HERSHEY_COMPLEX_SMALL, 1.0, (0, 0, 255), thickness=1, lineType=2)
             # c+=1
             cv2.imshow('Video', frame)
 
