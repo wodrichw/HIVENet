@@ -1,0 +1,220 @@
+2019-02-25 23:00:55.034034: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 6
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-25 23:01:57
+###############################################################
+########2019-02-25 23:02:232019-02-25 23:02:24.517459: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-25 23:02:26.289939: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 7
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-25 23:04:01
+2019-02-25 23:04:02.598019: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-25 23:04:04.393547: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 8
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck

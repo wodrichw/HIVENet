@@ -13,6 +13,9 @@ import math
 import pickle
 from sklearn.svm import SVC
 
+# Ensure that pwd is where this file lives
+RD = os.path.dirname(os.path.realpath(__file__))
+os.chdir(RD)
 
 with tf.Graph().as_default():
 

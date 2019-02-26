@@ -39,7 +39,7 @@ with tf.Graph().as_default():
         # Get all human names from names.txt
         with open('./names.txt') as namesF:
             HumanNames = namesF.readlines()
-        HumanNames = [h.strip for h in HumanNames]
+            HumanNames = [h.strip() for h in HumanNames]
 
         print('Loading feature extraction model')
         modeldir = '../models/20170511-185253/20170511-185253.pb'
