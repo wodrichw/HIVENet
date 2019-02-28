@@ -20,6 +20,9 @@ import pickle
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
+RD = os.path.dirname(os.path.realpath(__file__))
+os.chdir(RD)
+
 print('Creating networks and loading parameters') 
 with tf.Graph().as_default():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.6)
