@@ -20,65 +20,18 @@ import pickle
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
-def matchName(frame,HumanNames):
-    find_results = []
-    if frame.ndim == 2:
-        frame = facenet.to_rgb(frame)
-    frame = frame[:, :, 0:3]
-    bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)
-    nrof_faces = bounding_boxes.shape[0]
-    print('Detected_FaceNum: %d' % nrof_faces)
-
-    if nrof_faces > 0:
-        det = bounding_boxes[:, 0:4]
-        img_size = np.asarray(frame.shape)[0:2]
-
-        cropped = []
-        scaled = []
-        scaled_reshape = []
-        bb = np.zeros((nrof_faces,4), dtype=np.int32)
-
-        for i in range(nrof_faces):
-            emb_array = np.zeros((1, embedding_size))
-
-            bb[i][0] = det[i][0]
-            bb[i][1] = det[i][1]
-            bb[i][2] = det[i][2]
-            bb[i][3] = det[i][3]
-
-            # inner exception
-            if bb[i][0] <= 0 or bb[i][1] <= 0 or bb[i][2] >= len(frame[0]) or bb[i][3] >= len(frame):
-                print('face is inner of range!')
-                continue
-
-            cropped.append(frame[bb[i][1]:bb[i][3], bb[i][0]:bb[i][2], :])
-            cropped[0] = facenet.flip(cropped[0], False)
-            scaled.append(misc.imresize(cropped[0], (image_size, image_size), interp='bilinear'))
-            scaled[0] = cv2.resize(scaled[0], (input_image_size,input_image_size),
-                                    interpolation=cv2.INTER_CUBIC)
-            scaled[0] = facenet.prewhiten(scaled[0])
-            scaled_reshape.append(scaled[0].reshape(-1,input_image_size,input_image_size,3))
-            feed_dict = {images_placeholder: scaled_reshape[0], phase_train_placeholder: False}
-            emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
-            predictions = model.predict_proba(emb_array)
-            best_class_indices = np.argmax(predictions, axis=1)
-            best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
-            cv2.rectangle(frame, (bb[i][0], bb[i][1]), (bb[i][2], bb[i][3]), (0, 255, 0), 2)    #boxing face
-
-            #plot result idx under box
-            text_x = bb[i][0]
-            text_y = bb[i][3] + 20
-            # print('result: ', best_class_indices[0])
-            for H_i in HumanNames:
-                if HumanNames[best_class_indices[0]] == H_i:
-                    result_names = HumanNames[best_class_indices[0]]
-                    print(result_names)
-                    cv2.putText(frame, result_names, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                                1, (0, 0, 255), thickness=1, lineType=2)
-        return frame
-    else:
-        print('Unable to align')
-        return frame
+def matchName(frame,HumanNames,emb_array):
+    predictions = model.predict_proba(emb_array)
+    best_class_indices = np.argmax(predictions, axis=1)
+    best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
+    print(best_class_probabilities)
+    print (best_class_indices)
+    result_names =''
+    # print('result: ', best_class_indices[0])
+    for H_i in HumanNames:
+        if HumanNames[best_class_indices[0]] == H_i:
+            result_names = HumanNames[best_class_indices[0]]
+    return [result_names,best_class_probabilities]
 
 print('Creating networks and loading parameters')
 with tf.Graph().as_default():
@@ -138,8 +91,55 @@ with tf.Graph().as_default():
 
             curTime = time.time()    # calc fps
             timeF = frame_interval
+            
+            if frame.ndim == 2:
+                frame = facenet.to_rgb(frame)
+            frame = frame[:, :, 0:3]
+            bounding_boxes, _ = detect_face.detect_face(frame, minsize, pnet, rnet, onet, threshold, factor)
+            nrof_faces = bounding_boxes.shape[0]
+            print('Detected_FaceNum: %d' % nrof_faces)
 
-            frame = matchName(frame,HumanNames)
+            if nrof_faces > 0:
+                det = bounding_boxes[:, 0:4]
+                img_size = np.asarray(frame.shape)[0:2]
+
+                cropped = []
+                scaled = []
+                scaled_reshape = []
+                bb = np.zeros((nrof_faces,4), dtype=np.int32)
+
+                for i in range(nrof_faces):
+                    emb_array = np.zeros((1, embedding_size))
+
+                    bb[i][0] = det[i][0]
+                    bb[i][1] = det[i][1]
+                    bb[i][2] = det[i][2]
+                    bb[i][3] = det[i][3]
+
+                    # inner exception
+                    if bb[i][0] <= 0 or bb[i][1] <= 0 or bb[i][2] >= len(frame[0]) or bb[i][3] >= len(frame):
+                        print('face is inner of range!')
+                        continue
+
+                    cropped.append(frame[bb[i][1]:bb[i][3], bb[i][0]:bb[i][2], :])
+                    cropped[0] = facenet.flip(cropped[0], False)
+                    scaled.append(misc.imresize(cropped[0], (image_size, image_size), interp='bilinear'))
+                    scaled[0] = cv2.resize(scaled[0], (input_image_size,input_image_size),
+                                            interpolation=cv2.INTER_CUBIC)
+                    scaled[0] = facenet.prewhiten(scaled[0])
+                    scaled_reshape.append(scaled[0].reshape(-1,input_image_size,input_image_size,3))
+                    feed_dict = {images_placeholder: scaled_reshape[0], phase_train_placeholder: False}
+                    emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
+                    NameResult = matchName(frame,HumanNames,emb_array)
+                    texttoOutput = NameResult[0] + np.array2string(NameResult[1],3)
+                    #plot result idx under box
+                    text_x = bb[i][0]
+                    text_y = bb[i][3] + 20
+                    # print('result: ', best_class_indices[0])
+                    cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                                1, (0, 0, 255), thickness=1, lineType=2)
+            else:
+                print('Unable to align')
 
             sec = curTime - prevTime
             prevTime = curTime
