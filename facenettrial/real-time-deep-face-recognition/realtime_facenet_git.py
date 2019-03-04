@@ -20,7 +20,7 @@ import pickle
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
-def matchName(frame,HumanNames,emb_array):
+def matchName(frame,model,HumanNames,emb_array):
     predictions = model.predict_proba(emb_array)
     best_class_indices = np.argmax(predictions, axis=1)
     best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
@@ -40,7 +40,10 @@ with tf.Graph().as_default():
     with sess.as_default():
 
         nodenum=os.environ['NODENUM']
-        nodedir = '../classifiers/node' + nodenum
+        mynodedir = '../classifiers/node' + nodenum
+        nodedir1 = '../classifiers/node1'
+        nodedir2 = '../classifiers/node2'
+        nodedir3 = '../classifiers/node3'
 
         pnet, rnet, onet = detect_face.create_mtcnn(sess, '../facenet/src/align')
 
@@ -63,19 +66,41 @@ with tf.Graph().as_default():
         embedding_size = embeddings.get_shape()[1]
 
 
-        cfile = open(nodedir+'/names.txt','r')
-        HumanNames = cfile.readline()
-        HumanNames = HumanNames.split(',')
+        cfile = open(nodedir1+'/names.txt','r')
+        HumanNames1 = cfile.readline()
+        HumanNames1 = HumanNames1.split(',')
+        cfile.close()
+
+        cfile = open(nodedir2+'/names.txt','r')
+        HumanNames2 = cfile.readline()
+        HumanNames2 = HumanNames2.split(',')
+        cfile.close()
+
+        cfile = open(nodedir3+'/names.txt','r')
+        HumanNames3 = cfile.readline()
+        HumanNames3 = HumanNames3.split(',')
         cfile.close()
 
         video_capture = cv2.VideoCapture(0)
         c = 0
 
-        # Get all human names from names.txt
-        classifier_filename = nodedir + '/classifier.pkl'
+        # Load Classifier from node directory
+        classifier_filename = nodedir1 + '/classifier.pkl'
         classifier_filename_exp = os.path.expanduser(classifier_filename)
         with open(classifier_filename_exp, 'rb') as infile:
-            (model, class_names) = pickle.load(infile)
+            (model1, class_names) = pickle.load(infile)
+            print('load classifier file-> %s' % classifier_filename_exp)
+        # Load Classifier from node directory
+        classifier_filename = nodedir2 + '/classifier.pkl'
+        classifier_filename_exp = os.path.expanduser(classifier_filename)
+        with open(classifier_filename_exp, 'rb') as infile:
+            (model2, class_names) = pickle.load(infile)
+            print('load classifier file-> %s' % classifier_filename_exp)
+        # Load Classifier from node directory
+        classifier_filename = nodedir3 + '/classifier.pkl'
+        classifier_filename_exp = os.path.expanduser(classifier_filename)
+        with open(classifier_filename_exp, 'rb') as infile:
+            (model3, class_names) = pickle.load(infile)
             print('load classifier file-> %s' % classifier_filename_exp)
 
         # #video writer
@@ -130,8 +155,26 @@ with tf.Graph().as_default():
                     scaled_reshape.append(scaled[0].reshape(-1,input_image_size,input_image_size,3))
                     feed_dict = {images_placeholder: scaled_reshape[0], phase_train_placeholder: False}
                     emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
-                    NameResult = matchName(frame,HumanNames,emb_array)
-                    texttoOutput = NameResult[0] + np.array2string(NameResult[1],3)
+                    
+                    nameResult1 = matchName(frame,model1,HumanNames1,emb_array)
+                    nameResult2 = matchName(frame,model2,HumanNames2,emb_array)
+                    nameResult3 = matchName(frame,model3,HumanNames3,emb_array)
+
+                    print(nameResult1)
+                    print(nameResult2)
+                    print(nameResult3)
+                    
+                    if (nameResult1[1] >= nameResult2[1]) and (nameResult1[1] >= nameResult3[1]):
+                        print('Node1 won')
+                        texttoOutput = nameResult1[0] + np.array2string(nameResult1[1],3)
+                    elif nameResult2[1] >= nameResult3[1]:
+                        print('Node2 won')
+                        texttoOutput = nameResult2[0] + np.array2string(nameResult2[1],3)
+                    else:
+                        print('Node3 won')
+                        texttoOutput = nameResult3[0] + np.array2string(nameResult3[1],3)
+                    
+                    
                     #plot result idx under box
                     text_x = bb[i][0]
                     text_y = bb[i][3] + 20
