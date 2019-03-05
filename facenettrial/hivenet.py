@@ -13,7 +13,7 @@ def insertLogStart():
         
 def startServer():
     insertLogStart()
-    subprocess.Popen("python communication/server/server.py >> hivenet.log 2>&1", shell=True)
+    subprocess.Popen("cd communication/server/ ; python server.py >> hivenet.log 2>&1", shell=True)
 
 def trainLocalFaces():
     insertLogStart()
@@ -22,9 +22,10 @@ def trainLocalFaces():
 
 
 def syncDevicesToClassifier():
-#     client.sendNewPhotos()
+    client.sendNewPhotos()
+    client.sendNames()
     client.sendClassifier()
      
 
 trainLocalFaces()
-# syncDevicesToClassifier()
+syncDevicesToClassifier()

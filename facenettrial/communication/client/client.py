@@ -13,19 +13,15 @@ def addName(newName):
         nf.writelines([newName])
 
 def sendNewPhotos(url=URL):
-    with open(ROOTDIR+'/assets/newNames.txt', 'r') as nf:
-        names = [n.strip() for n in nf.readlines()]
-
-    for n in names:
-        tarCmd = ROOTDIR+'/scripts/compressPhotos.sh'
-        subprocess.call([tarCmd, ROOTDIR, n])
-        fin = open(ROOTDIR+'/assets/tarPhotos/'+n+'.tar.gz', 'rb')
-        files = {'file': fin}
-        try:
-            r = requests.post(URL+'/training-data', files=files)
-            print(r.text)
-        finally:
-            fin.close()
+    tarCmd = ROOTDIR+'/scripts/compressPhotos.sh'
+    subprocess.call([tarCmd])
+    fin = open(ROOTDIR+'/assets/tarPhotos/newNamesData.tar.gz', 'rb')
+    files = {'file': fin}
+    try:
+        r = requests.post(URL+'/training-data', files=files)
+        print(r.text)
+    finally:
+        fin.close()
 
 def sendNames(url=URL):
     fin = open(ROOTDIR+'/assets/newNames.txt', 'r')
@@ -44,3 +40,23 @@ def sendClassifier(url=URL):
         print(r.text)
     finally:
         fin.close()
+
+def sendAll(url=URL):
+    classifierF = open(ROOTDIR+'/assets/newNames.txt', 'r')
+
+    namesF = open(ROOTDIR+'/assets/newNames.txt', 'r')
+
+    tarCmd = ROOTDIR+'/scripts/compressPhotos.sh'
+    subprocess.call([tarCmd])
+    trainingDataF = open(ROOTDIR+'/assets/tarPhotos/newNamesData.tar.gz', 'rb')
+
+    files = {'classifier': classifierF, 'names': namesF, 'trainingData': trainingDataF}
+
+    try:
+        r = requests.post(URL+'/sync-all', files=files)
+        print(r.text)
+    finally:
+        classifierF.close()
+        namesF.close()
+        trainingDataF.close()
+
