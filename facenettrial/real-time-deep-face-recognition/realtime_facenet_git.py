@@ -22,7 +22,7 @@ from sklearn.svm import SVC
 from sklearn.externals import joblib
 
 def matchName(frame,model,HumanNames,emb_array):
-    predictions = model.predict_proba(emb_array)
+    predictions = model.predict_probability(emb_array) ## TODO FIX THIS SHIT 
     best_class_indices = np.argmax(predictions, axis=1)
     best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
     print(best_class_probabilities)
@@ -181,7 +181,7 @@ with tf.Graph().as_default():
                     
                     nameResults= []
                     for modelNum in range(len(models)): 
-                        nameResults.append(matchName(frame,models[modelnum],names[modelNum],emb_array))
+                        nameResults.append(matchName(frame,models[modelNum],names[modelNum],emb_array))
                     
                     maxNameResult = max(nameResults,key= lambda m : m[0])
                     texttoOutput = maxNameResult[0] + maxNameResult[1][-3:]
