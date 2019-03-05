@@ -1,16 +1,28 @@
 #!/bin/bash
 
-if [[ $# -le 1 ]] || [[ $# -ge 3 ]]
+if [[ $# -ne 0 ]]
 then
-	printf "USAGE: ./decompressPhotos.sh <path> <fileName>
-		Note: <path> is the absolute path to the client or server directory"
+	printf "USAGE: \n./compressPhotos.sh"
 	exit 1
 fi
 
-cd $1
-tarDir=$(realpath assets/tarPhotos)
-dev=$(realpath assets)
-cd ../../real-time-deep-face-recognition/output_dir
-mv $tarDir/$2 .
-tar -xzf $2
-rm $2
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd $DIR; cd ../assets/tarPhotos
+
+outputDir=$( cd ../../../../real-time-deep-face-recognition/output_dir ; pwd )
+
+tar -xzf newNamesData.tar.gz
+for name in $(ls newNamesData); do
+	if [[ ! -z $(ls $outputDir  | grep $name) ]]; then
+		for i in $(seq 100); do
+			if [[ -z $(ls $outputDir | grep $name'_'$i) ]]; then
+				mv newNamesData/$name newNamesData/$name'_'$i
+				break
+			fi
+		done
+	fi
+done
+mv newNamesData/* $outputDir
+
+# rm -rf newNamesData*

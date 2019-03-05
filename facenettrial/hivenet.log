@@ -218,3 +218,573 @@ Calculating features for images
 Training classifier
 Saved classifier model to file "../classifier.pkl"
 Goodluck
+
+###############################################################
+########2019-02-25 23:24:54
+2019-02-25 23:24:56.802209: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-25 23:24:58.705851: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 9
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-27 14:01:56
+2019-02-27 14:01:57.166067: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-27 14:01:58.965526: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 10
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-27 14:02:13
+2019-02-27 14:02:14.613288: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-27 14:02:16.323794: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 11
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-27 14:34:39
+ * Serving Flask app "server" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-269-062
+127.0.0.1 - - [27/Feb/2019 14:40:22] "[1m[35mPOST /training-data HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py", line 12, in uploadTrainingData
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'tarPhotos/', file.filename))
+  File "/home/william/.local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: u'assets/tarPhotos/william.tar.gz'
+127.0.0.1 - - [27/Feb/2019 14:45:23] "[1m[35mPOST /training-data HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py", line 12, in uploadTrainingData
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'tarPhotos/', file.filename))
+  File "/home/william/.local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: u'assets/tarPhotos/william.tar.gz'
+127.0.0.1 - - [27/Feb/2019 14:50:44] "[1m[35mPOST /classifier HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py", line 23, in uploadClassifier
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+  File "/home/william/.local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: u'assets/classifier.pkl'
+ * Detected change in '/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-269-062
+ * Detected change in '/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-269-062
+Killed
+
+###############################################################
+########2019-02-27 14:55:32
+ * Serving Flask app "server" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-269-062
+127.0.0.1 - - [27/Feb/2019 14:56:00] "[1m[35mPOST /classifier HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/william/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/william/Documents/school/18/snrProj/HIVENet2/facenettrial/communication/server/server.py", line 24, in uploadClassifier
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+  File "/home/william/.local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: u'assets/classifier.pkl'
+Killed
+
+###############################################################
+########2019-02-27 18:08:01
+2019-02-27 18:08:02.392805: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Creating networks and loading parameters
+Goodluck
+../datasets/data/cesilia/2019-02-04-155853_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_1.jpg
+../datasets/data/cesilia/2019-02-04-155812.jpg
+../datasets/data/cesilia/2019-02-04-155951_3.jpg
+../datasets/data/cesilia/2019-02-04-160008_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_1.jpg
+../datasets/data/cesilia/2019-02-04-155911_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_1.jpg
+../datasets/data/cesilia/2019-02-04-160008_4.jpg
+../datasets/data/cesilia/2019-02-04-160008_1.jpg
+../datasets/data/cesilia/2019-02-04-155928_4.jpg
+../datasets/data/cesilia/2019-02-04-155911_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_3.jpg
+../datasets/data/cesilia/2019-02-04-155836_3.jpg
+../datasets/data/cesilia/2019-02-04-155928_1.jpg
+../datasets/data/cesilia/2019-02-04-155836_2.jpg
+../datasets/data/cesilia/2019-02-04-155928_2.jpg
+../datasets/data/cesilia/2019-02-04-160008_3.jpg
+../datasets/data/cesilia/2019-02-04-155951_2.jpg
+../datasets/data/cesilia/2019-02-04-155853_4.jpg
+../datasets/data/cesilia/2019-02-04-155951_4.jpg
+../datasets/data/cesilia/2019-02-04-155853_2.jpg
+../datasets/data/cesilia/2019-02-04-155911_1.jpg
+../datasets/data/enrique/2018-11-29-230937.jpg
+../datasets/data/enrique/1.jpg
+../datasets/data/enrique/1.jpg: cannot identify image file '../datasets/data/enrique/1.jpg'
+../datasets/data/enrique/2018-11-29-230528.jpg
+../datasets/data/enrique/2018-11-29-230309.jpg
+../datasets/data/enrique/2018-11-29-225946.jpg
+../datasets/data/enrique/2018-11-29-230551.jpg
+../datasets/data/enrique/2018-11-29-225933.jpg
+../datasets/data/enrique/2018-11-29-230656.jpg
+../datasets/data/enrique/3.jpg
+../datasets/data/enrique/3.jpg: cannot identify image file '../datasets/data/enrique/3.jpg'
+../datasets/data/enrique/2018-11-29-230026.jpg
+../datasets/data/enrique/2018-11-29-230922.jpg
+../datasets/data/enrique/2018-11-29-230605.jpg
+../datasets/data/enrique/2018-11-29-230544.jpg
+../datasets/data/enrique/2018-11-29-230100.jpg
+../datasets/data/enrique/2018-11-29-230611.jpg
+../datasets/data/enrique/2018-11-29-230635.jpg
+../datasets/data/enrique/2018-11-29-230007.jpg
+../datasets/data/enrique/2018-11-29-230014.jpg
+../datasets/data/enrique/2018-11-29-230120.jpg
+../datasets/data/enrique/2018-11-29-230540.jpg
+../datasets/data/enrique/2018-11-29-225956.jpg
+../datasets/data/enrique/2018-11-29-230931.jpg
+../datasets/data/enrique/2018-11-29-225924.jpg
+../datasets/data/enrique/2018-11-29-230642.jpg
+../datasets/data/enrique/2018-11-29-230314.jpg
+../datasets/data/enrique/2018-11-29-230330.jpg
+../datasets/data/enrique/2018-11-29-225940.jpg
+../datasets/data/enrique/2018-11-29-230536.jpg
+../datasets/data/enrique/2018-11-29-230035.jpg
+../datasets/data/enrique/2018-11-29-230501.jpg
+../datasets/data/enrique/2.jpg
+../datasets/data/enrique/2.jpg: cannot identify image file '../datasets/data/enrique/2.jpg'
+../datasets/data/enrique/2018-11-29-230927.jpg
+../datasets/data/enrique/2018-11-29-230319.jpg
+../datasets/data/enrique/2018-11-29-230617.jpg
+../datasets/data/enrique/2018-11-29-225832.jpg
+../datasets/data/mathias/2018-11-30-022302.jpg
+../datasets/data/mathias/2018-11-30-022130.jpg
+../datasets/data/mathias/2018-11-30-022125.jpg
+../datasets/data/mathias/2018-11-30-022506.jpg
+../datasets/data/mathias/2018-11-30-022213.jpg
+../datasets/data/mathias/2018-11-30-022329.jpg
+../datasets/data/mathias/2018-11-30-022537.jpg
+../datasets/data/mathias/2018-11-30-022231.jpg
+../datasets/data/mathias/2018-11-30-022209.jpg
+../datasets/data/mathias/2018-11-30-022218.jpg
+../datasets/data/mathias/2018-11-30-022457.jpg
+../datasets/data/mathias/2018-11-30-022542.jpg
+../datasets/data/mathias/2018-11-30-022349.jpg
+../datasets/data/mathias/2018-11-30-022358.jpg
+../datasets/data/mathias/2018-11-30-022244.jpg
+../datasets/data/mathias/2018-11-30-022147.jpg
+../datasets/data/mathias/2018-11-30-022106.jpg
+../datasets/data/mathias/2018-11-30-022113.jpg
+../datasets/data/mathias/2018-11-30-022142.jpg
+../datasets/data/mathias/2018-11-30-022134.jpg
+../datasets/data/mathias/2018-11-30-022518.jpg
+../datasets/data/mathias/2018-11-30-022531.jpg
+../datasets/data/mathias/2018-11-30-022323.jpg
+../datasets/data/mathias/2018-11-30-022117.jpg
+../datasets/data/mathias/2018-11-30-022448.jpg
+Total number of images: 85
+Number of successfully aligned images: 0
+2019-02-27 18:08:04.150147: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Number of classes: 12
+Number of images: 82
+Loading feature extraction model
+Model filename: ../models/20170511-185253/20170511-185253.pb
+Calculating features for images
+Training classifier
+Saved classifier model to file "../classifier.pkl"
+Goodluck
+
+###############################################################
+########2019-02-27 18:17:38
+ * Serving Flask app "server" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-269-062
+
+###############################################################
+########2019-02-27 18:32:33
+
+###############################################################
+########2019-02-27 19:38:06
+
+###############################################################
+########2019-02-27 20:20:11
+
+###############################################################
+########2019-03-04 15:47:30
