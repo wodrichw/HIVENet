@@ -14,6 +14,9 @@ import pickle
 from sklearn.svm import SVC
 
 nodenum=os.environ['NODENUM']
+# Ensure that pwd is where this file lives
+RD = os.path.dirname(os.path.realpath(__file__))
+os.chdir(RD)
 
 with tf.Graph().as_default():
 

@@ -13,6 +13,10 @@ import detect_face
 import random
 from time import sleep
 
+# Ensure that pwd is where this file lives
+RD = os.path.dirname(os.path.realpath(__file__))
+os.chdir(RD)
+
 output_dir_path = './output_dir'
 output_dir = os.path.expanduser(output_dir_path)
 if not os.path.exists(output_dir):
@@ -81,7 +85,7 @@ with open(bounding_boxes_filename, "w") as text_file:
                             bounding_box_size = (det[:, 2] - det[:, 0]) * (det[:, 3] - det[:, 1])
                             img_center = img_size / 2
                             offsets = np.vstack([(det[:, 0] + det[:, 2]) / 2 - img_center[1],
-                                                 (det[:, 1] + det[:, 3]) / 2 - img_center[0]])
+                                                (det[:, 1] + det[:, 3]) / 2 - img_center[0]])
                             offset_dist_squared = np.sum(np.power(offsets, 2.0), 0)
                             index = np.argmax(bounding_box_size - offset_dist_squared * 2.0)  # some extra weight on the centering
                             det = det[index, :]

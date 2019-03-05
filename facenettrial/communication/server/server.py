@@ -32,5 +32,8 @@ def uploadNames():
         return url_for('uploaded_file', filename=file.filename)
     return "file upload not successful"
     
+def run():
+    app.run(debug=True, port="2000")
+
 if __name__ == '__main__':
 	app.run(debug=True)

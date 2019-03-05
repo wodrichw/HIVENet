@@ -10,7 +10,7 @@ fi
 cd $1
 tarDir=$(realpath assets/tarPhotos)
 dev=$(realpath assets)
-cd ../../datasets/data
+cd ../../real-time-deep-face-recognition/output_dir
 mv $tarDir/$2 .
 tar -xzf $2
 rm $2
