@@ -80,3 +80,23 @@
 ./output_dir/mathias/2018-11-30-022323.png 94 161 239 379
 ./output_dir/mathias/2018-11-30-022117.png 224 217 442 484
 ./output_dir/mathias/2018-11-30-022448.png 221 84 410 321
+./output_dir/william/2019-02-27-142730_1.png 228 97 487 439
+./output_dir/william/2019-02-27-142633_1.png 466 220 671 512
+./output_dir/william/2019-02-27-142617_2.png 362 198 563 487
+./output_dir/william/2019-02-27-142651_3.png 457 135 668 432
+./output_dir/william/2019-02-27-142651_1.png 372 230 579 515
+./output_dir/william/2019-02-27-142633_2.png 285 189 471 440
+./output_dir/william/2019-02-27-142730_2.png 330 109 578 429
+./output_dir/william/2019-02-27-142708_1.png 377 180 625 522
+./output_dir/william/2019-02-27-142651_4.png 451 194 700 553
+./output_dir/william/2019-02-27-142730_4.png 324 165 576 427
+./output_dir/william/2019-02-27-142708_4.png 353 157 639 545
+./output_dir/william/2019-02-27-142708_2.png 271 172 496 464
+./output_dir/william/2019-02-27-142708_3.png
+./output_dir/william/2019-02-27-142617_1.png 388 208 609 511
+./output_dir/william/2019-02-27-142651_2.png 335 149 595 517
+./output_dir/william/2019-02-27-142617_3.png 392 186 602 469
+./output_dir/william/2019-02-27-142633_4.png 462 195 662 479
+./output_dir/william/2019-02-27-142617_4.png 407 176 610 466
+./output_dir/william/2019-02-27-142730_3.png 359 92 615 458
+./output_dir/william/2019-02-27-142633_3.png 386 199 597 491

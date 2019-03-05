@@ -22,7 +22,7 @@ from sklearn.svm import SVC
 from sklearn.externals import joblib
 
 def matchName(frame,model,HumanNames,emb_array):
-    predictions = model.predict_probability(emb_array) ## TODO FIX THIS SHIT 
+    predictions = model[0].predict_proba(emb_array)
     best_class_indices = np.argmax(predictions, axis=1)
     best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
     print(best_class_probabilities)
@@ -99,12 +99,15 @@ with tf.Graph().as_default():
             names_filename = '../classifiers/' + node + '/names.txt'
             names_filename_exp = os.path.expanduser(names_filename)
 
-            with open(classifier_filename_exp, 'rb') as infile:
-                models.append(pickle.load(infile))
+            with open(classifier_filename_exp, 'rb') as classifierFile:
+                models.append(pickle.load(classifierFile))
                 print('load classifier file-> %s' % classifier_filename_exp)
-            with open(names_filename_exp, 'rb') as infile:
-                names.append(infile.readline().split())
+            with open(names_filename_exp, 'rb') as namesFile:
+                names.append([name for name in namesFile.read().split('\n') if len(name) > 0])
                 print('load classifier file-> %s' % classifier_filename_exp)
+
+            classifierFile.close()
+            namesFile.close()
              
 # ############################################################################
 #         Load Classifier from node directory
@@ -184,7 +187,7 @@ with tf.Graph().as_default():
                         nameResults.append(matchName(frame,models[modelNum],names[modelNum],emb_array))
                     
                     maxNameResult = max(nameResults,key= lambda m : m[0])
-                    texttoOutput = maxNameResult[0] + maxNameResult[1][-3:]
+                    texttoOutput = maxNameResult[0] + np.array2string(maxNameResult[1],3)
                     
 
                     # if (nameResult1[1] >= nameResult2[1]) and (nameResult1[1] >= nameResult3[1]):
