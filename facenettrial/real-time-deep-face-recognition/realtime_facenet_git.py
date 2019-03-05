@@ -16,7 +16,7 @@ import sys
 import time
 import copy
 import math
-import picklej
+import pickle
 import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
@@ -67,47 +67,65 @@ with tf.Graph().as_default():
         embedding_size = embeddings.get_shape()[1]
 
 
-        cfile = open(nodedir1+'/names.txt','r')
-        HumanNames1 = cfile.readline()
-        HumanNames1 = HumanNames1.split(',')
-        cfile.close()
+        # cfile = open(nodedir1+'/names.txt','r')
+        # HumanNames1 = cfile.readline()
+        # HumanNames1 = HumanNames1.split(',')
+        # cfile.close()
 
-        cfile = open(nodedir2+'/names.txt','r')
-        HumanNames2 = cfile.readline()
-        HumanNames2 = HumanNames2.split(',')
-        cfile.close()
+        # cfile = open(nodedir2+'/names.txt','r')
+        # HumanNames2 = cfile.readline()
+        # HumanNames2 = HumanNames2.split(',')
+        # cfile.close()
 
-        cfile = open(nodedir3+'/names.txt','r')
-        HumanNames3 = cfile.readline()
-        HumanNames3 = HumanNames3.split(',')
-        cfile.close()
+        # cfile = open(nodedir3+'/names.txt','r')
+        # HumanNames3 = cfile.readline()
+        # HumanNames3 = HumanNames3.split(',')
+        # cfile.close()
 
         video_capture = cv2.VideoCapture(0)
         c = 0
 #############################################################################
+
+
+        models = []
+        names = []
+        # Load Classifier from node directory.
         p = subprocess.Popen("ls ../classifiers", shell=True, stdout=subprocess.PIPE)
         nodeDirNamesRaw = p.communicate()[0]
-        nodeDirNames = [f for f in nodeDirNamesRaw.split('\n') if len(f) > 0]        
-#############################################################################
-        # Load Classifier from node directory
-        classifier_filename = nodedir1 + '/classifier.pkl'
-        classifier_filename_exp = os.path.expanduser(classifier_filename)
-        with open(classifier_filename_exp, 'rb') as infile:
-            (model1, class_names) = pickle.load(infile)
-            print('load classifier file-> %s' % classifier_filename_exp)
-        # Load Classifier from node directory
-        classifier_filename = nodedir2 + '/classifier.pkl'
-        classifier_filename_exp = os.path.expanduser(classifier_filename)
-        with open(classifier_filename_exp, 'rb') as infile:
-            (model2, class_names) = pickle.load(infile)
-            print('load classifier file-> %s' % classifier_filename_exp)
-        # Load Classifier from node directory
-        classifier_filename = nodedir3 + '/classifier.pkl'
-        classifier_filename_exp = os.path.expanduser(classifier_filename)
-        with open(classifier_filename_exp, 'rb') as infile:
-            (model3, class_names) = pickle.load(infile)
-            print('load classifier file-> %s' % classifier_filename_exp)
-#############################################################################
+        nodeDirNames = [f for f in nodeDirNamesRaw.split('\n') if len(f) > 0]  
+        for node in nodeDirNames: 
+            classifier_filename = '../classifiers/' + node + '/classifier.pkl'
+            classifier_filename_exp = os.path.expanduser(classifier_filename)
+            names_filename = '../classifiers/' + node + '/names.txt'
+            names_filename_exp = os.path.expanduser(names_filename)
+
+            with open(classifier_filename_exp, 'rb') as infile:
+                models.append(pickle.load(infile))
+                print('load classifier file-> %s' % classifier_filename_exp)
+            with open(names_filename_exp, 'rb') as infile:
+                names.append(infile.readline().split())
+                print('load classifier file-> %s' % classifier_filename_exp)
+             
+# ############################################################################
+#         Load Classifier from node directory
+#         classifier_filename = nodedir1 + '/classifier.pkl'
+#         classifier_filename_exp = os.path.expanduser(classifier_filename)
+#         with open(classifier_filename_exp, 'rb') as infile:
+#            (model1, class_names) = pickle.load(infile)
+#            print('load classifier file-> %s' % classifier_filename_exp)
+#         Load Classifier from node directory
+#         classifier_filename = nodedir2 + '/classifier.pkl'
+#         classifier_filename_exp = os.path.expanduser(classifier_filename)
+#         with open(classifier_filename_exp, 'rb') as infile:
+#            (model2, class_names) = pickle.load(infile)
+#            print('load classifier file-> %s' % classifier_filename_exp)
+#         Load Classifier from node directory
+#         classifier_filename = nodedir3 + '/classifier.pkl'
+#         classifier_filename_exp = os.path.expanduser(classifier_filename)
+#         with open(classifier_filename_exp, 'rb') as infile:
+#            (model3, class_names) = pickle.load(infile)
+#            print('load classifier file-> %s' % classifier_filename_exp)
+# ############################################################################
         # #video writer
         # fourcc = cv2.VideoWriter_fourcc(*'DIVX')
         # out = cv2.VideoWriter('3F_0726.avi', fourcc, fps=30, frameSize=(640,480))
@@ -161,23 +179,23 @@ with tf.Graph().as_default():
                     feed_dict = {images_placeholder: scaled_reshape[0], phase_train_placeholder: False}
                     emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
                     
-                    nameResult1 = matchName(frame,model1,HumanNames1,emb_array)
-                    nameResult2 = matchName(frame,model2,HumanNames2,emb_array)
-                    nameResult3 = matchName(frame,model3,HumanNames3,emb_array)
-
-                    print(nameResult1)
-                    print(nameResult2)
-                    print(nameResult3)
+                    nameResults= []
+                    for modelNum in range(len(models)): 
+                        nameResults.append(matchName(frame,models[modelnum],names[modelNum],emb_array))
                     
-                    if (nameResult1[1] >= nameResult2[1]) and (nameResult1[1] >= nameResult3[1]):
-                        print('Node1 won')
-                        texttoOutput = nameResult1[0] + np.array2string(nameResult1[1],3)
-                    elif nameResult2[1] >= nameResult3[1]:
-                        print('Node2 won')
-                        texttoOutput = nameResult2[0] + np.array2string(nameResult2[1],3)
-                    else:
-                        print('Node3 won')
-                        texttoOutput = nameResult3[0] + np.array2string(nameResult3[1],3)
+                    maxNameResult = max(nameResults,key= lambda m : m[0])
+                    texttoOutput = maxNameResult[0] + maxNameResult[1][-3:]
+                    
+
+                    # if (nameResult1[1] >= nameResult2[1]) and (nameResult1[1] >= nameResult3[1]):
+                    #     print('Node1 won')
+                    #     texttoOutput = nameResult1[0] + np.array2string(nameResult1[1],3)
+                    # elif nameResult2[1] >= nameResult3[1]:
+                    #     print('Node2 won')
+                    #     texttoOutput = nameResult2[0] + np.array2string(nameResult2[1],3)
+                    # else:
+                    #     print('Node3 won')
+                    #     texttoOutput = nameResult3[0] + np.array2string(nameResult3[1],3)
                     
                     
                     #plot result idx under box
