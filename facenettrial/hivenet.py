@@ -22,9 +22,10 @@ def trainLocalFaces():
 
 
 def syncDevicesToClassifier():
-#     client.sendNewPhotos()
+    client.sendNewPhotos()
+    client.sendNames()
     client.sendClassifier()
      
 
 trainLocalFaces()
-# syncDevicesToClassifier()
+syncDevicesToClassifier()
