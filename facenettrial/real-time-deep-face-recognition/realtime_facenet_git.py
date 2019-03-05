@@ -16,7 +16,8 @@ import sys
 import time
 import copy
 import math
-import pickle
+import picklej
+import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
@@ -84,7 +85,9 @@ with tf.Graph().as_default():
         video_capture = cv2.VideoCapture(0)
         c = 0
 #############################################################################
-        
+        p = subprocess.Popen("ls ../classifiers", shell=True, stdout=subprocess.PIPE)
+        nodeDirNamesRaw = p.communicate()[0]
+        nodeDirNames = [f for f in nodeDirNamesRaw.split('\n') if len(f) > 0]        
 #############################################################################
         # Load Classifier from node directory
         classifier_filename = nodedir1 + '/classifier.pkl'
