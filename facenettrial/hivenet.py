@@ -20,11 +20,11 @@ def trainLocalFaces():
     subprocess.Popen(('python real-time-deep-face-recognition/Make_aligndata_git.py >> hivenet.log 2>&1;'
                       'python real-time-deep-face-recognition/Make_classifier_git.py >> hivenet.log 2>&1' ), shell=True)
 
+
 def syncDevicesToClassifier():
-    client.sendNewPhotos()
+#     client.sendNewPhotos()
     client.sendClassifier()
+     
 
-    
-
-# trainLocalFaces()
-startServer()
+trainLocalFaces()
+# syncDevicesToClassifier()
