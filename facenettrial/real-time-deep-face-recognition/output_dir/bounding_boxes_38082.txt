@@ -1,0 +1,15 @@
+./output_dir/andrew/2019-02-19-151231_1.png 275 106 475 355
+./output_dir/andrew/2019-02-19-151259_1.png 249 109 441 355
+./output_dir/andrew/2019-02-19-151421_3.png 314 171 408 295
+./output_dir/andrew/2019-02-19-151243_3.png 273 104 469 351
+./output_dir/andrew/2019-02-19-151421_4.png 326 162 449 317
+./output_dir/andrew/2019-02-19-151259_4.png 319 162 450 332
+./output_dir/andrew/2019-02-19-151243_2.png 273 182 476 419
+./output_dir/andrew/2019-02-19-151421_1.png 317 181 441 329
+./output_dir/andrew/2019-02-19-151231_2.png 253 121 439 358
+./output_dir/andrew/2019-02-19-151421_2.png 329 186 435 329
+./output_dir/andrew/2019-02-19-151231_3.png 316 106 506 367
+./output_dir/andrew/2019-02-19-151243_1.png 290 97 459 290
+./output_dir/andrew/2019-02-19-151243_4.png 263 106 460 356
+./output_dir/andrew/2019-02-19-151259_2.png 225 88 502 439
+./output_dir/andrew/2019-02-19-151259_3.png 272 157 411 334
