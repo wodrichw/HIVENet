@@ -83,7 +83,9 @@ with tf.Graph().as_default():
 
         video_capture = cv2.VideoCapture(0)
         c = 0
-
+#############################################################################
+        
+#############################################################################
         # Load Classifier from node directory
         classifier_filename = nodedir1 + '/classifier.pkl'
         classifier_filename_exp = os.path.expanduser(classifier_filename)
@@ -102,7 +104,7 @@ with tf.Graph().as_default():
         with open(classifier_filename_exp, 'rb') as infile:
             (model3, class_names) = pickle.load(infile)
             print('load classifier file-> %s' % classifier_filename_exp)
-
+#############################################################################
         # #video writer
         # fourcc = cv2.VideoWriter_fourcc(*'DIVX')
         # out = cv2.VideoWriter('3F_0726.avi', fourcc, fps=30, frameSize=(640,480))
