@@ -40,11 +40,11 @@ with tf.Graph().as_default():
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
     with sess.as_default():
 
-        nodenum=os.environ['NODENUM']
-        mynodedir = '../classifiers/node' + nodenum
-        nodedir1 = '../classifiers/node1'
-        nodedir2 = '../classifiers/node2'
-        nodedir3 = '../classifiers/node3'
+        # nodenum=os.environ['NODENUM']
+        # mynodedir = '../classifiers/node' + nodenum
+        # nodedir1 = '../classifiers/node1'
+        # nodedir2 = '../classifiers/node2'
+        # nodedir3 = '../classifiers/node3'
 
         pnet, rnet, onet = detect_face.create_mtcnn(sess, '../facenet/src/align')
 
