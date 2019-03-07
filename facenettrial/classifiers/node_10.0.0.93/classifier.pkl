@@ -54,7 +54,7 @@ I-1
 I0
 tp23
 bI00
-S'\x04\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00'
+S'\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00'
 p24
 tp25
 bsS'support_'
@@ -140,7 +140,7 @@ Rp56
 tp57
 g45
 I00
-S'\x8a3RS7\xa7\t\xc0uEcQ\x86&\t\xc0\x84y\x96\xd6\xba\x97\t\xc0'
+S'`7\x9eN\xe0\xcc\t\xc0\xae\x89\x17\n|\xc0\t\xc0\x90\x154\x9bgX\t\xc0'
 p58
 tp59
 bsS'_sparse'
@@ -288,7 +288,7 @@ Rp115
 tp116
 g45
 I00
-S'\x0cs?m<P\xcc?N\xa4T\xdfd\xad\xa5\xbf\xab@M\xde\xc72\x7f\xbf'
+S'"i\r \xf8p\xbd?\x18\xe5\xcf\x81c}\xc0\xbf1\xd8\xa08? \x99\xbf'
 p117
 tp118
 bsS'cache_size'
@@ -299,19 +299,11 @@ p120
 S'auto_deprecated'
 p121
 sb(lp122
-S'bounding boxes 05708.txt'
+S'cesilia'
 p123
-aS'bounding boxes 66262.txt'
-p124
-aS'bounding boxes 86043.txt'
-p125
-aS'bounding boxes 95077.txt'
-p126
-aS'cesilia'
-p127
 aS'mathias'
-p128
+p124
 aS'william'
-p129
-atp130
+p125
+atp126
 .

@@ -66,8 +66,11 @@ with tf.Graph().as_default():
 
 
         mynames = open(nodedir+'/names.txt','w')
-        for idx, mydir in enumerate(os.listdir(dataNamesDir)):
-            mynames.write(mydir + '\n')
+        # remove bounding boxes from data dir
+        p = subprocess.Popen('rm -rf '+datadir+'/bounding_boxes_* ; ls '+datadir, shell=True, stdout=subprocess.PIPE)
+        for name in p.communicate()[0].split('\n'):
+            if len(name) == 0: continue
+            mynames.write(name + '\n')
         mynames.seek(mynames.tell() - 1, os.SEEK_SET)
         mynames.close()
         

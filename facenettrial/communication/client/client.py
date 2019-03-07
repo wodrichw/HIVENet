@@ -84,4 +84,4 @@ def sendClassifier(ip):
     except: 
         print("Files not found: " + ROOTDIR + '/assets/names.txt or ' + ROOTDIR+'/assets/classifier.pkl')
 
-sendClassifier('127.0.0.1')
+sendClassifier('10.0.0.70')
