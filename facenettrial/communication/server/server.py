@@ -62,16 +62,19 @@ def syncAll():
 ####################################################@#
 
 @app.route('/beta/update_classifier', methods=['POST'])
-def update_classifier():
-    print request.remote_addr
-
-
-
-
-
-
+def updateClassifier():
+    ip = request.remote_addr
+    if request.files['classifier']:
+        # Make nodedir if does not exist
+        subprocess.call("if [ -z $(ls ../../classifiers | grep "+ip+") ] ; then mkdir ../../classifiers/node_"+ip+" ; fi", shell=True)
+        request.files['classifier'].save('../../classifiers/node_'+ip+ "/classifier.pkl")
+        request.files['names'].save('../../classifiers/node_'+ip+ "/names.txt")
+        return "classifier updated successfully"
+    else: 
+        return "return failed"
 def run():
     app.run(debug=True, port="2000")
 
 if __name__ == '__main__':
-	app.run(debug=True)
+    os.chdir(rootDir)
+    app.run(debug=True, host='0.0.0.0')
