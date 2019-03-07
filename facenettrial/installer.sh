@@ -3,7 +3,7 @@ sudo apt install python-pip
 
 git clone git@github.com:davidsandberg/facenet.git
 cd facenet
-for line in $(printf "npyscreen\n" | cat requirements.txt -)
+for line in $(printf "npyscreen\nflask\n" | cat requirements.txt -)
 do
 	pip install $line
 	pip3 install $line
