@@ -5,7 +5,7 @@ import json
 from flask import jsonify
 import os
 
-URL = "http://127.0.0.1:5000"
+URL = "http://10.248.170.135:5000"
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 
 def addName(newName):
@@ -59,4 +59,3 @@ def sendAll(url=URL):
         classifierF.close()
         namesF.close()
         trainingDataF.close()
-
