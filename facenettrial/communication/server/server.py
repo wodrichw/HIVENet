@@ -4,11 +4,16 @@ from flask import Flask, request, redirect, url_for, send_from_directory
 
 ## Must be run from server directory in order to work properly
 
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'assets/'
 rootDir = os.path.dirname(os.path.realpath(__file__))
 
-@app.route('/training-data', methods=['POST'])
+
+#####################################################
+# API handling for ALPHA version
+####################################################
+@app.route('/alpha/training-data', methods=['POST'])
 def uploadTrainingData():
     handleTrainingData(request.files['file'])
 
@@ -20,7 +25,7 @@ def handleTrainingData(file):
         return file.filename+' upload successful'
     return file.filename+" upload not successful"
 
-@app.route('/classifier', methods=['POST'])
+@app.route('/alpha/classifier', methods=['POST'])
 def uploadClassifier():
     handleClassifier(request.files['file'])
 
@@ -31,7 +36,7 @@ def handleClassifier(file):
     return file.filename+" upload not successful"
 
 
-@app.route('/names', methods=['POST'])
+@app.route('/alpha/names', methods=['POST'])
 def uploadNames():
     handleNames(request.files['file'])
 
@@ -45,13 +50,26 @@ def handleNames(file):
 
 
 
-@app.route('/sync-all', methods=['POST'])
+@app.route('/alpha/sync-all', methods=['POST'])
 def syncAll():
     handleTrainingData(request.files['trainingData'])
     handleClassifier(request.files['classifier'])
     handleNames(request.files['names'])
 
-    
+
+######################################################
+# API Handleing for Beta version
+####################################################@#
+
+@app.route('/beta/update_classifier', methods=['POST'])
+def update_classifier():
+    print request.remote_addr
+
+
+
+
+
+
 def run():
     app.run(debug=True, port="2000")
 
