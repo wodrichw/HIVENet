@@ -7,27 +7,18 @@ import numpy as np
 import argparse
 import facenet
 import detect_face
-import subprocess
 import os
 import sys
 import math
 import pickle
 from sklearn.svm import SVC
 
-# Ensure that pwd is where this file lives
-RD = os.path.dirname(os.path.realpath(__file__))
-os.chdir(RD)
-
-# Get the IP of edge device
-p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
-IPaddr = p.communicate()[0].strip()
+nodenum=os.environ['NODENUM']
 
 with tf.Graph().as_default():
-    with tf.Session() as sess:
-        nodedir = '../classifiers/node_' + IPaddr 
-        # Make nodedir if does not exist
-        subprocess.call("if [ -z $(ls ../classifiers | grep "+IPaddr+") ] ; then mkdir "+nodedir+" ; fi", shell=True)
 
+    with tf.Session() as sess:
+        nodedir = '../classifiers/node1' + nodenum
         dataNamesDir = '../datasets/data'
         datadir = './output_dir'
         dataset = facenet.get_dataset(datadir)
@@ -60,18 +51,18 @@ with tf.Graph().as_default():
             feed_dict = {images_placeholder: images, phase_train_placeholder: False}
             emb_array[start_index:end_index, :] = sess.run(embeddings, feed_dict=feed_dict)
 
-
         classifier_filename = nodedir+"/classifier.pkl"
         classifier_filename_exp = os.path.expanduser(classifier_filename)
 
-
+        #
+        #TODO: figure out a better way to add commas
+        #
         mynames = open(nodedir+'/names.txt','w')
-        # remove bounding boxes from data dir
-        p = subprocess.Popen('rm -rf '+datadir+'/bounding_boxes_* ; ls '+datadir, shell=True, stdout=subprocess.PIPE)
-        for name in p.communicate()[0].split('\n'):
-            if len(name) == 0: continue
-            mynames.write(name + '\n')
+        for mydir in os.listdir(dataNamesDir):
+            mynames.write(mydir)
+            mynames.write(',')
         mynames.seek(mynames.tell() - 1, os.SEEK_SET)
+        mynames.write('.')
         mynames.close()
         
 

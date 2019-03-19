@@ -32,8 +32,8 @@ def get_training_form():
                     os.system(web_cmd)
                     mv_pics(path)
                     #configure data
-                    align = "python ../Make_aligndata_git.py"
-                    classifier = "python ../Make_classifier_git.py"
+                    align = "python Make_aligndata_git.py"
+                    classifier = "python Make_classifier_git.py"
                     os.system(align)
                     os.system(classifier)
                     return redirect(url_for('index'))
@@ -45,7 +45,7 @@ def get_training_form():
 
 def mkdir_path(name):
     if not os.path.exists(name):
-        path = "../output_dir/"
+        path = "output_dir/"
         path = path + name
         return path
     else:
@@ -62,7 +62,7 @@ def get_recognition_form():
         if request.form['submit'] == 'return_home':
             return redirect(url_for('index'))
         elif request.form['submit'] == 'start_recognition':
-            strtrec = 'python ../realtime_facenet_git.py'
+            strtrec = 'python realtime_facenet_git.py'
             os.system(strtrec)
             return redirect(url_for('index'))
         else:
