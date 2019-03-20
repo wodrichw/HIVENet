@@ -83,5 +83,16 @@ def sendClassifier(ip):
             namesF.close()
     except: 
         print("Files not found: " + ROOTDIR + '/assets/names.txt or ' + ROOTDIR+'/assets/classifier.pkl')
+def sendToEdgeDevices():
+    # Get the IP of edge device
+    p = subprocess.Popen(ROOTDIR+'/scripts/getIPs.sh', shell=True, stdout=subprocess.PIPE)
+    IPaddr = p.communicate()#.strip()
+    for ip in IPaddr:
+        if ip is not None and ip != '': 
+            ip.rstrip()
+            print(ip)
+            sendClassifier(ip)
 
-sendClassifier('10.0.0.70')
+    print (IPaddr)
+
+sendToEdgeDevices()
