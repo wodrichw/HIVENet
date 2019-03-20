@@ -9,7 +9,8 @@ class Imagetaker:
         self.name = ""
         self.numImage = 0
         self.relevant_path=os.path.dirname(os.path.abspath(__file__)) 
-        self.dataset_dir = self.relevant_path + '/../datasets/data'
+        p = subprocess.Popen('cd '+self.relevant_path+'; cd ../../datasets/data ; echo $PWD', shell=True, stdout= subprocess.PIPE)
+        self.dataset_dir = p.communicate()[0][:-1]
 
     def setName(self, name):
         self.numImage = 0
@@ -27,5 +28,6 @@ class Imagetaker:
 
         ret, frame = video_capture.read()
         cv2.imwrite(os.path.join(path,self.name+"_"+str(self.numImage)+".jpg"),frame)
+        self.numImage += 1
         video_capture.release()
         cv2.destroyAllWindows()
