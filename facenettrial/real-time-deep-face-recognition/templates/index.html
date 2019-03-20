@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>HIVENet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="interaction">
+        <div class="title">
+            <h1> HIVENet Demonstration </h1>
+        </div>
+
+        <div id="trainFaceForm">
+            <h2> Help Us Recognize Your Face</h2>
+            <input type="text" name="textbox" placeholder="Enter name..." autocomplete="off">
+            <button name = "submit">Submit</button> 
+        </div>
+
+        <div class=buttons>
+            <form id="recognize_button" action="{{ url_for('get_recognition_form') }}">
+                <input type="submit" value="Recognize">
+            </form>
+        </div>
+        <!-- Line break for separation -->
+        <p></p>
+
+        <div class="picture_layout">
+            <div class="row1">
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+            </div>
+            <div class="row2">
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+            </div>
+            <div class="row1">
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+            </div>
+            <div class="row3">
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+                <div class="picture">Image</div>
+            </div>
+        </div>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/gatherPhotos.js') }}"></script>
+</body>
+
+</html>

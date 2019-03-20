@@ -1,0 +1,23 @@
+#main {
+    display:table;
+    width:100%;
+    height:590px;
+    /*border:solid;*/
+    text-align:center;
+}
+#form_login{
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+}
+body{
+    background-color:lightblue;
+}
+h1{
+    text-align:center;
+}
+#return{
+    position: absolute;
+    top:0;
+    left:0;
+}
