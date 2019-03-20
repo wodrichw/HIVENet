@@ -25,13 +25,14 @@ def matchName(frame,model,HumanNames,emb_array):
     predictions = model[0].predict_proba(emb_array)
     best_class_indices = np.argmax(predictions, axis=1)
     best_class_probabilities = predictions[np.arange(len(best_class_indices)), best_class_indices]
-    print(best_class_probabilities)
-    print (best_class_indices)
+    #print(best_class_probabilities)
+    #print (best_class_indices)
     result_names =''
     # print('result: ', best_class_indices[0])
     for H_i in HumanNames:
         if HumanNames[best_class_indices[0]] == H_i:
             result_names = HumanNames[best_class_indices[0]]
+    print(result_names,best_class_probabilities)
     return [result_names,best_class_probabilities]
 
 print('Creating networks and loading parameters')
@@ -186,7 +187,7 @@ with tf.Graph().as_default():
                     for modelNum in range(len(models)): 
                         nameResults.append(matchName(frame,models[modelNum],names[modelNum],emb_array))
                     
-                    maxNameResult = max(nameResults,key= lambda m : m[0])
+                    maxNameResult = max(nameResults,key= lambda m : m[1])
                     texttoOutput = maxNameResult[0] + np.array2string(maxNameResult[1],3)
                     
 
