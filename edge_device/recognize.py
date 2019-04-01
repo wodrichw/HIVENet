@@ -21,7 +21,6 @@ import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
 
-#
 # Function: MatchName()  
 # input:    
 #           model       - the trained inference engine 
@@ -49,6 +48,8 @@ with tf.Graph().as_default():
 
         pnet, rnet, onet = detect_face.create_mtcnn(sess, './align')
 
+        name = 0
+        fitness_level = 1
         minsize = 20  # minimum size of face
         threshold = [0.6, 0.7, 0.7]  # three steps's threshold
         factor = 0.709  # scale factor
@@ -59,8 +60,8 @@ with tf.Graph().as_default():
         input_image_size = 160
 
         #print('Loading feature extraction model')
-        modeldir = '../models/20170511-185253/20170511-185253.pb'
-        facenet.load_model(modeldir)
+        model_dir = '../models/20170511-185253/20170511-185253.pb'
+        facenet.load_model(model_dir)
         
         images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
         embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
@@ -70,32 +71,33 @@ with tf.Graph().as_default():
         video_capture = cv2.VideoCapture(0)
         c = 0
 
-
         models = []
         names = []
-        # Load Classifier from node directory.
+
+        # Load Classifier and names from node directory.
         p = subprocess.Popen("ls ../classifiers", shell=True, stdout=subprocess.PIPE)
-        nodeDirNamesRaw = p.communicate()[0]
-        nodeDirNames = [f for f in nodeDirNamesRaw.split('\n') if len(f) > 0]  
-        for node in nodeDirNames: 
+        node_dir_names_raw = p.communicate()[0]
+        node_dir_names = [f for f in node_dir_names_raw.split('\n') if len(f) > 0]  
+        for node in node_dir_names: 
             classifier_filename = '../classifiers/' + node + '/classifier.pkl'
             classifier_filename_exp = os.path.expanduser(classifier_filename)
             names_filename = '../classifiers/' + node + '/names.txt'
             names_filename_exp = os.path.expanduser(names_filename)
 
-            with open(classifier_filename_exp, 'rb') as classifierFile:
-                models.append(pickle.load(classifierFile))
+            with open(classifier_filename_exp, 'rb') as classifier_file:
+                models.append(pickle.load(classifier_file))
                 #print('load classifier file-> %s' % classifier_filename_exp)
-            with open(names_filename_exp, 'rb') as namesFile:
-                names.append([name for name in namesFile.read().split('\n') if len(name) > 0])
+            with open(names_filename_exp, 'rb') as names_file:
+                names.append([name for name in names_file.read().split('\n') if len(name) > 0])
                 #print('load classifier file-> %s' % classifier_filename_exp)
-
-            classifierFile.close()
-            namesFile.close()
-
-        # #video writer
-        # fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-        # out = cv2.VideoWriter('3F_0726.avi', fourcc, fps=30, frameSize=(640,480))
+            classifier_file.close()
+            names_file.close()
+        
+        #
+        # TODO: Do this check BEFORE the code above by checking the classifiers/ folder.
+        # Verify that there is at least one classifier
+        if len(models) == 0 :
+            sys.exit(" Error: no custom models/Classifiers loaded. Have you run classify.py?")
 
         #print('Start Recognition!')
         prevTime = 0
@@ -146,21 +148,21 @@ with tf.Graph().as_default():
                     feed_dict = {images_placeholder: scaled_reshape[0], phase_train_placeholder: False}
                     emb_array[0, :] = sess.run(embeddings, feed_dict=feed_dict)
                     
-                    nameResults= []
-                    for modelNum in range(len(models)): 
-                        nameResults.append(matchName(models[modelNum],names[modelNum],emb_array))
+                    name_results= []
+                    for model_num in range(len(models)): 
+                        name_results.append(matchName(models[model_num],names[model_num],emb_array))
                     
                     #find the one with highest fitness level
-                    maxNameResult = max(nameResults,key= lambda m : m[1])
+                    max_name_result = max(name_results,key= lambda m : m[1])
                     
                     #convert to percentage
-                    maxNameResult[1]*=100
+                    max_name_result[fitness_level]*=100
                     
-                    if maxNameResult[1] >= 85:
+                    if max_name_result[fitness_level] >= 85:
                         # Plot result idx under box
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
-                        texttoOutput = maxNameResult[0] + np.array2string(maxNameResult[1],3)
+                        texttoOutput = max_name_result[name] + np.array2string(max_name_result[fitness_level],3)
                         cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                     1, (0, 0, 255), thickness=1, lineType=2)
             else:
