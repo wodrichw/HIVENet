@@ -14,20 +14,22 @@ import math
 import pickle
 from sklearn.svm import SVC
 
-# Ensure that pwd is where this file lives
+# we need to change to local file structure of edge_device.
 RD = os.path.dirname(os.path.realpath(__file__))
 os.chdir(RD)
 
-# Get the IP of edge device
+# Get the IP of this edge device
 p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
 IPaddr = p.communicate()[0].strip()
 
 with tf.Graph().as_default():
     with tf.Session() as sess:
+        
+        # Make a directory to store local weights and names. 
         nodedir = '../classifiers/node_' + IPaddr 
-        # Make nodedir if does not exist
         subprocess.call("if [ -z $(ls ../classifiers | grep "+IPaddr+") ] ; then mkdir "+nodedir+" ; fi", shell=True)
 
+        # dataset
         dataNamesDir = '../datasets/data'
         datadir = './output_dir'
         dataset = facenet.get_dataset(datadir)
@@ -60,10 +62,8 @@ with tf.Graph().as_default():
             feed_dict = {images_placeholder: images, phase_train_placeholder: False}
             emb_array[start_index:end_index, :] = sess.run(embeddings, feed_dict=feed_dict)
 
-
         classifier_filename = nodedir+"/classifier.pkl"
         classifier_filename_exp = os.path.expanduser(classifier_filename)
-
 
         mynames = open(nodedir+'/names.txt','w')
         for idx, mydir in enumerate(os.listdir(dataNamesDir)):
@@ -71,7 +71,6 @@ with tf.Graph().as_default():
         mynames.seek(mynames.tell() - 1, os.SEEK_SET)
         mynames.close()
         
-
         # Train classifier
         print('Training classifier')
         model = SVC(kernel='linear', probability=True)
