@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Your Photos</title>
+    </head>
+    <body>
+        <h1>{{ name }}'s Photos</h1>        
+        <div class="pics">
+            {% for picF in picFiles %}
+            <img src="{{ url_for('static', filename='current_face/'+picF) }}">
+            {% endfor %}
+        </div>
+
+    </body>
+</html>

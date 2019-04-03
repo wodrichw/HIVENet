@@ -9,6 +9,19 @@ RD  = os.path.dirname(os.path.realpath(__file__))
 
 app = Flask(__name__)
 
+# Disable Caching
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
+
 @app.route('/', methods=['GET','POST'])
 def index():
     return render_template('index.html')
@@ -23,13 +36,6 @@ def get_training_form():
         print(submitted_name)
         it.setName(submitted_name)
 
-        #make correct directory
-        # path = mkdir_path(submitted_name)
-        # mkdirCall = subprocess.Popen('mkdir '+path, shell=True)
-        # mkdirCall.wait()
-
-        # if mkdirCall.returncode == 1:
-        #     return json.dumps('ERROR ADDING DIRECTORY')
         return 'success';
 
 def mkdir_path(name):
@@ -66,9 +72,17 @@ def get_take_photos_page():
 @app.route('/take_face_photo', methods = ['GET'])
 def take_photo():
     it.take_save_image()
-    return it.numImage
+    return str(it.numImage)
 
+@app.route('/your_photos', methods = ['GET'])
+def your_photos():
+    os.chdir(RD)
+    if it.name == "": return "no name"
+    p = subprocess.Popen("python align_data.py > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
+    picFiles = p.communicate()[0].split('\n')[:-1]
+
+    return render_template('your_photos.html', name=it.name, picFiles = picFiles)
 
 if __name__== '__main__':
     it = Imagetaker()
-    app.run()
+    app.run(port=5052)
