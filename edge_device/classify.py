@@ -25,6 +25,9 @@ IPaddr = p.communicate()[0].strip()
 with tf.Graph().as_default():
     with tf.Session() as sess:
         
+         # Make classifiers directory to store local weights and names. 
+        subprocess.call("if [ -z $(ls ../ | grep classifiers ) ] ; then mkdir ../classifiers ; fi", shell=True)
+        
         # Make a directory to store local weights and names. 
         nodedir = '../classifiers/node_' + IPaddr 
         subprocess.call("if [ -z $(ls ../classifiers | grep "+IPaddr+") ] ; then mkdir "+nodedir+" ; fi", shell=True)
@@ -70,7 +73,9 @@ with tf.Graph().as_default():
             mynames.write(mydir + '\n')
         mynames.seek(mynames.tell() - 1, os.SEEK_SET)
         mynames.close()
-        
+
+        subprocess.call("sort -o "+ nodedir +"/names.txt "+ nodedir +"/names.txt" , shell=True)
+
         # Train classifier
         print('Training classifier')
         model = SVC(kernel='linear', probability=True)
