@@ -76,14 +76,37 @@ def take_photo():
 
 @app.route('/your_photos', methods = ['GET'])
 def your_photos():
-    os.chdir(RD)
     if it.name == "": return "no name"
     
-    p = subprocess.Popen("python align_data.py > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
+    # align photos , update current_face photos, get the name of the photo files in current_face
+    # TODO: align_data.py should be called as a python function
+    #   not through  a subprocess call
+    p = subprocess.Popen("rm -rf ../datasets/data/"+it.name+" > /dev/null 2>&1 ;  python align_data.py > /dev/null 2>&1 ; rm static/current_face/* > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
     picFiles = p.communicate()[0].split('\n')[:-1]
 
     return render_template('your_photos.html', name=it.name, picFiles = picFiles)
 
+@app.route('/retake_photos', methods = ['GET'])
+def retake_photos():
+    if it.name == "": return render_template('take_face_photos.html')
+    subprocess.Popen("rm -r output_dir/"+it.name+" ../datasets/data/"+it.name, shell=True)
+    return render_template('take_face_photos.html')
+
+@app.route('/submit_photos', methods = ['GET'])
+def submit_photos():
+    # get name of node directory for device 
+    # TODO: get nodedir from classify.py
+    p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
+    IPaddr = p.communicate()[0].strip()
+    nodedir = '../classifiers/node_' + IPaddr 
+
+    # classify, move data to client assets and sync from
+    # to all other edge devices on the network
+    subprocess.Popen('python classify.py ; mv '+nodedir+'/* ../communication/client/assets & python ../communication/client/client.py', shell=True)
+
+    return render_template('index.html')
+
 if __name__== '__main__':
+    os.chdir(RD)
     it = Imagetaker()
     app.run(port=5052)

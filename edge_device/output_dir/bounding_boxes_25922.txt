@@ -1,0 +1,5 @@
+./output_dir/bob/bob_3.png 200 104 398 363
+./output_dir/bob/bob_22.png 209 96 406 357
+./output_dir/bob/bob_18.png 147 132 351 386
+./output_dir/bob/bob_26.png 127 83 310 350
+./output_dir/bob/bob_17.png 197 110 389 362

@@ -36,7 +36,7 @@ def matchName(model,HumanNames,face):
     for H_i in HumanNames:
         if HumanNames[best_class_indices[0]] == H_i:
             result_names = HumanNames[best_class_indices[0]]
-    print(result_names,best_class_probabilities)
+    #print(result_names,best_class_probabilities)
     return [result_names,best_class_probabilities]
 
 
@@ -120,9 +120,9 @@ with tf.Graph().as_default():
                 det = bounding_boxes[:, 0:4]
                 img_size = np.asarray(frame.shape)[0:2]
 
-                cropped = []
-                scaled = []
-                scaled_reshape = []
+                #cropped = []
+                #scaled = []
+                #scaled_reshape = []
                 bb = np.zeros((nrof_faces,4), dtype=np.int32)
 
                 for i in range(nrof_faces):
@@ -133,11 +133,14 @@ with tf.Graph().as_default():
                     bb[i][2] = det[i][2]
                     bb[i][3] = det[i][3]
 
-                    # inner exception
+                    #inner exception
                     if bb[i][0] <= 0 or bb[i][1] <= 0 or bb[i][2] >= len(frame[0]) or bb[i][3] >= len(frame):
-                        print('face is inner of range!')
+                        print(' Face is out of range to be recognized. ')
                         continue
-
+                    
+                    cropped=[]
+                    scaled=[]
+                    scaled_reshape=[]
                     cropped.append(frame[bb[i][1]:bb[i][3], bb[i][0]:bb[i][2], :])
                     cropped[0] = facenet.flip(cropped[0], False)
                     scaled.append(misc.imresize(cropped[0], (image_size, image_size), interp='bilinear'))
@@ -160,20 +163,22 @@ with tf.Graph().as_default():
                     
                     if max_name_result[fitness_level] >= 85:
                         # Plot result idx under box
+                        print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
-                        texttoOutput = max_name_result[name] + np.array2string(max_name_result[fitness_level],3)
+                        texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
                         cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                     1, (0, 0, 255), thickness=1, lineType=2)
+                        #cv2.imshow('Video', frame)
             else:
                 print('Unable to align')
             sec = curTime - prevTime
             prevTime = curTime
             fps = 1 / (sec)
-            str = 'FPS: %2.3f' % fps
+            fps_str = 'FPS: %2.3f' % fps
             text_fps_x = len(frame[0]) - 150
             text_fps_y = 20
-            cv2.putText(frame, str, (text_fps_x, text_fps_y),
+            cv2.putText(frame, fps_str, (text_fps_x, text_fps_y),
                         cv2.FONT_HERSHEY_COMPLEX_SMALL, 1.0, (0, 0, 255), thickness=1, lineType=2)
             # c+=1
             cv2.imshow('Video', frame)
