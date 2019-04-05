@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 import os
 import subprocess
 from flask import Flask, request, redirect, url_for, send_from_directory
@@ -73,8 +75,8 @@ def updateClassifier():
     else: 
         return "return failed"
 def run():
-    app.run(debug=True, port="2000")
+    app.run(debug=True, port="5000")
 
 if __name__ == '__main__':
     os.chdir(rootDir)
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, port="5000", host='0.0.0.0')
