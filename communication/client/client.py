@@ -90,6 +90,7 @@ def sendToEdgeDevices():
     for ip in IPaddr:
         if ip is not None and ip != '': 
             ip.rstrip()
+            if ip[-1] == '\n': ip = ip[:-1]
             print(ip)
             sendClassifier(ip)
 

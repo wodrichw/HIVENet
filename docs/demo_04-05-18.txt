@@ -1,0 +1,14 @@
+1) run ifconfig so that we are able to get ip address. 
+2) verify computer is connected to CAFF
+3) have only names assigned in datasets/data
+4) verify data is aligned and classifiers/node_/ is created before running recognize.py
+5) verify none of us can be verified.
+6) check succesful output after running server.py
+7) after running interface.py we can accessit at port 5052
+8) after taking pictures, we can see directory of new user in datasets/data
+9) after aligning photos, we should see aligned photos in output_dir/ 
+10) after runnin classify.py, we should see names.txt updated in classifiers/node_/
+11) after running recognition.py we should see new users identified.
+12) communication/client/assets/ should contain local pickle and names file
+13) after sending files, remote nodes should have local pickle files in classifiers/node_IP/ 
+14) after running recognize.py, new users should be recognized on both machines. 
