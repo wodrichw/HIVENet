@@ -71,4 +71,4 @@ def take_photo():
 
 if __name__== '__main__':
     it = Imagetaker()
-    app.run()
+    app.run(port=5052)
