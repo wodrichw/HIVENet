@@ -1,3 +1,0 @@
-./output_dir/bob/bob_0.png 189 27 464 365
-./output_dir/bob/bob_1.png 185 35 463 381
-./output_dir/william/2019-02-27-142708_3.png

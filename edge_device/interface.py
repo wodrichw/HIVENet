@@ -9,7 +9,7 @@ RD  = os.path.dirname(os.path.realpath(__file__))
 
 app = Flask(__name__)
 
-# Disable Caching
+# Disable Caching making development easier
 @app.after_request
 def add_header(r):
     """
@@ -78,6 +78,7 @@ def take_photo():
 def your_photos():
     os.chdir(RD)
     if it.name == "": return "no name"
+    
     p = subprocess.Popen("python align_data.py > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
     picFiles = p.communicate()[0].split('\n')[:-1]
 

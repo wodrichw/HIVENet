@@ -18,5 +18,5 @@ $(function() {
         });
     }
 
-    takePhotos(0, 1);
+    takePhotos(0, positions.length);
 });
