@@ -4,10 +4,14 @@ cd "$(dirname "$0")"
 
 pkill python*
 
+if [[ $(ifconfig | grep docker0) ]] ; then
+	sudo ip link delete doker0
+fi
+
 nmcli device wifi connect TP-Link_CAFF password 04870418
 
-rm -r output_dir/*
-rm -r ../classifiers
+rm -r facenet/align_data/*
+rm -r classifiers
 
 if [ ! $(ls static | grep current_face) ] ; then
 	mkdir static/current_face
