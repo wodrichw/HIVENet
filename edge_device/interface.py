@@ -102,7 +102,7 @@ def submit_photos():
 
     # classify, move data to client assets and sync from
     # to all other edge devices on the network
-    subprocess.Popen('python classify.py ; mv '+nodedir+'/* ../communication/client/assets & python ../communication/client/client.py', shell=True)
+    subprocess.Popen('python classify.py ; cp '+nodedir+'/* ../communication/client/assets & python ../communication/client/client.py', shell=True)
 
     return render_template('index.html')
 
