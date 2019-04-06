@@ -11,11 +11,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'assets/'
 rootDir = os.path.dirname(os.path.realpath(__file__))
 
-######################################################
-# API Handleing for Beta version
-####################################################@#
-
-@app.route('/beta/update_classifier', methods=['POST'])
+@app.route('/update_classifier', methods=['POST'])
 def updateClassifier():
     ip = request.remote_addr
     if request.files['classifier']:
