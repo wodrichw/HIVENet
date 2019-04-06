@@ -89,7 +89,7 @@ def your_photos():
 @app.route('/retake_photos', methods = ['GET'])
 def retake_photos():
     if it.name == "": return render_template('take_face_photos.html')
-    subprocess.Popen("rm -r output_dir/"+it.name+" ../datasets/data/"+it.name, shell=True)
+    subprocess.Popen("rm -r output_dir/"+it.name+" ../datasets/data/"+it.name+"/*", shell=True)
     return render_template('take_face_photos.html')
 
 @app.route('/submit_photos', methods = ['GET'])
