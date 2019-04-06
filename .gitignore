@@ -14,8 +14,3 @@ docs/*.log
 docs/*.synctex.gz
 docs/*.toc
 facenet
-
-facenettrial/datasets
-facenettrial/classifier.pkl
-facenettrial/real-time-deep-face-recognition/names.txt
-

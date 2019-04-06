@@ -54,7 +54,7 @@ I-1
 I0
 tp23
 bI00
-S'\x0b\x00\x00\x00\x00\x00\x00\x00\x0c\x00\x00\x00\x00\x00\x00\x00'
+S'\x0c\x00\x00\x00\x00\x00\x00\x00\r\x00\x00\x00\x00\x00\x00\x00'
 p24
 tp25
 bsS'support_'
@@ -140,7 +140,7 @@ Rp56
 tp57
 g45
 I00
-S'\x95\x13G\xd5\x07#\n\xc0'
+S'\xa2\x86w\xe4\x9e\xe9\t\xc0'
 p58
 tp59
 bsS'_sparse'
@@ -303,7 +303,7 @@ Rp121
 tp122
 g45
 I00
-S'\x89D8\x9c\xc8\x7f\xa5?'
+S'\x08\x177\x07F\xc8\xaa\xbf'
 p123
 tp124
 bsS'cache_size'
@@ -330,15 +330,17 @@ aS'bounding boxes 38839.txt'
 p135
 aS'bounding boxes 72615.txt'
 p136
-aS'bounding boxes 80972.txt'
+aS'bounding boxes 78218.txt'
 p137
-aS'bounding boxes 81167.txt'
+aS'bounding boxes 80972.txt'
 p138
-aS'bounding boxes 89373.txt'
+aS'bounding boxes 81167.txt'
 p139
-aS'lonnie'
+aS'bounding boxes 89373.txt'
 p140
-aS'william'
+aS'lonnie'
 p141
-atp142
+aS'william'
+p142
+atp143
 .
