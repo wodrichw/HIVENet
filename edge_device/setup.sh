@@ -4,7 +4,6 @@ cd "$(dirname "$0")"
 
 pkill python*
 
-nmcli device disconnect wlp1s0  
 nmcli device wifi connect TP-Link_CAFF password 04870418
 
 rm -r output_dir/*
