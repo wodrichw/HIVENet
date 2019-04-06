@@ -81,7 +81,7 @@ def your_photos():
     # align photos , update current_face photos, get the name of the photo files in current_face
     # TODO: align_data.py should be called as a python function
     #   not through  a subprocess call
-    p = subprocess.Popen("rm -rf ../datasets/data/"+it.name+" > /dev/null 2>&1 ;  python align_data.py > /dev/null 2>&1 ; rm static/current_face/* > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
+    p = subprocess.Popen("python align_data.py > /dev/null 2>&1 ; rm static/current_face/* > /dev/null 2>&1 ; cp output_dir/"+it.name+"/* static/current_face/ ; ls static/current_face", shell=True, stdout=subprocess.PIPE)
     picFiles = p.communicate()[0].split('\n')[:-1]
 
     return render_template('your_photos.html', name=it.name, picFiles = picFiles)

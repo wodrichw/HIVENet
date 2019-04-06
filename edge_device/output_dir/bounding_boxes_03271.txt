@@ -1,2 +1,0 @@
-./output_dir/bob/bob_7.png 240 20 466 324
-./output_dir/bob/bob_11.png 239 16 502 366
