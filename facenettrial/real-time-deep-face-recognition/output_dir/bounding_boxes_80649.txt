@@ -1,0 +1,10 @@
+./output_dir/lonnie3/lonnie3_21.png 243 107 395 296
+./output_dir/lonnie3/lonnie3_17.png 235 109 397 308
+./output_dir/lonnie3/lonnie3_19.png 256 101 405 296
+./output_dir/lonnie3/lonnie3_22.png 247 102 407 301
+./output_dir/lonnie3/lonnie3_26.png 59 128 184 271
+./output_dir/lonnie3/lonnie3_27.png
+./output_dir/lonnie3/lonnie3_24.png 227 127 358 281
+./output_dir/lonnie3/lonnie3_13.png 233 106 392 295
+./output_dir/lonnie3/lonnie3_12.png 232 103 392 293
+./output_dir/lonnie3/lonnie3_23.png 237 103 372 267
