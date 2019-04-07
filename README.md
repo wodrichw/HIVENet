@@ -1,87 +1,111 @@
 # HIVENet
 
-HIVENets is a research project that tackles Neural Network optomization. This prokect uses facial recognition software on a end-node that then informs a centralized node of its findings to be then shared across all other nodes. 
+HIVENets is a research project that tackles Neural Network optomization. This project uses facial recognition software on a end-node that then informs a centralized node of its findings to be then shared across all other nodes. 
 
-## Getting Started
+---
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Purpose
 
-### Prerequisites
+---
 
-What things you need to install the software and how to install them
+## Requirements
 
-```
-Give examples
-```
+#### System
+- Ubuntu version 18.08
 
-### Installing
+#### For Recognition
+- python version 2.7.15
+- tensorflow version 1.7 
+- scipy
+- scikit-learn
+- opencv-python
+- h5py
+- matplotlib
+- Pillow
+- requests
+- psutil
 
-A step by step series of examples that tell you how to get a development env running
+#### For Communication
+- flask
+- openssh-server
+- nmap
+- python-tk
 
-Say what the step will be
+#### For Execution
+- Two computers
+- Dedicated router - no internet connectivity
 
-```
-Give the example
-```
+#### Web Browswer
+- Google Chrome
 
-And repeat
+---
 
-```
-until finished
-```
+## Installation
+- Navigate to <em> /setup </em> directory
+- Run <em> installer.sh </em>
 
-End with an example of getting some data out of the system or using it for a little demo
+---
+## Setup
 
-## Running the tests
+#### Both Computers
+- Must be connected to router
+- Need 3 separate terminal windows
+- Terminal (1) - Setup First
+    - Navigate to <em> /HIVENet/communication/server </em> directory
+    - Run <em>python server.py</em>
+- Terminal (2) - Setup second
+    - Move to <em> /HIVENet/edge_device </em> directory
+    - Run command <em> python interface.py </em>
+        - Note the IP address produced after "Running on" in terminal. This should be the fourth *
 
-Explain how to run the automated tests for this system
+- Terminal (3) - Setup third
+    - Navigate to <em>/HIVENet/edge_device</em> directory
+        
+---
 
-### Break down into end to end tests
+## Goal of Execution
+Recognized on computer one, the after instructions are followed, you are now recognizable again on computer two
 
-Explain what these tests test and why
+---
 
-```
-Give an example
-```
+## Execution
+<p> Execute the test in descending order of the instructions, from "Computer One" down.
 
-### And coding style tests
+#### Computer One
+- Terminal (1) - Let Run
 
-Explain what these tests test and why
+- Terminal (2) - Let Run
 
-```
-Give an example
-```
+- Terminal (3) - Interact
+    - Open Google Chrome
+        - Redirect to IP address outlined above under Setup -> Both Computers -> Bullet 4 -> Sub-Bullet 2
+        - Enter name in textbox under <em>Help Us Recognize Your Face</em>
+        - Press submit
+        - Follow text moving across screen and wait once it stops
+            - Note: your picture is being taken here. Please use a small variety of different facial expressions
+        - Once photos load on screen, you can either retake them or submit. Submit will continue the process
 
-## Deployment
+    - To see completed recognition on the same computer, do the following:
+        - Navigate to <em> /HIVENet/edge_device </em>
+        - Run <em> recognition.py </em>
+        - Observe that the system now recognizes you.
+    - Otherwise, continue
+#### Computer Two
+- Terminal (1) - Let Run
 
-Add additional notes about how to deploy this on a live system
+- Terminal (2) - Let Run
 
-## Built With
+- Terminal (3) - Interact with <u>after</u> steps taken on Computer One
 
-* (EDIT)[Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* (EDIT)[Maven](https://maven.apache.org/) - Dependency Management
-* (EDIT)[ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+    - Navigate to <em> /HIVENet/edge_device </em>
+    - Run <em> recognition.py </em>
+    - Observe that the system now recognizes you.
 
-## Contributing
+---
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Results
+As stated in the purpose above, between 
 
-## Versioning
+---
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+## Additional Notes
