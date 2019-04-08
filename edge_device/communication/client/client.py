@@ -36,5 +36,3 @@ def sendToEdgeDevices():
             sendClassifier(ip)
 
     print (IPaddr)
-
-sendToEdgeDevices()

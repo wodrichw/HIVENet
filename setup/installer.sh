@@ -1,9 +1,11 @@
 # Install openface requirements and facenet requirements
-sudo apt install python-pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+
 
 git clone git@github.com:davidsandberg/facenet.git
 cd facenet
-for line in $(printf "npyscreen\nflask\n" | cat requirements.txt -)
+for line in $(cat requirements.txt)
 do
 	pip install $line
 	pip3 install $line
