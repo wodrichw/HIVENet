@@ -11,6 +11,7 @@ dataDir = os.path.dirname(RD)+"/edge_device/data"
 class Imagetaker:
     def __init__(self):
         self.name = ""
+        self.numImage = 0
 
     def setName(self, name):
         self.numImage = 0
@@ -28,5 +29,7 @@ class Imagetaker:
 
         ret, frame = video_capture.read()
         cv2.imwrite(os.path.join(path,self.name+"_"+str(datetime.now().time())+".jpg"),frame)
+        # cv2.imwrite(os.path.join(path,self.name+"_"+str(self.numImage)+".jpg"),frame)
+        # self.numImage += 1
         video_capture.release()
         cv2.destroyAllWindows()

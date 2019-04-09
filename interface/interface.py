@@ -70,20 +70,18 @@ def your_photos():
     
     # align photos , update current_face photos, get the name of the photo files in current_face
     cmd = """
-    if [ $(ls {2} | grep current_face) ]
-    then 
-        if [ $(ls {3}) ]
-        then 
-            rm -r {3}/*
-        fi
-    else 
-        mkdir {3}
+    if test ! -d {0}
+    then
+        mkdir {0}
     fi
-    rm -r {3}/* > /dev/null 2>&1 
-    cp {0}/* {3} 
-    ls {3}
+    for i in $(ls {0})
+    do
+        rm -r {0}/$i
+    done
+    cp {1}/* {0}/
+    ls {0}
     """
-    cmd = cmd.format(alignedDataDir+"/"+it.name, ED, staticDir, currentFaceDir)
+    cmd = cmd.format(currentFaceDir, alignedDataDir+"/"+it.name)
 
     align_data(facenetDir)
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -105,18 +103,16 @@ def submit_photos():
     # classify, move data to client assets and sync from
     # to all other edge devices on the network
     cmd = """
-    if [ -d {1} ]
+    if test ! -d {0}
     then
-        if [ $(ls {1}) ]
-        then
-            rm -r {1}/*
-        fi
-    else
-        mkdir {1}
+        mkdir {0}
     fi
-    cp {3}/* {4}
-    """
-    cmd = cmd.format(clientDir, clientAssetsDir, ED, nodedir, clientAssetsDir)
+    for i in $(ls {0})
+    do
+        rm -r {0}/$i
+    done
+    cp -r {1}/* {0}/
+    """.format(clientAssetsDir, nodedir)
 
     classify(facenetDir)
     subprocess.call(cmd, shell=True)
