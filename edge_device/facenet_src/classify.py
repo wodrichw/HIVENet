@@ -2,22 +2,22 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 import tensorflow as tf
 import numpy as np
 import argparse
-import facenet
-import detect_face
 import subprocess
+import os
+import sys
 import math
 import pickle
 from sklearn.svm import SVC
 
-def classify():
+def classify(RD = os.path.dirname(os.path.realpath(__file__))):
+    # Ensure that able to import facenet and detect_face
+    sys.path.append(RD)
+    import facenet
+    import detect_face
     # we need to change to local file structure of edge_device.
-    RD = os.path.dirname(os.path.realpath(__file__))
     os.chdir(RD)
 
     # Get the IP of this edge device
@@ -27,7 +27,7 @@ def classify():
     with tf.Graph().as_default():
         with tf.Session() as sess:
             
-            # Make classifiers directory to store local weights and names. 
+             # Make classifiers directory to store local weights and names. 
             subprocess.call("if [ -z $(ls ../ | grep classifiers ) ] ; then mkdir ../classifiers ; fi", shell=True)
             
             # Make a directory to store local weights and names. 

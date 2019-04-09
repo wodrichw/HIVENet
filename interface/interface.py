@@ -9,7 +9,6 @@ from take_images import Imagetaker
 from communication.client.client import sendToEdgeDevices
 from facenet_src.classify import classify
 from facenet_src.align_data import align as align_data
-from facenet_src.recognize import recognize
 
 # Assemble Directory paths
 RD = os.path.dirname(os.path.realpath(__file__))
@@ -119,7 +118,7 @@ def submit_photos():
     """
     cmd = cmd.format(clientDir, clientAssetsDir, ED, nodedir, clientAssetsDir)
 
-    classify()
+    classify(facenetDir)
     subprocess.call(cmd, shell=True)
     sendToEdgeDevices()
 

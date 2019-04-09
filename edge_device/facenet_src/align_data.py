@@ -8,12 +8,15 @@ import os
 import argparse
 import tensorflow as tf
 import numpy as np
-import facenet
-import detect_face
 import random
 from time import sleep
 
 def align(RD=os.path.dirname(os.path.realpath(__file__))):
+    # Ensure that able to import facenet and detect_face
+    sys.path.append(RD)
+    import facenet
+    import detect_face
+    
     # Ensure that pwd is where this file lives
     os.chdir(RD)
     output_dir_path = './aligned_data'
@@ -38,8 +41,7 @@ def align(RD=os.path.dirname(os.path.realpath(__file__))):
     image_size = 182
 
     # Add a random key to the filename to allow alignment using multiple processes
-    random_key = np.random.randint(0, high=99999)
-    bounding_boxes_filename = os.path.join(output_dir, 'bounding_boxes_%05d.txt' % random_key)
+    bounding_boxes_filename = os.path.join(output_dir, 'bounding_boxes.txt')
     print('Goodluck')
 
     nrof_successfully_aligned = 0
