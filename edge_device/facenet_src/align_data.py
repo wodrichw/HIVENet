@@ -1,30 +1,27 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
+from scipy import misc
 import sys
 import os
-from scipy import misc
 import argparse
 import tensorflow as tf
 import numpy as np
+import facenet
+import detect_face
 import random
 from time import sleep
-import subprocess
 
-
-def align(alignPath):
+def align(RD=os.path.dirname(os.path.realpath(__file__))):
     # Ensure that pwd is where this file lives
-    os.chdir(alignPath)
-    # sys.path.append(os.path.dirname(os.path.realpath(alignPath)))
-    import facenet
-    import detect_face
-
-    output_dir_path = alignPath+'/aligned_data'
+    os.chdir(RD)
+    output_dir_path = './aligned_data'
     output_dir = os.path.expanduser(output_dir_path)
     if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-    datadir = os.path.dirname(alignPath)+"/data"
+    datadir = '../data'
     dataset = facenet.get_dataset(datadir)
 
     print('Creating networks and loading parameters')
@@ -40,7 +37,10 @@ def align(alignPath):
     margin = 44
     image_size = 182
 
-    bounding_boxes_filename = os.path.join(output_dir, 'bounding_boxes.txt')
+    # Add a random key to the filename to allow alignment using multiple processes
+    random_key = np.random.randint(0, high=99999)
+    bounding_boxes_filename = os.path.join(output_dir, 'bounding_boxes_%05d.txt' % random_key)
+    print('Goodluck')
 
     nrof_successfully_aligned = 0
 
@@ -110,6 +110,6 @@ def align(alignPath):
     print('Number of successfully aligned images: %d' % nrof_successfully_aligned)
 
 
+
 if __name__ == "__main__":
-    align(os.path.dirname(os.path.realpath(__file__)))
-    
+    align()
