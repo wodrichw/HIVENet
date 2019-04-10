@@ -26,12 +26,13 @@ def sendClassifier(ip):
 def sendToEdgeDevices():
     # Get the IP of edge device
     p = subprocess.Popen(RD+'/scripts/getIPs.sh', shell=True, stdout=subprocess.PIPE)
-    IPaddr = p.communicate()#.strip()
-    for ip in IPaddr:
+    IPaddrs = p.communicate()#.strip()
+    IPaddrs = ["127.0.0.1"]
+    for ip in IPaddrs:
         if ip is not None and ip != '': 
             ip.rstrip()
             if ip[-1] == '\n': ip = ip[:-1]
             print(ip)
             sendClassifier(ip)
 
-    print (IPaddr)
+    print (IPaddrs)
