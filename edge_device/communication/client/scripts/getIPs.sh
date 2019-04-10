@@ -8,7 +8,8 @@ connectedDevs=$(nmap -sP $subNet* | grep -Eo $subNet[0-9]* | grep -v $myIP | gre
 # if no connected device just run it twice
 if test -z "$connectedDevs"
 then
-    nmap -sP $subNet* | grep -Eo $subNet[0-9]* | grep -v $myIP | grep -vw $routerIP
+	connectedDevs=$(nmap -sP $subNet* | grep -Eo $subNet[0-9]* | grep -v $myIP | grep -vw $routerIP)
 fi
 
-echo $connectedDevs
+printf "$connectedDevs" | tr "\n" ,
+

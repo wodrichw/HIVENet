@@ -27,7 +27,6 @@ def sendToEdgeDevices():
     # Get the IP of edge device
     p = subprocess.Popen(RD+'/scripts/getIPs.sh', shell=True, stdout=subprocess.PIPE)
     IPaddrs = p.communicate()#.strip()
-    IPaddrs = ["127.0.0.1"]
     for ip in IPaddrs:
         if ip is not None and ip != '': 
             ip.rstrip()
@@ -36,3 +35,5 @@ def sendToEdgeDevices():
             sendClassifier(ip)
 
     print (IPaddrs)
+
+if __name__ == ""
