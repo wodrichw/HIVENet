@@ -17,7 +17,5 @@ $(function() {
             }
         });
     }
-    // takePhotos(0, positions.length);
-    takePhotos(0, 3);
-
+    takePhotos(0, positions.length);
 });
