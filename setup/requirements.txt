@@ -1,3 +1,4 @@
+--upgrade setuptools
 tensorflow==1.7
 scipy
 scikit-learn
@@ -9,3 +10,5 @@ requests
 psutil
 npyscreen
 flask
+matplotlib
+
