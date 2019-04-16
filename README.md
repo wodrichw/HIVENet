@@ -8,7 +8,7 @@ HIVENets is a research project that tackles Neural Network optimization. This pr
 
 HIVENet aims to streamline data sharing between disjoint neural network systems (e.g. mobile devices, PCs). This is demonstrated through our project through facial recognition on multiple PCs.
 
-The purpose can be more explicitly understood in reading the design and requirements documents under the "docs" folder on our Github repository.
+The purpose can be more explicitly read in reading the design and requirements documents under the "docs" folder on our Github repository.
 
 ---
 
@@ -55,6 +55,8 @@ The purpose can be more explicitly understood in reading the design and requirem
 ## Setup
 Do all of the following before moving on to Execution.
 
+Two computers are required. 
+
 #### Both Computers
 
 - Must be connected to router
@@ -64,7 +66,7 @@ Do all of the following before moving on to Execution.
     - Navigate to <em> /HIVENet/edge_device </em>
     - Run <em> ./run.sh </em>
         - Note 1: Keep track of the http addresses that appear on screen. The latter, is used for user interaction on a web browser. That is, <em> localhost:5052 </em> or the local host URL presented.
-        - Note 2: This shell script should be ran any time the system is restart.
+        - Note 2: This shell script should be ran any time the system is restarted.
 
 - Terminal (2) - Setup Second
     - Navigate to <em> /HIVENet/edge_device/facenet_src </em>
@@ -72,7 +74,7 @@ Do all of the following before moving on to Execution.
 ---
 
 ## Goal of Execution
-Individual(s) running will be recognized on computer one, the after instructions are followed, you are now recognizable again on computer two
+Individual(s) will be trained on computer one. Once done, their data will be transferred to computer two where they will be recognized as well, despite no human interaction other than a script to recognize.
 
 ---
 
@@ -90,9 +92,9 @@ Individual(s) running will be recognized on computer one, the after instructions
         - If any of them are bad (the back/side of your head, poor lighting, etc.), you have the option to retake them. 
         - If they are mostly of the front of your face with slight adjustments in angle, you may hit submit.
     - Wait for the web interface to redirect to the page you saw at the very beginning before moving to Terminal (2)
-    - Note: You can view the terminal for actions take upon image capture if you wish
+    - Note: You can view the terminal for actions taken upon image capture if you wish
 
-- Terminal (2) Interact after image capture
+- Terminal (2) Interact with after image capture
     - Run <em> python recognize.py </em>
     - Upon doing this, your face will be recognized on the system
     - This step is just to confirm you are who the computer thinks you are and is not necessary
