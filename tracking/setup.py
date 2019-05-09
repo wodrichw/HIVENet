@@ -22,42 +22,14 @@ file = open('node1_name.pkl', 'w')
 pickle.dump(name_list, file)
 file.close()
 
-# ----------------
-
-file = open('test.pkl', 'w')
+name_list = ['andrew']
+file = open('node2_name.pkl', 'w')
 pickle.dump(name_list, file)
 file.close()
-del name_list
 
-# while True:
-#    name = raw_input(": ")
-#    f = open('test.pkl', 'r')
-#    name_list = pickle.load(f)
-#    f.close()
+name_list = ['andrew']
+file = open('node3_name.pkl', 'w')
+pickle.dump(name_list, file)
+file.close()
 
-#    for x in range(len(name_list)):
-#       print name_list[x]
-
-#    name_list.append(name)
-
-#    f = open('test.pkl', 'w')
-#    pickle.dump(name_list, f)
-#    f.close()
-
-class test:
-   def __init__(self, one):
-      self.one = one
-
-print ("----")
-new = test(1)
-temp = copy.deepcopy(new)
-
-print(new.one)
-print(temp.one)
-
-temp.one = 2
-print(new.one)
-print(temp.one)
-
-listt = ['a', 'b', 'c']
-print(listt.index('b'))
+# ----------------

@@ -83,32 +83,133 @@ def get_face(name, node_num):
 
       # Next, for now, the objects will be stored in a list. Bump this to pickle files later
       node_one.append(new_obj)
-      temp = copy.deepcopy(new_obj)
+      temp_one = copy.deepcopy(new_obj)
+      temp_two = copy.deepcopy(new_obj)
 
+      num_one = temp_one.riddle + 0.1
+      num_two = temp_two.riddle + 0.2
+      num_one = truncate(num_one, 1)
+      num_two = truncate(num_two, 1)
 
       # Simulate sending to through servers
       # Node 2 first, wait a couple seconds to ensure transmission, then node 3
-      temp.node1 = False
-      temp.node2 = True
+      temp_one.node1 = False
+      temp_one.node2 = True
       # Increment riddle_num at source to deconflict similar numbers
-      num = temp.riddle + 0.1
-      num = truncate(num, 1)
-      temp.riddle = num
-      print("node 2 temp: ", temp.riddle)
-      node_two.append(temp)
+      temp_one.riddle = num_one
+      print("node 2 temp_one: ", temp_one.riddle)
+      node_two.append(temp_one)
 
       # Node 3
-      temp.node2 = False
-      temp.node3 = True
-      num = temp.riddle + 0.1
-      num = truncate(num, 1)
-      temp.riddle = num
-      print("node 3 temp: ", temp.riddle)
-      node_three.append(temp)
+      temp_two.node1 = False
+      temp_two.node3 = True
+      temp_two.riddle = num_two
+      print("node 3 temp_two: ", temp_two.riddle)
+      node_three.append(temp_two)
 
-      del temp
+      print_node(node_one, node_two, node_three)
+
+      del temp_one
+      del temp_two
       del new_obj
       # Now, all the nodes should be updated with the new person and a corresponding riddle
+
+   # If you are at node 2
+   if node_num == '2':
+      name = name + "_two"
+
+      f = open('node2_name.pkl', 'r')
+      names_list = pickle.load(f)  
+      f.close()
+      names_list.append(name)
+
+      f = open('node2_name.pkl', 'w')
+      pickle.dump(names_list, f)
+      f.close()
+
+      riddle_num = random.randint(1,3)
+      riddle_num = float(riddle_num)
+      print("random number: ", riddle_num)
+
+      new_obj = package(name, False, True, False, riddle_num, 2)
+
+      node_two.append(new_obj)
+
+      # Copy strictly for incrementing riddle trackers
+      temp_one = copy.deepcopy(new_obj)
+      temp_two = copy.deepcopy(new_obj)
+
+      num_one = temp_one.riddle + 0.1
+      num_two = temp_two.riddle + 0.2
+      num_one = truncate(num_one, 1)
+      num_two = truncate(num_two, 1)
+
+      temp_one.node1 = True
+      temp_one.node2 = False
+
+      temp_one.riddle = num_one
+      node_one.append(temp_one)
+
+      temp_two.node2 = False
+      temp_two.node3 = True
+      temp_two.riddle = num_two
+      node_three.append(temp_two)
+
+      print_node(node_one, node_two, node_three)
+
+      del temp_one
+      del temp_two
+      del new_obj
+
+   # If you are at node 3
+   if node_num == '3':
+      name = name + "_three"
+
+      f = open('node3_name.pkl', 'r')
+      names_list = pickle.load(f)  
+      f.close()
+      names_list.append(name)
+
+      f = open('node3_name.pkl', 'w')
+      pickle.dump(names_list, f)
+      f.close()
+
+      riddle_num = random.randint(1,3)
+      riddle_num = float(riddle_num)
+      print("random number: ", riddle_num)
+
+
+      new_obj = package(name, False, False, True, riddle_num, 3)
+
+      node_three.append(new_obj)
+
+      # Copy strictly for incrementing riddle trackers
+      temp_one = copy.deepcopy(new_obj)
+      temp_two = copy.deepcopy(new_obj)
+
+      num_one = temp_one.riddle + 0.1
+      num_two = temp_two.riddle + 0.2
+      num_one = truncate(num_one, 1)
+      num_two = truncate(num_two, 1)
+
+      # 1
+      temp_one.node1 = True
+      temp_one.node3 = False
+
+      temp_one.riddle = num_one
+      node_one.append(temp_one)
+
+      # 2
+      temp_two.node3 = False
+      temp_two.node2 = True
+      temp_two.riddle = num_two
+      node_one.append(temp_two)
+
+      print_node(node_one, node_two, node_three)
+
+      del temp_one
+      del temp_two
+      del new_obj
 
 
 def old_person(user, node_num):
@@ -126,13 +227,58 @@ def old_person(user, node_num):
       riddle = node_one[pos].riddle
 
       print("name: ", name)
-      print("riddle: ", riddle)
+      # get corresponding riddle from pickle file
+      file = open('riddle_list.pkl', 'r')
+      riddles = pickle.load(file)
+      file.close()
+      print("riddle number: ", riddle)
+      print("Actual riddle: ", riddles[riddle])
+   
+   if node_num == '2':
+      user = user + "_two"
+      for x in range(len(node_two)):
+         name = node_two[x].name
+         if name == user:
+            pos = x
+            break
+      
+      name = node_two[pos].name
+      riddle = node_two[pos].riddle
+
+      print("name: ", name)
+      # get corresponding riddle from pickle file
+      file = open('riddle_list.pkl', 'r')
+      riddles = pickle.load(file)
+      file.close()
+      print("riddle number: ", riddle)
+      print("Actual riddle: ", riddles[riddle])
+   
+   if node_num == '3':
+      user = user + "_three"
+      for x in range(len(node_three)):
+         name = node_three[x].name
+         if name == user:
+            pos = x
+            break
+      
+      name = node_three[pos].name
+      riddle = node_three[pos].riddle
+
+      print("name: ", name)
+      # get corresponding riddle from pickle file
+      file = open('riddle_list.pkl', 'r')
+      riddles = pickle.load(file)
+      file.close()
+      print("riddle number: ", riddle)
+      print("Actual riddle: ", riddles[riddle])
 
 # Main will encompass the entire HIVENet system
 def main():
    # Two options when interacting with project
    # Number 1: input new name - train on new face
+   #     This option triggers on user inputting name through interface
    # Number 2: recognize face
+   #     This option triggers on opening recognition.py, getting name from it,
    print("Starting")
    while True:
       option = raw_input("Are you a new person (1)? Or are you being recognized (2)? ")
@@ -149,4 +295,27 @@ def main():
 def truncate(number, digits):
    stepper = pow(10.0, digits)
    return math.trunc(stepper*number) / stepper
+
+def print_node(node1, node2, node3):
+   print("Here is the newly created object on node 1: ")
+   print(node1[-1].name)
+   print(node1[-1].node1)
+   print(node1[-1].node2)
+   print(node1[-1].node3)
+   print(node1[-1].riddle)
+
+   print("Here is the newly created object on node 2: ")
+   print(node2[-1].name)
+   print(node2[-1].node1)
+   print(node2[-1].node2)
+   print(node2[-1].node3)
+   print(node2[-1].riddle)
+
+   print("Here is the newly created object on node 3: ")
+   print(node3[-1].name)
+   print(node3[-1].node1)
+   print(node3[-1].node2)
+   print(node3[-1].node3)
+   print(node3[-1].riddle)
+
 main()
