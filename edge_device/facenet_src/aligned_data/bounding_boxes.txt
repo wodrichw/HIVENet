@@ -1,0 +1,39 @@
+./aligned_data/andrew/andrew_20:37:12.970771.png
+./aligned_data/andrew/andrew_20:37:14.932869.png
+./aligned_data/andrew/andrew_20:37:14.261560.png
+./aligned_data/andrew/andrew_20:37:14.591565.png
+./aligned_data/andrew/andrew_20:37:13.633388.png
+./aligned_data/andrew/andrew_20:37:13.952039.png
+./aligned_data/andrew/andrew_20:37:12.593168.png
+./aligned_data/andrew/andrew_20:37:13.294116.png
+./aligned_data/brennan/brennan_21:09:12.597423.png 263 152 446 392
+./aligned_data/brennan/brennan_21:09:04.947677.png 248 151 437 403
+./aligned_data/brennan/brennan_21:09:07.269427.png 261 148 448 401
+./aligned_data/brennan/brennan_21:09:13.237872.png 254 156 433 393
+./aligned_data/brennan/brennan_21:09:12.918741.png 258 151 444 395
+./aligned_data/brennan/brennan_21:09:09.927522.png 267 152 456 404
+./aligned_data/brennan/brennan_21:09:03.269717.png 277 154 464 392
+./aligned_data/brennan/brennan_21:09:04.627680.png 250 149 428 396
+./aligned_data/brennan/brennan_21:09:11.938899.png 260 148 455 398
+./aligned_data/brennan/brennan_21:09:09.590904.png 254 143 451 406
+./aligned_data/brennan/brennan_21:09:08.599767.png 261 146 449 396
+./aligned_data/brennan/brennan_21:09:07.930490.png 259 149 454 398
+./aligned_data/brennan/brennan_21:09:06.629525.png 256 155 445 401
+./aligned_data/brennan/brennan_21:09:05.289018.png 250 149 442 396
+./aligned_data/brennan/brennan_21:09:03.960015.png 255 160 443 401
+./aligned_data/brennan/brennan_21:09:12.277825.png 264 154 454 398
+./aligned_data/brennan/brennan_21:09:05.949893.png 252 150 445 399
+./aligned_data/brennan/brennan_21:09:08.270750.png 262 149 449 398
+./aligned_data/brennan/brennan_21:09:09.278789.png 263 149 449 398
+./aligned_data/brennan/brennan_21:09:10.248394.png 271 150 454 397
+./aligned_data/brennan/brennan_21:09:06.948630.png 260 149 447 401
+./aligned_data/brennan/brennan_21:09:03.619645.png 275 151 458 391
+./aligned_data/brennan/brennan_21:09:04.289522.png 247 157 434 397
+./aligned_data/brennan/brennan_21:09:11.259809.png 274 146 469 395
+./aligned_data/brennan/brennan_21:09:06.288740.png 258 150 443 395
+./aligned_data/brennan/brennan_21:09:11.598207.png 273 145 462 391
+./aligned_data/brennan/brennan_21:09:08.939753.png 259 151 450 397
+./aligned_data/brennan/brennan_21:09:05.626924.png 252 148 445 401
+./aligned_data/brennan/brennan_21:09:10.928112.png 284 148 468 398
+./aligned_data/brennan/brennan_21:09:07.597285.png 261 149 448 395
+./aligned_data/brennan/brennan_21:09:10.589859.png 277 148 469 398

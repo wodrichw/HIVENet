@@ -12,6 +12,7 @@ app.config['UPLOAD_FOLDER'] = 'assets/'
 RD = dirname(os.path.realpath(__file__))
 ED = dirname(dirname(RD))
 classifiersDir = ED+"/classifiers"
+namesDir = ED + '/tracking/pickles'
 
 @app.route('/update_classifier', methods=['POST'])
 def updateClassifier():
@@ -30,6 +31,11 @@ def updateClassifier():
         return "classifier updated successfully"
     else: 
         return "return failed"
+
+@app.route('/update_names', methods = ['POST'])
+def updateNames():
+    if request.files['contents']
+    request.files['contents'].save(namesDir + '/temp.pkl')
 
 if __name__ == '__main__':
     os.chdir(RD)

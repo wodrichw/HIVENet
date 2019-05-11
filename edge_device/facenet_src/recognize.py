@@ -162,7 +162,7 @@ with tf.Graph().as_default():
                     max_name_result[fitness_level]*=100
                     
                     if max_name_result[fitness_level] >= 85:
-                        # Plot result idx under box
+                        # Plot result idx under box -- This is where the name is printed
                         print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
