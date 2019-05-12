@@ -8,26 +8,26 @@ import pickle
 
 # Note, this all assumes only 2 connected devices
 
-def sendPickle(ip, RD, contents):
+def sendPickle(ip, RD, PD):
    try:
-      r = requests.post('http://' + ip + ':5000/update_names', files = contents)
-      print ip, "sent successfully"
+      name_file = open(PD, 'r')
+      contents = pickle.load(name_file)
+      try:
+         files = {"names": name_file}
+         r = request.post('http://'+ip+':5000/update_names', files = files)
+         print ip, " sent successfully"
+      except:
+         print ip, " Failed to send files"
+      finally:
+         name_file.close()
    except:
       print ip, "failed to send files"
    # try:
-   #      classifierF = open(RD+'/assets/classifier.pkl','r')
-   #      namesF = open(RD+'/assets/names.txt','r')
-   #      try:
-   #          files = {"classifier":classifierF,"names":namesF}
-   #          r = requests.post('http://'+ip+':5000/update_classifier', files=files)
-   #          print(ip, "sent successfully")
-   #      except: 
-   #          print(ip, "failed to send files")
-   #      finally: 
-   #          classifierF.close()
-   #          namesF.close()
-   #  except: 
-   #      print("Files not found: " + RD + '/assets/names.txt or ' + RD+'/assets/classifier.pkl')
+   #    files = {"content": contents}
+   #    r = requests.post('http://' + ip + ':5000/update_names', files = files)
+   #    print ip, "sent successfully"
+   # except:
+   #    print ip, "failed to send files"
 
 def sendToEdgeDevices(RD=os.path.dirname(os.path.realpath(__file__))):
    print RD
@@ -46,10 +46,8 @@ def sendToEdgeDevices(RD=os.path.dirname(os.path.realpath(__file__))):
    print contents[0]
    print contents[1]
 
-   x = 0
    for ip in IPaddr:
-      sendPickle(ip, RD, contents[x])
-      x += 1
+      sendPickle(ip, RD, PD)
 
 if __name__ == "__main__":
     sendToEdgeDevices()

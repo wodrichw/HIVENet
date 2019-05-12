@@ -1,6 +1,0 @@
-(lp0
-S'andrew'
-p1
-aS'a_two'
-p2
-a.

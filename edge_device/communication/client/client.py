@@ -7,7 +7,7 @@ import os
 
 # Assemble File Paths
 def sendClassifier(ip, RD=os.path.dirname(os.path.realpath(__file__))):
-    try: 
+    try:
         classifierF = open(RD+'/assets/classifier.pkl','r')
         namesF = open(RD+'/assets/names.txt','r')
         print classifierF

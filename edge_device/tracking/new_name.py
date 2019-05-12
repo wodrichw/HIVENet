@@ -17,7 +17,7 @@ def truncate(number, digits):
 
 
 # Assume only 3 nodes max
-def prep_nodes(name, num_nodes):
+def prep_nodes(name, num_nodes, ipAddrs):
    # Generate random number for riddle
    riddle = random.randint(1,3)
    riddle = float(riddle)
@@ -29,8 +29,10 @@ def prep_nodes(name, num_nodes):
       # Copy name for untouched reference
       temp_name = copy.deepcopy(name)
 
+      print ipAddrs
+
       # 'andrew_1', 'andrew_2', ...
-      temp_name = temp_name + "_" + str(x)
+      temp_name = temp_name + "_" + str(ipAddrs[0][x])
 
       if x == 0:
          node = {'name': temp_name, 'node1': 1, 'node2': 0, 'node3': 0, 'riddle': riddle}
@@ -86,12 +88,15 @@ def main():
          non_empty.append(folders[x])
 
    name = open("name.txt", 'r').read()
-   node_list = prep_nodes(name, len(non_empty[0]))
+   node_list = prep_nodes(name, len(non_empty[0]), non_empty)
+   print node_list
 
    # Add new name to local node's list   
    add_to_local(node_list[0], "pickles/local_names.pkl")
+   
 
    # Add new name to other nodes list for transfer
+   # ----------- ASSUMES THREE NODES IN CLASSIFIERS -------------
    transfer_nodes = [node_list[1], node_list[2]]
    add_to_transfer(transfer_nodes)
   

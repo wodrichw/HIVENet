@@ -14,7 +14,7 @@ p5
 I1
 sS'name'
 p6
-S'brennan_1'
+S'brennan_node_192.168.0.100'
 p7
 sa(dp8
 g2
@@ -26,6 +26,6 @@ I1
 sg5
 I0
 sg6
-S'brennan_2'
+S'brennan_node_192.169.0.101'
 p9
 sa.

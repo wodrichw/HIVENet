@@ -12,6 +12,8 @@ app.config['UPLOAD_FOLDER'] = 'assets/'
 RD = dirname(os.path.realpath(__file__))
 ED = dirname(dirname(RD))
 classifiersDir = ED+"/classifiers"
+
+# /HIVENet/edge_device/tracking/pickles
 namesDir = ED + '/tracking/pickles'
 
 @app.route('/update_classifier', methods=['POST'])
@@ -34,8 +36,8 @@ def updateClassifier():
 
 @app.route('/update_names', methods = ['POST'])
 def updateNames():
-    if request.files['contents']
-    request.files['contents'].save(namesDir + '/temp.pkl')
+    if request.files['contents']:
+        request.files['contents'].save(namesDir + '/temp.pkl')
 
 if __name__ == '__main__':
     os.chdir(RD)

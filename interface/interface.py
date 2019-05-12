@@ -9,6 +9,7 @@ from take_images import Imagetaker
 from communication.client.client import sendToEdgeDevices
 from facenet_src.classify import classify
 from facenet_src.align_data import align as align_data
+import pickle
 
 # Assemble Directory paths
 RD = os.path.dirname(os.path.realpath(__file__))
@@ -51,6 +52,15 @@ def get_training_form():
     submitted_name = request.get_json()['name']
     #Save state of name
     print(submitted_name)
+
+    #Store name in .pkl file for data transfer
+    #Path to correct file
+    FP =  ED + "/tracking/name.txt"
+    f = open(FP, 'w')
+    f.write(submitted_name)
+    # pickle.dump(submitted_name, f)
+    f.close()
+    
     it.setName(submitted_name)
 
     return 'success'
