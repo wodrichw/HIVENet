@@ -60,7 +60,6 @@ def get_training_form():
     f.write(submitted_name)
     # pickle.dump(submitted_name, f)
     f.close()
-    
     it.setName(submitted_name)
 
     return 'success'

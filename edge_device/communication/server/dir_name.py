@@ -1,11 +1,13 @@
 import os
+from os.path import dirname
 
-RD = os.path.dirname(os.path.realpath(__file__))
-ED  = os.path.dirname(RD)
-AD = os.path.dirname(ED)
-BD = os.path.dirname(AD)
+RD = dirname(os.path.realpath(__file__))
+ED = dirname(dirname(RD))
+classifiersDir = ED+"/classifiers"
 
-print "RD: ", RD
-print "ED: ", ED
-print "AD: ", AD
-print "BD: ", BD
+# /HIVENet/edge_device/tracking/pickles
+namesDir = ED + '/tracking/pickles'
+
+print RD
+print ED
+print namesDir
