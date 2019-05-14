@@ -22,7 +22,7 @@ def classify(RD = os.path.dirname(os.path.realpath(__file__))):
 
     # Get the IP of this edge device
     p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
-    IPaddr = p.communicate()[0].strip()
+    IPaddr = p.communicate()[0].strip().split('\n')[0]
 
     with tf.Graph().as_default():
         with tf.Session() as sess:
