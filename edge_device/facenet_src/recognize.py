@@ -20,6 +20,7 @@ import pickle
 import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
+from collections import defaultdict
 
 # Function: MatchName()  
 # input:    
@@ -37,7 +38,7 @@ def matchName(model,HumanNames,face):
         if HumanNames[best_class_indices[0]] == H_i:
             result_names = HumanNames[best_class_indices[0]]
     #print(result_names,best_class_probabilities)
-    return [result_names,best_class_probabilities]
+    return [result_names,best_class_probabilities[0]]
 
 
 #print('Creating networks and loading parameters')
@@ -57,6 +58,7 @@ with tf.Graph().as_default():
         batch_size = 1000
         image_size = 182
         input_image_size = 160
+        results = defaultdict(lambda: [])
 
         #print('Loading feature extraction model')
         model_dir = 'models/20170511-185253/20170511-185253.pb'
@@ -159,16 +161,18 @@ with tf.Graph().as_default():
                     max_name_result[1]*=100
                     
                     # Plot result idx under box
-                    accuracy = math.trunc(max_name_result[1][0])
-                    print("face "+ str(i) +" identified. it's " + str(max_name_result[0]) + " accuracy is " + str(accuracy))
+                    accuracy = math.trunc(max_name_result[1])
+                    name = max_name_result[0]
+                    results[name].append(accuracy)
+                    print(name, " accuracy is ", sum(results[name]) / len(results[name]))
                     text_x = bb[i][0]
                     text_y = bb[i][3] + 20
-                    texttoOutput = max_name_result[0] + " " + str(accuracy) + "%"
+                    texttoOutput = name + " " + str(accuracy) + "%"
                     cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                 1, (0, 0, 255), thickness=1, lineType=2)
-                    #cv2.imshow('Video', frame)
-            else:
-                print('Unable to align')
+
+            # else: print('Unable to align')
+
             sec = curTime - prevTime
             prevTime = curTime
             fps = 1 / (sec)
