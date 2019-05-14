@@ -49,7 +49,6 @@ with tf.Graph().as_default():
         pnet, rnet, onet = detect_face.create_mtcnn(sess, './align')
 
         name = 0
-        fitness_level = 1
         minsize = 20  # minimum size of face
         threshold = [0.6, 0.7, 0.7]  # three steps's threshold
         factor = 0.709  # scale factor
@@ -120,9 +119,6 @@ with tf.Graph().as_default():
                 det = bounding_boxes[:, 0:4]
                 img_size = np.asarray(frame.shape)[0:2]
 
-                #cropped = []
-                #scaled = []
-                #scaled_reshape = []
                 bb = np.zeros((nrof_faces,4), dtype=np.int32)
 
                 for i in range(nrof_faces):
@@ -153,19 +149,21 @@ with tf.Graph().as_default():
                     
                     name_results= []
                     for model_num in range(len(models)): 
+                        num_faces = len(models[model_num][1]) - 1
                         name_results.append(matchName(models[model_num],names[model_num],emb_array))
                     
                     #find the one with highest fitness level
                     max_name_result = max(name_results,key= lambda m : m[1])
                     
                     #convert to percentage
-                    max_name_result[fitness_level]*=100
+                    max_name_result[1]*=100
                     
                     # Plot result idx under box
-                    print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
+                    accuracy = math.trunc(max_name_result[1][0])
+                    print("face "+ str(i) +" identified. it's " + str(max_name_result[0]) + " accuracy is " + str(accuracy))
                     text_x = bb[i][0]
                     text_y = bb[i][3] + 20
-                    texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
+                    texttoOutput = max_name_result[0] + " " + str(accuracy) + "%"
                     cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                 1, (0, 0, 255), thickness=1, lineType=2)
                     #cv2.imshow('Video', frame)
