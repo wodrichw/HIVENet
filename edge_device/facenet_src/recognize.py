@@ -161,15 +161,14 @@ with tf.Graph().as_default():
                     #convert to percentage
                     max_name_result[fitness_level]*=100
                     
-                    if max_name_result[fitness_level] >= 85:
-                        # Plot result idx under box
-                        print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
-                        text_x = bb[i][0]
-                        text_y = bb[i][3] + 20
-                        texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
-                        cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                                    1, (0, 0, 255), thickness=1, lineType=2)
-                        #cv2.imshow('Video', frame)
+                    # Plot result idx under box
+                    print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
+                    text_x = bb[i][0]
+                    text_y = bb[i][3] + 20
+                    texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
+                    cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                                1, (0, 0, 255), thickness=1, lineType=2)
+                    #cv2.imshow('Video', frame)
             else:
                 print('Unable to align')
             sec = curTime - prevTime
