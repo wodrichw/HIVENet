@@ -1,6 +1,7 @@
 $(function() {
     function submitTrainFaceForm() {
         name = $('#trainFaceForm').find('input').val();
+        name = name.toLowerCase();
         $.ajax({
             type: "POST",
             url: "./training_form",
