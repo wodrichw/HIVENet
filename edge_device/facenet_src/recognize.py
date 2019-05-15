@@ -43,11 +43,11 @@ def matchName(model,HumanNames,face):
 
 #print('Creating networks and loading parameters')
 with tf.Graph().as_default():
+    RD = os.path.dirname(os.path.realpath(__file__))
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.6)
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
     with sess.as_default():
-
-        pnet, rnet, onet = detect_face.create_mtcnn(sess, './align')
+        pnet, rnet, onet = detect_face.create_mtcnn(sess, RD+'/align')
 
         name = 0
         minsize = 20  # minimum size of face
@@ -61,7 +61,7 @@ with tf.Graph().as_default():
         results = defaultdict(lambda: [])
 
         #print('Loading feature extraction model')
-        model_dir = 'models/20170511-185253/20170511-185253.pb'
+        model_dir = RD+'/models/20170511-185253/20170511-185253.pb'
         facenet.load_model(model_dir)
         
         images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
@@ -76,13 +76,17 @@ with tf.Graph().as_default():
         names = []
 
         # Load Classifier and names from node directory.
-        p = subprocess.Popen("ls ../classifiers", shell=True, stdout=subprocess.PIPE)
+        classifiersDir = RD+"/../classifiers"
+        getclassifiersfolderscmd = "ls "+ classifiersDir
+        p = subprocess.Popen(getclassifiersfolderscmd, shell=True, stdout=subprocess.PIPE)
         node_dir_names_raw = p.communicate()[0]
         node_dir_names = [f for f in node_dir_names_raw.split('\n') if len(f) > 0]  
         for node in node_dir_names: 
-            classifier_filename = '../classifiers/' + node + '/classifier.pkl'
+            classifier_filename = classifiersDir +'/'+node + '/classifier.pkl'
+            print(classifier_filename)
             classifier_filename_exp = os.path.expanduser(classifier_filename)
-            names_filename = '../classifiers/' + node + '/names.txt'
+            names_filename = classifiersDir+'/'+ node + '/names.txt'
+            print(names_filename)
             names_filename_exp = os.path.expanduser(names_filename)
 
             with open(classifier_filename_exp, 'rb') as classifier_file:

@@ -7,9 +7,10 @@ from flask import Flask, request, redirect, url_for, send_from_directory
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'assets/'
-
 # Assemble File Paths
 RD = dirname(os.path.realpath(__file__))
+cmdON=RD+"""/scripts/turnOnRecognition.sh"""
+cmdOFF=RD+"""/scripts/turnOffRecognition.sh"""
 ED = dirname(dirname(RD))
 classifiersDir = ED+"/classifiers"
 
@@ -27,10 +28,17 @@ def updateClassifier():
         subprocess.call(cmd, shell=True)
         request.files['classifier'].save(nodedir+"/classifier.pkl")
         request.files['names'].save(nodedir+"/names.txt")
+        #restart classifier
+        subprocess.call(cmdOFF, shell=True)
+        subprocess.call(cmdON, shell=True)
+
         return "classifier updated successfully"
     else: 
         return "return failed"
 
 if __name__ == '__main__':
     os.chdir(RD)
+    subprocess.call(cmdON, shell=True)
+    subprocess.call(cmdOFF, shell=True)
     app.run(debug=True, host='0.0.0.0')
+    
