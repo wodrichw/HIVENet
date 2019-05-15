@@ -12,7 +12,6 @@ import facenet
 import detect_face
 import os
 from os.path import join as pjoin
-from os.path import dirname
 import sys
 import time
 import copy
@@ -21,8 +20,10 @@ import pickle
 import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
-sys.path.append(dirname(dirname(os.path.realpath(__file__)))+'/tracking')
-from people import People
+
+# Set path names
+RD = os.path.dirname(os.path.realpath(__file__))
+SP = os.path.dirname(RD) + '/tracking/'
 
 # Function: MatchName()  
 # input:    
@@ -42,7 +43,6 @@ def matchName(model,HumanNames,face):
     #print(result_names,best_class_probabilities)
     return [result_names,best_class_probabilities]
 
-people = People()
 
 #print('Creating networks and loading parameters')
 with tf.Graph().as_default():
@@ -89,7 +89,7 @@ with tf.Graph().as_default():
             names_filename_exp = os.path.expanduser(names_filename)
 
             with open(classifier_filename_exp, 'rb') as classifier_file:
-                models.append({"model": pickle.load(classifier_file), "node": node[5:]})
+                models.append(pickle.load(classifier_file))
                 #print('load classifier file-> %s' % classifier_filename_exp)
             with open(names_filename_exp, 'rb') as names_file:
                 names.append([name for name in names_file.read().split('\n') if len(name) > 0])
@@ -105,13 +105,10 @@ with tf.Graph().as_default():
 
         #print('Start Recognition!')
         prevTime = 0
-        # For tracking
-        face_counter = 0
-        # First is name, second is number of occurences
+        # Stores name and number of occurences it is used
         names_for_tracking = [[],[]]
-        CD = os.path.dirname(os.path.realpath(__file__))
-        ND = os.path.dirname(CD) + '/tracking/pickles/rec_py_face.pkl'    #/edge_device
-        store = False   # Makes storage occur only once
+        store = False   # Makes storage use only once
+        
         while True:
             ret, frame = video_capture.read()
 
@@ -164,67 +161,20 @@ with tf.Graph().as_default():
                     
                     name_results= []
                     for model_num in range(len(models)): 
-                        name_results.append({"model": matchName(models[model_num]["model"],names[model_num],emb_array), "node": models[model_num]["node"]})
-                       
+                        name_results.append(matchName(models[model_num],names[model_num],emb_array))
                     
                     #find the one with highest fitness level
-                    max_name_result = max(name_results,key= lambda m : m["model"][1]) 
-                    print(max_name_result)
+                    max_name_result = max(name_results,key= lambda m : m[1])
                     
                     #convert to percentage
-                    max_name_result["model"][1]*=100
+                    max_name_result[fitness_level]*=100
                     
-                    if max_name_result["model"][1] >= 85:
+                    if max_name_result[fitness_level] >= 85:
                         # Plot result idx under box -- This is where the name is printed
-                        print("face "+ str(i) +" identified. it's " + str(max_name_result["model"][0]))
-                        if face_counter < 8 and not store:
-                            face_counter += 1
-                            # if str(max_name_result["model"][0]) not in names_for_tracking:
-                            #     names_for_tracking[0].append(str(max_name_result["model"][0]))
-                            #     names_for_tracking[1].append(int(1))
-                            #     face_counter += 1
-                            # else:
-                            #     pos = names_for_tracking[0].index(str(max_name_result["model"][0]))
-                            #     names_for_tracking[1][pos] += 1
-                            #     face_counter += 1
-                        elif face_counter == 8 and not store:
-                            store = True
-                            p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
-                            IPaddr = p.communicate()[0].strip()
-
-                            key = max_name_result["model"][0] + "_" + max_name_result["node"]
-                            people.add_location(key, IPaddr)
-                            print ("-----HERE-----")
-                            people.save()
-                            # Get the name with the highest count
-                            # maxim = names_for_tracking[1][0]
-                            # print ("maxim: ", maxim)
-                            # ret_these_names = [None]
-                            # print ("length: ", len(names_for_tracking[0]))
-
-                            
-
-                            # for x in range(len(names_for_tracking[0])):
-                            #     if names_for_tracking[1][x] >= maxim:
-                            #         # Get IP addr to add to name
-                            #         p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
-                            #         IPaddr = p.communicate()[0].strip()
-
-                            #         maxim = names_for_tracking[1][x]
-                            #         refindex = names_for_tracking[1].index(maxim)
-                            #         ret_these_names[0] = names_for_tracking[0][refindex]
-                            #         ret_these_names[0] = ret_these_names[0] + "_node_" + IPaddr
-                            #         print ("maxim: ", maxim)
-                            #         print ("refindex: ", refindex)
-                            #         print ("ret names: ", ret_these_names[0])
-                            # # write to pickle file
-                            # f = open(ND, 'w')
-                            # pickle.dump(ret_these_names, f)
-                            # f.close()
-
+                        print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
-                        texttoOutput = max_name_result["model"][0] + np.array2string(max_name_result["model"][1],3) + max_name_result["node"]
+                        texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
                         cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                     1, (0, 0, 255), thickness=1, lineType=2)
                         #cv2.imshow('Video', frame)

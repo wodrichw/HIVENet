@@ -54,16 +54,10 @@ def updateNames():
 @app.route('/update_tracking', methods = ['POST'])
 def updateTracking():
     key = request.data['people_key']
-    location = request.data['location']
-    recognizeProc.kill()
-    people = People()
-    people.add_location(key, location)
-    del people
-    runRecognize()
+    
 
 
 
 if __name__ == '__main__':
     os.chdir(RD)
-    runRecognize()
     app.run(debug=True, host='0.0.0.0')

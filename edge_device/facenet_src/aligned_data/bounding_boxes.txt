@@ -1,34 +1,3 @@
-./aligned_data/SVEN/SVEN_15:52:20.144372.png 285 105 436 299
-./aligned_data/SVEN/SVEN_15:52:14.863244.png 292 104 434 297
-./aligned_data/SVEN/SVEN_15:52:20.472988.png 286 110 440 307
-./aligned_data/SVEN/SVEN_15:52:14.543346.png 281 101 436 298
-./aligned_data/SVEN/SVEN_15:52:19.176011.png 280 102 441 308
-./aligned_data/SVEN/SVEN_15:52:13.225721.png 286 100 443 302
-./aligned_data/SVEN/SVEN_15:52:17.176341.png 280 104 434 303
-./aligned_data/SVEN/SVEN_15:52:22.793332.png 285 109 437 305
-./aligned_data/SVEN/SVEN_15:52:18.505399.png 280 105 434 304
-./aligned_data/SVEN/SVEN_15:52:17.805434.png 293 107 437 305
-./aligned_data/SVEN/SVEN_15:52:14.222466.png 302 104 437 288
-./aligned_data/SVEN/SVEN_15:52:13.884993.png 289 92 443 291
-./aligned_data/SVEN/SVEN_15:52:18.166432.png 287 112 436 305
-./aligned_data/SVEN/SVEN_15:52:21.813098.png 298 111 440 307
-./aligned_data/SVEN/SVEN_15:52:15.513934.png 281 103 440 305
-./aligned_data/SVEN/SVEN_15:52:20.806281.png 286 104 440 302
-./aligned_data/SVEN/SVEN_15:52:16.515153.png 292 105 438 304
-./aligned_data/SVEN/SVEN_15:52:16.202203.png 293 105 439 303
-./aligned_data/SVEN/SVEN_15:52:15.864573.png 288 105 436 302
-./aligned_data/SVEN/SVEN_15:52:19.514366.png 291 108 434 305
-./aligned_data/SVEN/SVEN_15:52:12.887707.png 288 105 438 300
-./aligned_data/SVEN/SVEN_15:52:16.854590.png 293 109 436 305
-./aligned_data/SVEN/SVEN_15:52:13.564487.png 304 103 440 288
-./aligned_data/SVEN/SVEN_15:52:18.843443.png 293 106 435 301
-./aligned_data/SVEN/SVEN_15:52:21.475362.png 289 120 438 310
-./aligned_data/SVEN/SVEN_15:52:22.132349.png 298 112 439 307
-./aligned_data/SVEN/SVEN_15:52:17.495491.png 281 104 436 303
-./aligned_data/SVEN/SVEN_15:52:19.833510.png 294 108 437 299
-./aligned_data/SVEN/SVEN_15:52:22.474397.png 285 107 436 302
-./aligned_data/SVEN/SVEN_15:52:21.145082.png 286 108 439 305
-./aligned_data/SVEN/SVEN_15:52:15.172559.png 294 110 435 303
 ./aligned_data/andrew/andrew_20:37:12.970771.png
 ./aligned_data/andrew/andrew_20:37:14.932869.png
 ./aligned_data/andrew/andrew_20:37:14.261560.png
@@ -37,3 +6,34 @@
 ./aligned_data/andrew/andrew_20:37:13.952039.png
 ./aligned_data/andrew/andrew_20:37:12.593168.png
 ./aligned_data/andrew/andrew_20:37:13.294116.png
+./aligned_data/sven/sven_14:41:22.204932.png 187 115 396 394
+./aligned_data/sven/sven_14:41:18.575448.png 233 113 444 393
+./aligned_data/sven/sven_14:41:22.764332.png 216 124 435 414
+./aligned_data/sven/sven_14:41:21.923816.png 201 117 400 392
+./aligned_data/sven/sven_14:41:22.485716.png 216 121 414 401
+./aligned_data/sven/sven_14:41:17.565868.png 229 110 434 391
+./aligned_data/sven/sven_14:41:18.245706.png 235 111 450 395
+./aligned_data/sven/sven_14:41:23.711779.png 212 123 422 409
+./aligned_data/sven/sven_14:41:21.246697.png 240 116 456 411
+./aligned_data/sven/sven_14:41:20.574411.png 216 109 427 408
+./aligned_data/sven/sven_14:41:15.882085.png 225 98 443 401
+./aligned_data/sven/sven_14:41:17.224403.png 221 107 429 399
+./aligned_data/sven/sven_14:41:14.144597.png 285 113 469 360
+./aligned_data/sven/sven_14:41:23.364694.png 218 126 427 412
+./aligned_data/sven/sven_14:41:16.205600.png 239 108 457 394
+./aligned_data/sven/sven_14:41:19.235927.png 215 115 428 397
+./aligned_data/sven/sven_14:41:23.063441.png 220 125 447 440
+./aligned_data/sven/sven_14:41:15.242924.png 249 105 467 397
+./aligned_data/sven/sven_14:41:19.564728.png 244 119 457 407
+./aligned_data/sven/sven_14:41:20.235473.png 216 109 432 413
+./aligned_data/sven/sven_14:41:19.904827.png 229 116 444 403
+./aligned_data/sven/sven_14:41:20.904800.png 214 112 428 401
+./aligned_data/sven/sven_14:41:15.573015.png 241 104 451 387
+./aligned_data/sven/sven_14:41:18.906313.png 224 117 431 403
+./aligned_data/sven/sven_14:41:16.885965.png 226 105 444 401
+./aligned_data/sven/sven_14:41:14.464805.png 271 113 462 361
+./aligned_data/sven/sven_14:41:14.933944.png 250 89 461 372
+./aligned_data/sven/sven_14:41:21.604558.png 222 117 435 400
+./aligned_data/sven/sven_14:41:16.543715.png 237 111 448 399
+./aligned_data/sven/sven_14:41:24.053827.png 203 127 404 403
+./aligned_data/sven/sven_14:41:17.906978.png 243 112 457 402
