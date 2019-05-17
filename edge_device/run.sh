@@ -26,9 +26,6 @@ rm -r classifiers
 # create the classifiers file here. we did it this way because we cannot store empty directories in git Q: i wonder if this is the same for aligned_data?
 mkdir classifiers
 
-# initialize data
-# cp -r base_data/kamilla/ data/kamilla
-
 # align our dataset 
 python facenet_src/align_data.py
 
