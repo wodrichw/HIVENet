@@ -7,6 +7,7 @@ import json
 import subprocess
 from take_images import Imagetaker
 from communication.client.client import sendToEdgeDevices
+from communication.client.client import sendTrackingDataToEdgeDevices
 from facenet_src.classify import classify
 from facenet_src.align_data import align as align_data
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/edge_device/tracking")

@@ -32,9 +32,9 @@ def add_to_local(pos, name):
    pickle.dump(name_list, f)
    f.close()
 
-def merge():
+def merge(MTD, LND):
    # Open merge_these.pkl file
-   f = open('merge_these.pkl', 'r')
+   f = open(MTD, 'r')
    received_names = pickle.load(f)
    f.close()
 
@@ -72,4 +72,4 @@ def merge():
    #     Iterate through the local_names until you get a match with the received name
    # Add to local_names.pkl
 
-merge()
+# merge()

@@ -4,8 +4,8 @@ import sys
 from os.path import dirname
 import subprocess
 from flask import Flask, request, redirect, url_for, send_from_directory
-sys.path.append(dirname(dirname(dirname(os.path.realpath(__file__)))))
-from tracking.merge_names import start
+sys.path.append(dirname(dirname(dirname(os.path.realpath(__file__)))) + "/tracking" ) 
+from merge_names import *
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'assets/'
@@ -17,7 +17,7 @@ FS = ED + "/facenet_src"
 CD = ED+"/classifiers"
 
 # /HIVENet/edge_device/tracking/pickles
-ND = ED + '/tracking'
+TD = ED + '/tracking'
 
 #run recognize.py
 def runRecognize():
@@ -43,8 +43,10 @@ def updateClassifier():
 
 @app.route('/update_tracking', methods = ['POST'])
 def updateNames():
-    request.files['names'].save(ND+"/merge_these.pkl")
-    stuff()
+    MTD = TD + "/merge_these.pkl"
+    LND = TD + "/local_names.pkl"
+    request.files['names'].save(MTD)
+    merge(MTD, LND)
     # Call function to do stuff from here? Is that ok?
 
     return "classifier updated successfully"
