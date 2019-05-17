@@ -4,12 +4,12 @@ cd "$(dirname "$0")"
 
 pkill python*
 
-if [ $(ifconfig | grep docker0) ]
+if test -n $(ifconfig | grep docker0)
 then
 	sudo ip link delete doker0
 fi
 
-if [ $(nmcli device wifi list | grep TP-Link_CAFF) ]
+if test -n $(nmcli device wifi list | grep TP-Link_CAFF)
 then
 	nmcli device wifi connect TP-Link_CAFF password 04870418
 fi
