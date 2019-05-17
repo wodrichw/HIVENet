@@ -132,12 +132,19 @@ def submit_photos():
 
     classify(facenetDir)
     subprocess.call(cmd, shell=True)
-    f = open('name.txt', 'r')
+    FP = RD + '/name.txt'           # This directory, name.txt
+    PP = RD + '/send_pkg.pkl'       # This directory, send_pkg.pkl
+    f = open(FP, 'r')
     name = f.read()
     f.close()
+
     sendToEdgeDevices()
     names = create(name, LND, classifierDir)
-    sendTrackingDataToEdgeDevices(names)
+    f = open(PP, 'wb')
+    pickle.dump(names, f)
+    print "\n\n", names, "\n\n"
+    f.close
+    sendTrackingDataToEdgeDevices(PP)
 
     return render_template('index.html')
 

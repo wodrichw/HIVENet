@@ -5,9 +5,12 @@ RD = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/edge_devic
 ED  = os.path.dirname(RD)
 FP = RD + "/edge_device/tracking/local_names.pkl"
 
+RRD = os.path.dirname(os.path.realpath(__file__)) + '/name.txt'
+
 print("RD: ", RD)
 print("ED: ", ED)
 print("FP: ", FP)
+print("RRD: ", RRD)
 
 f = open(RD, 'w')
 stuff = "Hello World"

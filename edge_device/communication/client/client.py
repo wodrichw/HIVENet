@@ -35,21 +35,22 @@ def sendToEdgeDevices(RD=dirname(os.path.realpath(__file__))):
     for ip in IPaddr:
         sendClassifier(ip, RD)
 
-def sendTrackingData(name_list, ip, RD=dirname(os.path.realpath(__file__))):
+def sendTrackingData(pkg_file_dir, ip, RD=dirname(os.path.realpath(__file__))):
     try:
-        data = {"names": name_list}
-        r = requests.post('http://'+ip+':5000/update_tracking', data=data)
+        names = open(pkg_file_dir, 'rb')
+        files = {"names":names}
+        r = requests.post('http://'+ip+':5000/update_tracking', files=files)
         print(ip, "sent successfully")
     except: 
         print(ip, "failed to send files")
 
-def sendTrackingDataToEdgeDevices(name_list, RD=dirname(os.path.realpath(__file__))):
+def sendTrackingDataToEdgeDevices(pkg_file_dir, RD=dirname(os.path.realpath(__file__))):
     # Get the IP of edge device
     p = subprocess.Popen(RD+'/scripts/getIPs.sh', shell=True, stdout=subprocess.PIPE)
     IPaddr = str(p.communicate()[0]).split(',')
     print IPaddr
     for ip in IPaddr:
-        sendTrackingData(name_list, ip, RD)
+        sendTrackingData(pkg_file_dir, ip, RD)
 
 
 if __name__ == "__main__":
