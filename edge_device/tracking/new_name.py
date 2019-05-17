@@ -37,7 +37,7 @@ def prep_nodes(name, num_nodes, ipAddrs):
       print ipAddrs
 
       # 'andrew_1', 'andrew_2', ...
-      temp_name = temp_name + "_" + str(ipAddrs[0][x])
+      temp_name = temp_name + "_" + str(ipAddrs[x])
 
       if x == 0:
          node = {'name': temp_name, 'node1': 1, 'node2': 0, 'node3': 0, 'riddle': riddle}
@@ -122,30 +122,22 @@ def create(name, LND, CD):
    ED = os.path.dirname(RD)
    # Final path is the directory that contains
    #  list of connected nodes
-   #CD = ED + '/classifiers'
+   # CD = ED + '/classifiers'
 
    print "Directories: "
    print "RD: ", RD
    print "ED: ", ED
    print "CD: ", CD
    print "LND", LND
+
    # Get the names of the nodes
-   folders = []
-   for _, dirnames, _ in os.walk(CD):
-      folders.append(dirnames)
-
-
-
-   print folders
-   # Remove empty element
-   non_empty = []
-   for x in range(len(folders)):
-      if folders[x] != []:
-         non_empty.append(folders[x])
-   print "Final Folders: ", non_empty
+   #     Use getIPs.sh
+   p = subprocess.Popen(ED+'/communication/client/scripts/getIPs.sh', shell=True, stdout=subprocess.PIPE)
+   IPaddr = str(p.communicate()[0]).split(',')
+   print "ips: ", IPaddr
 
    # Note: non_empty is the list of ip addresses
-   node_list = prep_nodes(name, len(non_empty[0]), non_empty)
+   node_list = prep_nodes(name, len(IPaddr), IPaddr)
    print "Node List: ", node_list
 
    # Check if the name already exists in local_names.pkl
@@ -165,6 +157,7 @@ def create(name, LND, CD):
          transfer_nodes.append(node_list[x])
    
    # Send to server
-   sendTrackingDataToEdgeDevices(transfer_nodes)
+   print "---:transfer_nodes: ", transfer_nodes
+   return transfer_nodes
    
-# create('hivenet-face', '/local_names.pkl', )
+# create('hivenet-face', 'local_names.pkl')
