@@ -1,6 +1,7 @@
 import os
 import pickle
 import copy
+import subprocess
 
 # This will be a dictionary
 #  x.0 = question
@@ -48,7 +49,10 @@ for x in range(len(folder_names)):
 # Add the current machine's IP address to names for consistency in local.pkl
 print non_empty_list
 name_list = []
-ipAddr = raw_input("Enter you IP address: ")
+
+p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
+ipAddr = p.communicate()[0].strip()
+
 for x in range(len(non_empty_list[0])):
    print non_empty_list[0][x]
    non_empty_list[0][x] = str(non_empty_list[0][x]) + "_node_" + str(ipAddr)
