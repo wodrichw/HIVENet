@@ -3,7 +3,7 @@
 cd "$(dirname "$0")"
 
 #Hello
-pkill python*
+pkill python
 
 # #im not sure why we have docker here 
 # if [ $(ifconfig | grep docker0) ]
@@ -27,7 +27,7 @@ rm -r classifiers
 mkdir classifiers
 
 # initialize data
-cp -r base_data/kamilla/ data/kamilla
+# cp -r base_data/kamilla/ data/kamilla
 
 # align our dataset 
 python facenet_src/align_data.py
