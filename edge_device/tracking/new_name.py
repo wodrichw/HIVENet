@@ -60,12 +60,12 @@ def prep_nodes(name, num_nodes, ipAddrs):
 # adds to the file that contains the local names
 # ----------------------------------------
 def add_to_local(node, fname):
-   f = open(fname, 'r')
+   f = open(fname, 'rb')
    contents = pickle.load(f)
    contents.append(node)
    f.close()
 
-   f = open(fname, 'w')
+   f = open(fname, 'wb')
    pickle.dump(contents, f)
    f.close()
 
@@ -73,7 +73,7 @@ def add_to_local(node, fname):
 # ----------------------------------------
 # ----------------------------------------
 def add_to_transfer(node):
-   f = open("pickles/send_pkg.pkl", 'w')
+   f = open("pickles/send_pkg.pkl", 'wb')
    pickle.dump(node, f)
    f.close()
 
@@ -85,7 +85,7 @@ def add_to_transfer(node):
 # ----------------------------------------
 def check_repeats(node_list):
    # Open local name list
-   f = open('local_names.pkl', 'r')
+   f = open('local_names.pkl', 'rb')
    ln_list = pickle.load(f)
    f.close()
 
