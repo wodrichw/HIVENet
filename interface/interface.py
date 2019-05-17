@@ -144,6 +144,13 @@ def submit_photos():
     pickle.dump(names, f)
     print "\n\n", names, "\n\n"
     f.close
+
+    # f = open(PP, 'rb')
+    # pkl = pickle.load(f)
+    # f.close()
+    # print "---- Printing"
+    # print pkl
+
     sendTrackingDataToEdgeDevices(PP)
 
     return render_template('index.html')

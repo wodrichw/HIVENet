@@ -5,7 +5,7 @@ p2
 I0
 sS'riddle'
 p3
-F3.1
+F2.1
 sS'node3'
 p4
 I0
@@ -20,7 +20,7 @@ sa(dp8
 g2
 I0
 sg3
-F3.2
+F2.2
 sg4
 I1
 sg5
