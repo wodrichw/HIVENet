@@ -1,7 +1,7 @@
 $(function() {
     function submitTrainFaceForm() {
         name = $('#trainFaceForm').find('input').val();
-        name = name.toLowerCase();
+        name = name.replace(/ +/g, '-').toLowerCase(); // example string change: "William Wodrich" to "william-wodrich"
         $.ajax({
             type: "POST",
             url: "./training_form",
