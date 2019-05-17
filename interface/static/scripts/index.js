@@ -1,7 +1,7 @@
 $(function() {
     function submitTrainFaceForm() {
         name = $('#trainFaceForm').find('input').val();
-        name = name.toLowerCase();
+        name = name.replace(/\s+/g, '-').toLowerCase();
         $.ajax({
             type: "POST",
             url: "./training_form",

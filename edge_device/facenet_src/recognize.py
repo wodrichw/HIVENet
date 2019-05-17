@@ -70,7 +70,11 @@ with tf.Graph().as_default():
         phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
         embedding_size = embeddings.get_shape()[1]
 
-        video_capture = cv2.VideoCapture(0)
+        # Built-in Camera
+        # video_capture = cv2.VideoCapture(0)
+
+        # USB Webam
+        video_capture = cv2.VideoCapture(1)
         c = 0
 
         models = []
@@ -181,7 +185,7 @@ with tf.Graph().as_default():
                         ##### print("face "+ str(i) +" identified. it's " + str(max_name_result["model"][0]))
                          # ---------------- START TRACKING PORTION --------------------------
                         # If counter is not reached, do not store yet
-                        if face_counter < 8 and not store:
+                        if face_counter < 30 and not store:
                             face_counter += 1
                             # If face is not in list, add
                             if max_name_result["model"][0] not in names_for_tracking:
@@ -193,7 +197,7 @@ with tf.Graph().as_default():
                                 pos = names_for_tracking[0].index(max_name_result["model"][0])
                                 names_for_tracking[1][pos] += 1
                                 face_counter += 1
-                        elif face_counter == 8 and not store:
+                        elif face_counter == 30 and not store:
                             # Prevent overwrite and continuous running of tracking portion
                             store = True
 

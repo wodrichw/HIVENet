@@ -8,10 +8,10 @@ sF1.0
 S'What has a head, a tail, is brown, and has no legs?'
 p4
 sF1.2
-S'Hint 2'
+S'You can see a president when looking at it'
 p5
 sF1.1
-S''
+S'It is not worth making'
 p6
 sa(dp7
 g2
@@ -21,23 +21,26 @@ sF2.0
 S'What room do ghosts avoid?'
 p9
 sF2.1
-S'Hint 1'
+S'It is not the death room'
 p10
 sF2.2
-g5
-sa(dp11
+S'Usually people relax or entertain here'
+p11
+sa(dp12
 g2
 S'starting'
-p12
+p13
 sF3.1
-g10
+S'Keep thinking, you are starting to get close'
+p14
 sF3.0
 S'What 8 letter word can have a letter taken away and it still makes a word. Take another letter away and it still makes a word. Keep on doing that until you have one letter left. What is the word?'
-p13
-sS'descript_3'
-p14
-S'the word is starting; starting, staring, string, sting, sing, sin, in, I'
 p15
+sS'descript_3'
+p16
+S'the word is starting; starting, staring, string, sting, sing, sin, in, I'
+p17
 sF3.2
-g5
+S'This is the position everyone begins at in a race'
+p18
 sa.
