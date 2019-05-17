@@ -12,10 +12,10 @@ pkill python*
 # fi
 
 # # we want to automatically connect to TP-Link_CAFF
-# if [ $(nmcli device wifi list | grep TP-Link_CAFF) ]
-# then
-# 	nmcli device wifi connect TP-Link_CAFF password 04870418
-# fi
+ if [[ $(nmcli device wifi list | grep TP-Link_CAFF) ]];
+ then
+ 	nmcli device wifi connect TP-Link_CAFF password 04870418
+ fi
 
 # clear all data from aligned_data/ 
 rm -r facenet_src/aligned_data/*
