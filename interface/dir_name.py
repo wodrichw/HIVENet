@@ -1,20 +1,20 @@
 import pickle
 import os
 
-RD = os.path.dirname(os.path.realpath(__file__))
+RD = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/edge_device/tracking/local_names.pkl"
 ED  = os.path.dirname(RD)
-FP = ED + "/tracking/test.pkl"
+FP = RD + "/edge_device/tracking/local_names.pkl"
 
-print(RD)
-print(ED)
-print(FP)
+print("RD: ", RD)
+print("ED: ", ED)
+print("FP: ", FP)
 
-f = open(FP, 'w')
+f = open(RD, 'w')
 stuff = "Hello World"
 pickle.dump(stuff, f)
 f.close()
 
-f = open(FP, 'r')
+f = open(RD, 'r')
 stuff_two = pickle.load(f)
 print("pickle: ", stuff_two)
 f.close()

@@ -1,0 +1,43 @@
+(lp0
+(dp1
+S'answer'
+p2
+S'penny'
+p3
+sF1.0
+S'What has a head, a tail, is brown, and has no legs?'
+p4
+sF1.2
+S'Hint 2'
+p5
+sF1.1
+S''
+p6
+sa(dp7
+g2
+S'living room'
+p8
+sF2.0
+S'What room do ghosts avoid?'
+p9
+sF2.1
+S'Hint 1'
+p10
+sF2.2
+g5
+sa(dp11
+g2
+S'starting'
+p12
+sF3.1
+g10
+sF3.0
+S'What 8 letter word can have a letter taken away and it still makes a word. Take another letter away and it still makes a word. Keep on doing that until you have one letter left. What is the word?'
+p13
+sS'descript_3'
+p14
+S'the word is starting; starting, staring, string, sting, sing, sin, in, I'
+p15
+sF3.2
+g5
+sa.

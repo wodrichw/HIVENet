@@ -4,9 +4,8 @@ import sys
 from os.path import dirname
 import subprocess
 from flask import Flask, request, redirect, url_for, send_from_directory
-sys.path.append(dirname(dirname(dirname(os.path.realpath(__file__))))+'/tracking')
-from people import People
-
+sys.path.append(dirname(dirname(dirname(os.path.realpath(__file__)))))
+from tracking.merge_names import start
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'assets/'
@@ -15,10 +14,10 @@ app.config['UPLOAD_FOLDER'] = 'assets/'
 RD = dirname(os.path.realpath(__file__))
 ED = dirname(dirname(RD))   
 FS = ED + "/facenet_src"
-classifiersDir = ED+"/classifiers"
+CD = ED+"/classifiers"
 
 # /HIVENet/edge_device/tracking/pickles
-namesDir = ED + '/tracking/pickles'
+ND = ED + '/tracking'
 
 #run recognize.py
 def runRecognize():
@@ -27,7 +26,7 @@ def runRecognize():
 @app.route('/update_classifier', methods=['POST'])
 def updateClassifier():
     ip = request.remote_addr
-    nodedir = classifiersDir+'/node_'+ip
+    nodedir = CD+'/node_'+ip
     if request.files['classifier']:
         # Make nodedir if does not exist
         cmd="""
@@ -42,21 +41,13 @@ def updateClassifier():
     else: 
         return "return failed"
 
-@app.route('/update_names', methods = ['POST'])
-def updateNames():
-    if request.method == 'POST':
-        f = request.files['names']
-        f.save(namesDir + '/temp.pkl')
-        return "file uploaded successfully"
-    # if request.files['names']:
-    #     request.files['names'].save(namesDir + '/temp.pkl')
-
 @app.route('/update_tracking', methods = ['POST'])
-def updateTracking():
-    key = request.data['people_key']
-    
+def updateNames():
+    request.files['names'].save(ND+"/merge_these.pkl")
+    stuff()
+    # Call function to do stuff from here? Is that ok?
 
-
+    return "classifier updated successfully"
 
 if __name__ == '__main__':
     os.chdir(RD)

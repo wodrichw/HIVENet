@@ -12,6 +12,7 @@ import facenet
 import detect_face
 import os
 from os.path import join as pjoin
+from os.path import dirname
 import sys
 import time
 import copy
@@ -20,10 +21,8 @@ import pickle
 import subprocess
 from sklearn.svm import SVC
 from sklearn.externals import joblib
-
-# Set path names
-RD = os.path.dirname(os.path.realpath(__file__))
-SP = os.path.dirname(RD) + '/tracking/'
+sys.path.append(dirname(dirname(os.path.realpath(__file__)))+'/tracking')
+from prompt import *
 
 # Function: MatchName()  
 # input:    
@@ -42,7 +41,6 @@ def matchName(model,HumanNames,face):
             result_names = HumanNames[best_class_indices[0]]
     #print(result_names,best_class_probabilities)
     return [result_names,best_class_probabilities]
-
 
 #print('Creating networks and loading parameters')
 with tf.Graph().as_default():
@@ -89,7 +87,7 @@ with tf.Graph().as_default():
             names_filename_exp = os.path.expanduser(names_filename)
 
             with open(classifier_filename_exp, 'rb') as classifier_file:
-                models.append(pickle.load(classifier_file))
+                models.append({"model": pickle.load(classifier_file), "node": node[5:]})
                 #print('load classifier file-> %s' % classifier_filename_exp)
             with open(names_filename_exp, 'rb') as names_file:
                 names.append([name for name in names_file.read().split('\n') if len(name) > 0])
@@ -105,9 +103,15 @@ with tf.Graph().as_default():
 
         #print('Start Recognition!')
         prevTime = 0
-        # Stores name and number of occurences it is used
-        names_for_tracking = [[],[]]
-        store = False   # Makes storage use only once
+        # For tracking
+        face_counter = 0
+        # ----- TRACKING VARS 
+        names_for_tracking = [[],[]]    # Stores name and number of occurences it is used
+        store = False                   # Makes storage use only once
+        face_counter = 0                # When this hits some number, get and store the final name
+        # Set path names
+        RD = dirname(os.path.realpath(__file__))
+        SP = dirname(RD) + '/tracking'       
         
         while True:
             ret, frame = video_capture.read()
@@ -161,20 +165,68 @@ with tf.Graph().as_default():
                     
                     name_results= []
                     for model_num in range(len(models)): 
-                        name_results.append(matchName(models[model_num],names[model_num],emb_array))
+                        name_results.append({"model": matchName(models[model_num]["model"],names[model_num],emb_array), "node": models[model_num]["node"]})
+                       
                     
                     #find the one with highest fitness level
-                    max_name_result = max(name_results,key= lambda m : m[1])
+                    max_name_result = max(name_results,key= lambda m : m["model"][1]) 
+                    # print(max_name_result)
+                    # print(max_name_result["node"])
                     
                     #convert to percentage
-                    max_name_result[fitness_level]*=100
+                    max_name_result["model"][1]*=100
                     
-                    if max_name_result[fitness_level] >= 85:
+                    if max_name_result["model"][1] >= 85:
                         # Plot result idx under box -- This is where the name is printed
-                        print("face "+ str(i) +" identified. it's " + str(max_name_result[0]))
+                        ##### print("face "+ str(i) +" identified. it's " + str(max_name_result["model"][0]))
+                         # ---------------- START TRACKING PORTION --------------------------
+                        # If counter is not reached, do not store yet
+                        if face_counter < 8 and not store:
+                            face_counter += 1
+                            # If face is not in list, add
+                            if max_name_result["model"][0] not in names_for_tracking:
+                                names_for_tracking[0].append(max_name_result["model"][0] + "_node_" + max_name_result["node"])
+                                names_for_tracking[1].append(int(1))
+                                face_counter += 1
+                            # If face is in list, increment
+                            else:
+                                pos = names_for_tracking[0].index(max_name_result["model"][0])
+                                names_for_tracking[1][pos] += 1
+                                face_counter += 1
+                        elif face_counter == 8 and not store:
+                            # Prevent overwrite and continuous running of tracking portion
+                            store = True
+
+                            # Get the names with the highest count
+                            max_occur = names_for_tracking[1][0]
+                            ret_these_names = [None]
+
+                            for x in range(len(names_for_tracking[0])):
+                                if names_for_tracking[1][x] >= max_occur:
+                                    # replace as max occurence var
+                                    max_occur = names_for_tracking[1][x]
+                                    refIndex = names_for_tracking[1].index(max_occur)
+                                    ret_these_names[0] = names_for_tracking[0][refIndex]
+                            print("Return name: ", ret_these_names)
+
+                            # ret_these_names is formatted ['name_node_ip.ip.ip']
+                            # This is the name to prompt questions for
+
+                            # Open up local_names.pkl
+                            LND = SP + '/local_names.pkl'    
+                            RLD = SP + '/riddle_list.pkl'   
+                            main(ret_these_names, LND, RLD)                
+                            
+                            # This portion differs from the original
+                            #   This will handle recognition of name and prompt
+                            #   Just call the function
+                            
+                        # ---------------- END TRACKING PORTION ----------------------------
+                        
+
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
-                        texttoOutput = max_name_result[0] + np.array2string(max_name_result[1],3)
+                        texttoOutput = max_name_result["model"][0] + np.array2string(max_name_result["model"][1],3) + max_name_result["node"]
                         cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                     1, (0, 0, 255), thickness=1, lineType=2)
                         #cv2.imshow('Video', frame)

@@ -9,7 +9,13 @@ from take_images import Imagetaker
 from communication.client.client import sendToEdgeDevices
 from facenet_src.classify import classify
 from facenet_src.align_data import align as align_data
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/edge_device/tracking")
+from new_name import *
 import pickle
+
+print "\n\n"
+print (os.path.dirname(os.path.dirname(os.path.realpath(__file__)))+'/edge_device')
+print "\n\n"
 
 # Assemble Directory paths
 RD = os.path.dirname(os.path.realpath(__file__))
@@ -23,6 +29,7 @@ clientDir = communicationDir+"/client"
 clientAssetsDir = clientDir+"/assets"
 staticDir = RD+"/static"
 currentFaceDir = staticDir+"/current_face"
+LND = ED + "/tracking/local_names.pkl"
 
 p = subprocess.Popen("ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'", shell=True, stdout=subprocess.PIPE)
 IPaddr = p.communicate()[0].strip()
@@ -53,13 +60,12 @@ def get_training_form():
     #Save state of name
     print(submitted_name)
 
-    #Store name in .pkl file for data transfer
-    #Path to correct file
-    FP =  ED + "/tracking/name.txt"
-    f = open(FP, 'w')
+    # Create new node
+    # Store in .txt file
+    f = open('name.txt', 'w')
     f.write(submitted_name)
-    # pickle.dump(submitted_name, f)
     f.close()
+
     it.setName(submitted_name)
 
     return 'success'
@@ -125,7 +131,12 @@ def submit_photos():
 
     classify(facenetDir)
     subprocess.call(cmd, shell=True)
+    f = open('name.txt', 'r')
+    name = f.read()
+    f.close()
     sendToEdgeDevices()
+    names = create(name, LND, classifierDir)
+    sendTrackingDataToEdgeDevices(names)
 
     return render_template('index.html')
 
