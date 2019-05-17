@@ -1,29 +1,6 @@
 import pickle
 import subprocess
-
-def conc_ip(name):
-   # Parse name to get just ip address
-   #     IP addr == 13 chars
-   #     look for third _ and move from there
-   #     Example: andrew_node_123.123.1.123_xx
-   underscore = 0    # Counts number of underscore
-   count_num = False # Skips final loop when necessary
-   real_pos = 0      # Final position to parse
-   for x in range(len(name)):
-      if underscore == 2:
-         pos = x += 1
-   ip = name[]
-      if underscore == 0 or underscore == 1 and not count_num:
-         if name[x] == '_':
-            underscore += 1
-      elif underscore == 2 and not count_num:
-         count_num = True
-         pos = x
-         for y in range(pos, len(name)):
-            real_pos += 1
-   ip = name[-real_pos:]
-
-   return ip
+import re
 
 def add_to_local(pos, name, LND):
    f = open(LND, 'rb')
@@ -54,10 +31,7 @@ def merge(MTD, LND):
    IPaddr = p.communicate()[0].strip()
 
    # Get just the ip of each name in file
-   ip = []
-   for x in range(len(received_names)):
-      ip.append(conc_ip(received_names[x]['name']))
-   print "ip: ", ip
+   ips = [re.findall(r'[0-9]+(?:\.[0-9]+){3}', nameDict['name'] )[0] for nameDict in received_names]
 
    # Find the corresponding name in local_names list that belongs to this computer's ip addr
    #     Just compare ip list to computer's ip (IPaddr)

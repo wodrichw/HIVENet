@@ -10,16 +10,16 @@ import copy
 #  Store individually on each node as a .pkl file
 # https://www.riddles.com/best-riddles
 riddle_list = [{1.0: "What has a head, a tail, is brown, and has no legs?",
-               1.1: "", 
-               1.2: "Hint 2", 
+               1.1: "It is not worth making", 
+               1.2: "You can see a president when looking at it", 
                'answer': "penny"},
                {2.0: "What room do ghosts avoid?", 
-               2.1: "Hint 1", 
-               2.2: "Hint 2", 
+               2.1: "It is not the death room", 
+               2.2: "Usually people relax or entertain here", 
                'answer': "living room"},
                {3.0: "What 8 letter word can have a letter taken away and it still makes a word. Take another letter away and it still makes a word. Keep on doing that until you have one letter left. What is the word?", 
-               3.1: "Hint 1", 
-               3.2: "Hint 2",
+               3.1: "Keep thinking, you are starting to get close", 
+               3.2: "This is the position everyone begins at in a race",
                'answer': "starting",
                'descript_3': "the word is starting; starting, staring, string, sting, sing, sin, in, I"}]
 

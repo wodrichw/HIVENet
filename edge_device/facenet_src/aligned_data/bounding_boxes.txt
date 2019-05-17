@@ -1,39 +1,31 @@
-./aligned_data/andrew/andrew_20:37:12.970771.png
-./aligned_data/andrew/andrew_20:37:14.932869.png
-./aligned_data/andrew/andrew_20:37:14.261560.png
-./aligned_data/andrew/andrew_20:37:14.591565.png
-./aligned_data/andrew/andrew_20:37:13.633388.png
-./aligned_data/andrew/andrew_20:37:13.952039.png
-./aligned_data/andrew/andrew_20:37:12.593168.png
-./aligned_data/andrew/andrew_20:37:13.294116.png
-./aligned_data/test-me/test-me_22:16:47.926482.png 261 133 436 356
-./aligned_data/test-me/test-me_22:16:51.594610.png 273 131 454 366
-./aligned_data/test-me/test-me_22:16:53.955767.png 272 120 456 367
-./aligned_data/test-me/test-me_22:16:49.927917.png 260 113 443 342
-./aligned_data/test-me/test-me_22:16:47.236867.png 294 125 482 372
-./aligned_data/test-me/test-me_22:16:51.917887.png 273 128 454 365
-./aligned_data/test-me/test-me_22:16:54.977979.png 275 128 457 362
-./aligned_data/test-me/test-me_22:16:49.266411.png 259 118 432 335
-./aligned_data/test-me/test-me_22:16:46.585190.png 339 146 513 380
-./aligned_data/test-me/test-me_22:16:48.258618.png 260 129 441 352
-./aligned_data/test-me/test-me_22:16:50.614167.png 267 113 447 355
-./aligned_data/test-me/test-me_22:16:47.587039.png 266 128 451 373
-./aligned_data/test-me/test-me_22:16:52.253598.png 272 126 453 364
-./aligned_data/test-me/test-me_22:16:52.926843.png 273 122 448 364
-./aligned_data/test-me/test-me_22:16:55.656618.png 270 130 449 367
-./aligned_data/test-me/test-me_22:16:56.005023.png 270 132 452 370
-./aligned_data/test-me/test-me_22:16:54.637925.png 271 122 458 370
-./aligned_data/test-me/test-me_22:16:53.606795.png 268 119 453 363
-./aligned_data/test-me/test-me_22:16:46.258405.png 331 146 507 381
-./aligned_data/test-me/test-me_22:16:50.276945.png 264 113 441 339
-./aligned_data/test-me/test-me_22:16:52.586508.png 271 120 453 356
-./aligned_data/test-me/test-me_22:16:49.604509.png 258 115 439 338
-./aligned_data/test-me/test-me_22:16:53.268204.png 273 121 455 360
-./aligned_data/test-me/test-me_22:16:51.275708.png 272 119 447 363
-./aligned_data/test-me/test-me_22:16:55.316565.png 271 134 449 367
-./aligned_data/test-me/test-me_22:16:48.596669.png 260 127 435 341
-./aligned_data/test-me/test-me_22:16:50.937951.png 271 114 454 357
-./aligned_data/test-me/test-me_22:16:46.905930.png 327 139 501 374
-./aligned_data/test-me/test-me_22:16:54.296014.png 275 121 460 369
-./aligned_data/test-me/test-me_22:16:48.925876.png 256 124 428 341
-./aligned_data/test-me/test-me_22:16:45.916941.png 320 129 497 364
+./aligned_data/andrew-davis/andrew-davis_23:20:21.754090.png 281 137 482 403
+./aligned_data/andrew-davis/andrew-davis_23:20:20.414845.png 271 135 466 395
+./aligned_data/andrew-davis/andrew-davis_23:20:17.655218.png 293 122 494 384
+./aligned_data/andrew-davis/andrew-davis_23:20:24.736094.png 299 143 497 411
+./aligned_data/andrew-davis/andrew-davis_23:20:22.104043.png 277 140 474 403
+./aligned_data/andrew-davis/andrew-davis_23:20:21.085738.png 265 130 455 396
+./aligned_data/andrew-davis/andrew-davis_23:20:26.743300.png 282 136 489 404
+./aligned_data/andrew-davis/andrew-davis_23:20:18.726054.png 281 131 480 385
+./aligned_data/andrew-davis/andrew-davis_23:20:18.065640.png 301 131 487 373
+./aligned_data/andrew-davis/andrew-davis_23:20:24.085297.png 268 137 464 402
+./aligned_data/andrew-davis/andrew-davis_23:20:18.395353.png 288 129 490 391
+./aligned_data/andrew-davis/andrew-davis_23:20:27.745981.png 261 137 454 399
+./aligned_data/andrew-davis/andrew-davis_23:20:24.422404.png 262 137 459 397
+./aligned_data/andrew-davis/andrew-davis_23:20:23.103341.png 292 134 496 408
+./aligned_data/andrew-davis/andrew-davis_23:20:23.425025.png 278 132 483 399
+./aligned_data/andrew-davis/andrew-davis_23:20:27.403429.png 267 143 461 405
+./aligned_data/andrew-davis/andrew-davis_23:20:20.076267.png 277 137 476 391
+./aligned_data/andrew-davis/andrew-davis_23:20:25.733083.png 272 136 468 398
+./aligned_data/andrew-davis/andrew-davis_23:20:19.734126.png 287 126 490 392
+./aligned_data/andrew-davis/andrew-davis_23:20:21.415359.png 288 133 497 406
+./aligned_data/andrew-davis/andrew-davis_23:20:22.763797.png 260 134 445 394
+./aligned_data/andrew-davis/andrew-davis_23:20:25.072676.png 292 146 489 397
+./aligned_data/andrew-davis/andrew-davis_23:20:27.065340.png 278 140 473 400
+./aligned_data/andrew-davis/andrew-davis_23:20:20.755777.png 266 134 460 399
+./aligned_data/andrew-davis/andrew-davis_23:20:19.396366.png 266 136 454 394
+./aligned_data/andrew-davis/andrew-davis_23:20:19.066987.png 270 126 465 388
+./aligned_data/andrew-davis/andrew-davis_23:20:25.393444.png 282 145 481 398
+./aligned_data/andrew-davis/andrew-davis_23:20:23.763069.png 274 137 474 395
+./aligned_data/andrew-davis/andrew-davis_23:20:22.425028.png 264 134 458 398
+./aligned_data/andrew-davis/andrew-davis_23:20:26.055118.png 267 136 459 398
+./aligned_data/andrew-davis/andrew-davis_23:20:26.405608.png 294 143 500 417

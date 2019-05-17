@@ -13,11 +13,11 @@ def get_just_name(name):
    underscore = 0
    count_num = False
    real_pos = 0
-   for x in range(len(name)):
-      if name[x] == '_':
+   for x in range(len(name[0])):
+      if name[0][x] == '_':
          real_pos = x
          break
-   ret_name = name[:real_pos]
+   ret_name = name[0][:real_pos]
    return ret_name
 
 def get_og_num(riddle):
@@ -42,8 +42,8 @@ def main(name, LND, RLD):
    riddle_list = open_file(RLD)
 
    riddle_num = None
+
    for x in range(len(name_list)):
-      print name_list[x]
       if name[0] == name_list[x]['name']:
          riddle_num = name_list[x]['riddle']
          node_num_list.append(name_list[x]['node1'])
