@@ -4,12 +4,15 @@ import subprocess
 def conc_ip(name):
    # Parse name to get just ip address
    #     IP addr == 13 chars
-   #     look for third _ and move from ther
+   #     look for third _ and move from there
    #     Example: andrew_node_123.123.1.123_xx
    underscore = 0    # Counts number of underscore
    count_num = False # Skips final loop when necessary
    real_pos = 0      # Final position to parse
    for x in range(len(name)):
+      if underscore == 2:
+         pos = x += 1
+   ip = name[]
       if underscore == 0 or underscore == 1 and not count_num:
          if name[x] == '_':
             underscore += 1
@@ -22,23 +25,23 @@ def conc_ip(name):
 
    return ip
 
-def add_to_local(pos, name):
-   f = open('local_names.pkl', 'r')
+def add_to_local(pos, name, LND):
+   f = open(LND, 'rb')
    name_list = pickle.load(f)
    name_list.append(name)
    f.close()
 
-   f = open('local_names.pkl', 'w')
+   f = open(LND 'wb')
    pickle.dump(name_list, f)
    f.close()
 
 def merge(MTD, LND):
    # Open merge_these.pkl file
-   f = open(MTD, 'r')
+   f = open(MTD, 'rb')
    received_names = pickle.load(f)
    f.close()
 
-   f = open('local_names.pkl', 'r')
+   f = open(LND, 'rb')
    local_names = pickle.load(f)
    f.close()
 
@@ -61,7 +64,7 @@ def merge(MTD, LND):
    pos = ip.index(IPaddr)
    
    # Take that position, and append it into the local_names.pkl
-   add_to_local(pos, received_names[pos])
+   add_to_local(pos, received_names[pos], LND)
 
    #     Get just the name of any element from received_names
    for x in range(len(local_names)):

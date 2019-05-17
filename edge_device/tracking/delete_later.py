@@ -12,24 +12,22 @@
 
 # print riddle
 
-name = "Andrew Davis_node_192.168.0.116"
+name = "Andrew-Davis_node_192.168.0.116"
 underscore = 0
 count_num = False
 real_pos = 0
+underscore = 0    # Counts number of underscore
+count_num = False # Skips final loop when necessary
+real_pos = 0      # Final position to parse
 for x in range(len(name)):
-   if underscore == 0 or underscore == 1 and not count_num:
-      if name[x] == "_":
-         underscore += 1
-         print "underscore found"
-   elif underscore == 2 and not count_num:
-      count_num = True  
-      pos = x
-      print "pos: ", pos
-      print name[pos]      #right after second _
-      # name[pos] == _
-      for y in range(pos, len(name)):
-         real_pos += 1
-
+   if underscore != 2:
+      underscore += 1
+   if underscore == 2:
+      real_pos = x + 1
+      break
+print real_pos
+ip = name[-real_pos:]
+print ip
 # real_pos = len(name) - pos
 ip = name[-real_pos:]
 print "ip: ", ip
