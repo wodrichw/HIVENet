@@ -172,7 +172,7 @@ def recognize(RD=os.path.dirname(os.path.realpath(__file__))):
                         print(name, " accuracy is ", sum(results[name]) / len(results[name]))
                         text_x = bb[i][0]
                         text_y = bb[i][3] + 20
-                        texttoOutput = name + " " + str(accuracy) 
+                        texttoOutput = name + " " + str(sum(results[name]) / len(results[name])) 
                         cv2.putText(frame, texttoOutput, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                     1, (0, 0, 255), thickness=1, lineType=2)
 

@@ -38,7 +38,5 @@ def updateClassifier():
 
 if __name__ == '__main__':
     os.chdir(RD)
-    subprocess.call(cmdON, shell=True)
-    subprocess.call(cmdOFF, shell=True)
     app.run(debug=True, host='0.0.0.0')
     
