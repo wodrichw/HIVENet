@@ -170,10 +170,10 @@ def recognize(RD=os.path.dirname(os.path.realpath(__file__))):
                             name_results.append({"model": matchName(models[model_num]["model"],names[model_num],emb_array), "node": models[model_num]["node"]})
                         
                         #find the one with highest fitness level
-                        max_name_result = max(name_results,key= lambda m : m[1])
+                        max_name_result = max(name_results,key= lambda m : m["model"][1])
                         
                         #convert to percentage
-                        max_name_result[1]*=100
+                        max_name_result["model"][1]*=100
 
                          # ---------------- START TRACKING PORTION --------------------------
                         # If counter is not reached, do not store yet
@@ -192,7 +192,6 @@ def recognize(RD=os.path.dirname(os.path.realpath(__file__))):
                         elif face_counter == 30 and not store:
                             # Prevent overwrite and continuous running of tracking portion
                             store = True
-
                             # Get the names with the highest count
                             max_occur = names_for_tracking[1][0]
                             ret_these_names = [None]
@@ -220,8 +219,8 @@ def recognize(RD=os.path.dirname(os.path.realpath(__file__))):
                         # ---------------- END TRACKING PORTION ----------------------------
                         
                         # Plot result idx under box
-                        accuracy = math.trunc(max_name_result[1])
-                        name = max_name_result[0]
+                        accuracy = math.trunc(max_name_result["model"][1])
+                        name = max_name_result["model"][0]
                         results[name].append(accuracy)
                         print(name, " accuracy is ", sum(results[name]) / len(results[name]))
                         text_x = bb[i][0]

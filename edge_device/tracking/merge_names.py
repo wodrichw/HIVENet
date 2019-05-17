@@ -8,7 +8,7 @@ def add_to_local(pos, name, LND):
    name_list.append(name)
    f.close()
 
-   f = open(LND 'wb')
+   f = open(LND, 'wb')
    pickle.dump(name_list, f)
    f.close()
 
@@ -35,7 +35,7 @@ def merge(MTD, LND):
 
    # Find the corresponding name in local_names list that belongs to this computer's ip addr
    #     Just compare ip list to computer's ip (IPaddr)
-   pos = ip.index(IPaddr)
+   pos = ips.index(IPaddr)
    
    # Take that position, and append it into the local_names.pkl
    add_to_local(pos, received_names[pos], LND)
