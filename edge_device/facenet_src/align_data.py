@@ -99,11 +99,19 @@ def align(RD=os.path.dirname(os.path.realpath(__file__))):
                             bb_temp[3] = det[3]
 
                             cropped_temp = img[bb_temp[1]:bb_temp[3], bb_temp[0]:bb_temp[2], :]
-                            scaled_temp = misc.imresize(cropped_temp, (image_size, image_size), interp='bilinear')
+
+                            print("cropped_temp", len(cropped_temp))
+                            print("image_size", image_size)
+                            if len(cropped_temp)  != 0:
+                                scaled_temp = misc.imresize(cropped_temp, (image_size, image_size), interp='bilinear')
+                            else:
+                                print('Unable to align "%s", face too close' % image_path)
+                                continue
 
                             nrof_successfully_aligned += 1
                             misc.imsave(output_filename, scaled_temp)
                             text_file.write('%s %d %d %d %d\n' % (output_filename, bb_temp[0], bb_temp[1], bb_temp[2], bb_temp[3]))
+
                         else:
                             print('Unable to align "%s"' % image_path)
                             text_file.write('%s\n' % (output_filename))
